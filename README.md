@@ -1,7 +1,5 @@
 # ROS2 driver for ECON Multi-Camera Systems
 
-[ROS2 (/humble/)]
-
 ## 개요
 
 이 ROS2 패키지는 V4L2 인터페이스를 사용하는 ECON 멀티카메라 시스템을 지원하며, ROS2 Humble 대상으로 합니다.
