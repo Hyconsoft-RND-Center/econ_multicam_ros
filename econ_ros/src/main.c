@@ -593,11 +593,13 @@ int main(int argc, char *argv[])
 
 	for (int cam = 0; cam < app_data->cameras_connected; cam++)
 	{
-		char node_name[50], topic_name[50];
+		char node_name[50], topic_name[50], frame_id[50];
 		snprintf(node_name, sizeof(node_name), "video_publisher_%d", cam);
 		snprintf(topic_name, sizeof(topic_name), "/dev/video%d", cam);
+		snprintf(frame_id, sizeof(frame_id), "camera_%d", cam);
 		app_data->publisher_ctx[cam] = create_publisher(argc, (const char *const *)argv, node_name, topic_name);
-		app_data->publisher_ctx[cam]->image_msg = create_message_struct(cmdline.height, cmdline.width);
+		app_data->publisher_ctx[cam]->image_msg = create_message_struct(cmdline.height, cmdline.width, frame_id);
+		app_data->publisher_ctx[cam]->camera_info_msg = create_camera_info_message(cmdline.height, cmdline.width, frame_id);
 
 		if (app_data->publisher_ctx[cam] == NULL)
 		{
@@ -640,6 +642,15 @@ int main(int argc, char *argv[])
 						{
 							printf("Error publishing message: %s\n", rcl_get_error_string().str);
 						}
+
+						// Publish camera_info message
+						set_current_time(&app_data->publisher_ctx[cam]->camera_info_msg->header.stamp);
+						rc = rcl_publish(&app_data->publisher_ctx[cam]->camera_info_publisher, app_data->publisher_ctx[cam]->camera_info_msg, NULL);
+						if (rc != RCL_RET_OK)
+						{
+							printf("Error publishing camera_info message: %s\n", rcl_get_error_string().str);
+						}
+
 						memset(app_data->publisher_ctx[cam]->image_msg->data.data, 0, app_data->publisher_ctx[cam]->image_msg->data.size);
 					}
 					else
@@ -692,10 +703,20 @@ int main(int argc, char *argv[])
 			for (cam = 0; cam < app_data->cameras_connected; cam++)
 			{
 				rcl_ret_t rc;
+				rc = rcl_publisher_fini(&app_data->publisher_ctx[cam]->publisher, &app_data->publisher_ctx[cam]->node);
+				if (rc != RCL_RET_OK) 
+				{
+    				fprintf(stderr, "Error finalizing image publisher: Function returned %d\n", rc);
+				}
+				rc = rcl_publisher_fini(&app_data->publisher_ctx[cam]->camera_info_publisher, &app_data->publisher_ctx[cam]->node);
+				if (rc != RCL_RET_OK) 
+				{
+    				fprintf(stderr, "Error finalizing camera_info publisher: Function returned %d\n", rc);
+				}
 				rc = rcl_node_fini(&app_data->publisher_ctx[cam]->node);
 				if (rc != RCL_RET_OK) 
 				{
-    				fprintf(stderr, "Error: Function returned %d\n", rc);
+    				fprintf(stderr, "Error finalizing node: Function returned %d\n", rc);
 				}
 				free(app_data->publisher_ctx[cam]);
 			}
