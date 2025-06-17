@@ -14,7 +14,7 @@
 #include <linux/videodev2.h>
 #include <pthread.h>
 #include <stdlib.h>
-#include "ros_publisher.h"
+#include "econ_ros/ros_publisher.h"
 // #include "gstream.h"
 
 #define CAPTURE_MAX_BUFFER 4

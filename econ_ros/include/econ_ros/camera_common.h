@@ -1,4 +1,3 @@
-
 #define MAX_WIDTH 2304
 #define MAX_HEIGHT 1536
 

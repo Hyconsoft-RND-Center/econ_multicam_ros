@@ -1,15 +1,15 @@
-cmake_minimum_required(VERSION 3.10)
-project(e-multicam VERSION 1.0)
+cmake_minimum_required(VERSION 3.8)
+project(econ_ros)
 
-set(PARA_ROOT $ENV{PARA_ROOT})
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
 
 # Compiler settings
-set(CMAKE_C_COMPILER "${CROSS_COMPILE}gcc")
-set(CMAKE_CXX_COMPILER "${CROSS_COMPILE}g++")
 set(VERSION_STRING "1.0-g57a8186")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -Wall -pedantic -DVERSION=\"1.0-g57a8186\"")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -Wall -pedantic -fcommon -DVERSION=\"1.0-g57a8186\"")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -pedantic -std=c++14")
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lpthread")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lpthread -Wl,--allow-multiple-definition")
 
 # Find required packages
 find_package(PkgConfig REQUIRED)
@@ -18,15 +18,13 @@ pkg_check_modules(GSTREAMER_VIDEO REQUIRED gstreamer-video-1.0)
 pkg_check_modules(GSTREAMER_APP REQUIRED gstreamer-app-1.0)
 pkg_check_modules(X11 REQUIRED x11)
 
-find_library(PARA_CORE_LIB para_core PATHS ${PARA_ROOT}/lib)
-find_library(PARA_EXEC_LIB para_exec PATHS ${PARA_ROOT}/lib)
-find_library(PARA_COM_LIB para_com PATHS ${PARA_ROOT}/lib)
-find_library(PARA_LOG_LIB para_log PATHS ${PARA_ROOT}/lib)
-
-# find dependencies
+# find ROS2 dependencies
 find_package(ament_cmake REQUIRED)
+find_package(rcl REQUIRED)
 find_package(rclc REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(builtin_interfaces REQUIRED)
 
 # Include directories and link libraries
 include_directories(
@@ -34,9 +32,12 @@ include_directories(
     ${GSTREAMER_VIDEO_INCLUDE_DIRS}
     ${GSTREAMER_APP_INCLUDE_DIRS}
     ${X11_INCLUDE_DIRS}
-    ${PARA_ROOT}/include
+    src
+    include
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/econ_ros
 )
 
+# Link libraries globally like the original
 link_libraries(
     ${GSTREAMER_LIBRARIES}
     ${GSTREAMER_VIDEO_LIBRARIES}
@@ -44,35 +45,41 @@ link_libraries(
     ${X11_LIBRARIES}
     m
     jpeg
+    pthread
 )
 
 # Source files
-file(GLOB C_FILES "*.c")
-file(GLOB CPP_FILES "*.cpp")
-add_executable(e-multicam ${C_FILES} ${CPP_FILES})
+file(GLOB C_FILES "src/*.c")
+file(GLOB CPP_FILES "src/*.cpp")
+add_executable(econ_ros ${C_FILES} ${CPP_FILES})
 
 # Dependency settings
 set_source_files_properties(${C_FILES} PROPERTIES LANGUAGE C)
 set_source_files_properties(${CPP_FILES} PROPERTIES LANGUAGE CXX)
-target_include_directories(e-multicam PRIVATE /usr/include/gstreamer-1.0 ${PARA_ROOT}/include)
+target_include_directories(econ_ros PRIVATE /usr/include/gstreamer-1.0 src)
 
-# Set compile definitions
-#target_compile_definitions(e-multicam PRIVATE VERSION="\\\"${VERSION_STRING}\\\"")
-
-# Link pthread library explicitly
-
-# Find and link libraries
-target_link_libraries(e-multicam pthread ${PARA_CORE_LIB} ${PARA_EXEC_LIB} ${PARA_COM_LIB} ${PARA_LOG_LIB})
-
-# Link the executable
-ament_target_dependencies(e-multicam
+# ROS2 dependencies for the executable
+ament_target_dependencies(econ_ros
+  rcl
   rclc
   sensor_msgs
+  std_msgs
+  builtin_interfaces
+)
+
+# Install the executable
+install(TARGETS econ_ros
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+# Install launch files
+install(DIRECTORY launch
+  DESTINATION share/${PROJECT_NAME}/
 )
 
 # Custom commands
 add_custom_target(clean-all
-    COMMAND ${CMAKE_COMMAND} -E remove -f ${CMAKE_BINARY_DIR}/*.o e-multicam
+    COMMAND ${CMAKE_COMMAND} -E remove -f ${CMAKE_BINARY_DIR}/*.o econ_ros
 )
 
 ament_package()

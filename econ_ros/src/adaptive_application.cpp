@@ -3,14 +3,8 @@
 #include <csignal>
 #include <condition_variable>
 #include <mutex>
-
-// Popcornsar header files
-#include "adaptive_application.h"
-#include "ara/core/initialization.h"
-#include "ara/exec/execution_client.h"
-#include "ara/log/logger.h"
-
-#include "adaptive_application.h"
+#include <iostream>
+#include "econ_ros/adaptive_application.h"
 
 std::condition_variable cv;
 std::mutex mtx;
@@ -18,44 +12,30 @@ bool is_running = false;
 
 void Start_application()
 {
-    ara::core::Initialize();
-    ara::log::Logger &mLogger = ara::log::CreateLogger("ECAM", "ECAM", ara::log::LogLevel::kInfo);
-    ara::exec::ExecutionClient executionClient;
-
-    while (true)
-    {
-        auto exec = executionClient.ReportExecutionState(ara::exec::ExecutionState::kRunning);
-        if (exec.HasValue())
+    std::cout << "Starting ROS2 e-multicam application..." << std::endl;
+    
+    // Simple initialization without AUTOSAR EM dependencies
+    try {
+        std::cout << "e-multicam ROS2 application initialized successfully" << std::endl;
+        
+        // Notify main thread that the state is running
         {
-            mLogger.LogInfo() << "Ecosystem Provider AA Changed to Running State";
-            
-            // Notify main thread that the state is running
-            {
-                std::unique_lock<std::mutex> lock(mtx);
-                is_running = true;
-                cv.notify_one();
-            }
-
-            // Enter running state
-            while (exec.HasValue())
-            {
-                mLogger.LogInfo() << "Ecosystem Provider AA Provider Running.........";
-                std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-
-                // Optionally, you can re-check the execution state here if needed
-                exec = executionClient.ReportExecutionState(ara::exec::ExecutionState::kRunning);
-            }
+            std::unique_lock<std::mutex> lock(mtx);
+            is_running = true;
+            cv.notify_one();
         }
-        else
-        {
-            mLogger.LogInfo() << exec.Error().Message();
-            // Optionally, add a delay before retrying
-            std::this_thread::sleep_for(std::chrono::seconds(1));
+
+        // Keep the application running
+        while (true) {
+            std::cout << "e-multicam ROS2 application running..." << std::endl;
+            std::this_thread::sleep_for(std::chrono::seconds(5));
         }
     }
+    catch (const std::exception& e) {
+        std::cerr << "Error in ROS2 application: " << e.what() << std::endl;
+    }
 
-    // Cleanup code if necessary after the loop ends
-    mLogger.LogInfo() << "Ecosystem Provider AA Stopped Running.";
+    std::cout << "e-multicam ROS2 application stopped" << std::endl;
 }
 
 extern "C" void start_AA()
