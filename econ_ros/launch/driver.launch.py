@@ -1,43 +1,11 @@
 #!/usr/bin/env python3
+import os
 from launch import LaunchDescription
-from launch_ros.actions import Node
-from launch.actions import DeclareLaunchArgument, ExecuteProcess
+from launch.actions import ExecuteProcess, DeclareLaunchArgument
 from launch.substitutions import LaunchConfiguration
 from ament_index_python.packages import get_package_share_directory
-import os
 
 def generate_launch_description():
-    # Declare launch arguments
-    width_arg = DeclareLaunchArgument(
-        'width',
-        default_value='1920',
-        description='Width of the camera resolution'
-    )
-    
-    height_arg = DeclareLaunchArgument(
-        'height', 
-        default_value='1080',
-        description='Height of the camera resolution'
-    )
-    
-    num_cam_arg = DeclareLaunchArgument(
-        'num_cam',
-        default_value='4',
-        description='Number of cameras to use'
-    )
-    
-    no_display_arg = DeclareLaunchArgument(
-        'no_display',
-        default_value='1',
-        description='Set no-display streaming to 1'
-    )
-
-    no_sync_arg = DeclareLaunchArgument(
-        'no_sync',
-        default_value='1',
-        description='Set no-sync to 1 for disable sync mode'
-    )
-
     # Get package installation path
     package_name = 'econ_ros'
     executable_path = os.path.join(
@@ -49,27 +17,55 @@ def generate_launch_description():
         'econ_ros'
     )
     
-    # Simple ExecuteProcess - prioritize camera hardware safety
+    # Declare launch arguments
+    width_arg = DeclareLaunchArgument(
+        'width',
+        default_value='1920',
+        description='Camera frame width'
+    )
+    
+    height_arg = DeclareLaunchArgument(
+        'height',
+        default_value='1080',
+        description='Camera frame height'
+    )
+    
+    no_display_arg = DeclareLaunchArgument(
+        'no_display',
+        default_value='1',
+        description='Disable display (1=disable, 0=enable)'
+    )
+    
+    record_arg = DeclareLaunchArgument(
+        'record',
+        default_value='0',
+        description='Record video (1=enable, 0=disable)'
+    )
+    
+    sync_arg = DeclareLaunchArgument(
+        'sync',
+        default_value='1',
+        description='Frame sync mode (0=enable, 1=disable)'
+    )
+    
+    # ExecuteProcess with arguments
     econ_ros_node = ExecuteProcess(
         cmd=[
             executable_path,
-            '--width', LaunchConfiguration('width'),
-            '--height', LaunchConfiguration('height'),
-            '--num_cam', LaunchConfiguration('num_cam'),
-            '--no-display', LaunchConfiguration('no_display'),
-            '--no-sync', LaunchConfiguration('no_sync')
+            '-w', LaunchConfiguration('width'),
+            '-h', LaunchConfiguration('height'),
+            '-d', LaunchConfiguration('no_display'),
+            '-r', LaunchConfiguration('record'),
+            '-s', LaunchConfiguration('sync')
         ],
-        output='screen',
-        name='econ_ros_node',
-        # No respawn - let it exit cleanly
-        respawn=False,
+        output='screen'
     )
 
     return LaunchDescription([
         width_arg,
         height_arg,
-        num_cam_arg,
         no_display_arg,
-        no_sync_arg,
+        record_arg,
+        sync_arg,
         econ_ros_node
     ]) 

@@ -103,7 +103,7 @@ sensor_msgs__msg__Image *create_message_struct(int height, int width, const char
     image_msg->height = height;
     image_msg->width = width;
 
-    // Set the encoding
+    // Set the encoding to YUV422 (2 bytes per pixel)
     const char *encoding = "yuv422";
     size_t encoding_length = strlen(encoding);
     image_msg->encoding.data = (char *)malloc(encoding_length + 1);
@@ -119,7 +119,7 @@ sensor_msgs__msg__Image *create_message_struct(int height, int width, const char
     image_msg->encoding.capacity = encoding_length + 1;
 
     image_msg->is_bigendian = 0;
-    image_msg->step = width * 2; // 2 bytes per pixel for YUYV
+    image_msg->step = width * 2; // 2 bytes per pixel for YUV422
 
     // Allocate memory for the image data
     image_msg->data.data = (uint8_t *)malloc(image_msg->height * image_msg->step);
@@ -151,7 +151,7 @@ void set_current_time(builtin_interfaces__msg__Time *stamp)
     }
 }
 
-sensor_msgs__msg__CameraInfo *create_camera_info_message(int height, int width, const char *frame_id)
+sensor_msgs__msg__CameraInfo *create_camera_info_message(int height, int width, const char *frame_id, int device_id)
 {
     sensor_msgs__msg__CameraInfo *camera_info_msg = (sensor_msgs__msg__CameraInfo *)malloc(sizeof(sensor_msgs__msg__CameraInfo));
     if (camera_info_msg == NULL)
@@ -212,20 +212,37 @@ sensor_msgs__msg__CameraInfo *create_camera_info_message(int height, int width, 
         free(camera_info_msg);
         return NULL;
     }
-    // Set all distortion parameters to 0 (assuming no distortion)
+    // Set calibration parameters based on device_id
+    double fx, fy, cx, cy;
+    double d[5] = {0.0, 0.0, 0.0, 0.0, 0.0}; // Default: no distortion
+    
+    switch(device_id) {
+        case 0: // dev0 - front camera
+            fx = 1730.96984; fy = 1744.46222; cx = 964.66126; cy = 465.84157;
+            d[0] = -0.364515; d[1] = 0.130944; d[2] = 0.002280; d[3] = -0.002711; d[4] = 0.000000;
+            break;
+        case 1: // dev1 - back camera  
+            fx = 1510.90848; fy = 1522.93426; cx = 930.1433; cy = 555.95368;
+            d[0] = -0.308347; d[1] = 0.059721; d[2] = -0.002041; d[3] = 0.008979; d[4] = 0.000000;
+            break;
+        case 2: // dev2 - left camera
+            fx = 907.59532; fy = 915.99537; cx = 951.22199; cy = 543.44269;
+            d[0] = -0.295144; d[1] = 0.054535; d[2] = 0.000679; d[3] = -0.002782; d[4] = 0.000000;
+            break;
+        case 3: // dev3 - right camera
+            fx = 772.44465; fy = 777.32646; cx = 979.71164; cy = 554.33627;
+            d[0] = -0.243915; d[1] = 0.035940; d[2] = -0.005044; d[3] = -0.000517; d[4] = 0.000000;
+            break;
+        default: // Default values
+            fx = width / 2.0; fy = height / 2.0; cx = width / 2.0; cy = height / 2.0;
+            break;
+    }
+    
+    // Set distortion coefficients
     for (int i = 0; i < 5; i++)
     {
-        camera_info_msg->d.data[i] = 0.0;
+        camera_info_msg->d.data[i] = d[i];
     }
-
-    // Initialize camera matrix (K) - 3x3 matrix stored as 9 elements
-    // K = [fx  0  cx]
-    //     [ 0 fy  cy]
-    //     [ 0  0   1]
-    double fx = width / 2.0;  // focal length in x direction (pixels)
-    double fy = height / 2.0; // focal length in y direction (pixels)
-    double cx = width / 2.0;  // optical center x (pixels)
-    double cy = height / 2.0; // optical center y (pixels)
 
     camera_info_msg->k[0] = fx; camera_info_msg->k[1] = 0.0; camera_info_msg->k[2] = cx;
     camera_info_msg->k[3] = 0.0; camera_info_msg->k[4] = fy; camera_info_msg->k[5] = cy;
@@ -236,13 +253,34 @@ sensor_msgs__msg__CameraInfo *create_camera_info_message(int height, int width, 
     camera_info_msg->r[3] = 0.0; camera_info_msg->r[4] = 1.0; camera_info_msg->r[5] = 0.0;
     camera_info_msg->r[6] = 0.0; camera_info_msg->r[7] = 0.0; camera_info_msg->r[8] = 1.0;
 
-    // Initialize projection matrix (P) - 3x4 matrix stored as 12 elements
-    // P = [fx  0  cx  0]
-    //     [ 0 fy  cy  0]
-    //     [ 0  0   1  0]
-    camera_info_msg->p[0] = fx; camera_info_msg->p[1] = 0.0; camera_info_msg->p[2] = cx; camera_info_msg->p[3] = 0.0;
-    camera_info_msg->p[4] = 0.0; camera_info_msg->p[5] = fy; camera_info_msg->p[6] = cy; camera_info_msg->p[7] = 0.0;
-    camera_info_msg->p[8] = 0.0; camera_info_msg->p[9] = 0.0; camera_info_msg->p[10] = 1.0; camera_info_msg->p[11] = 0.0;
+    // Initialize projection matrix (P) based on device_id
+    switch(device_id) {
+        case 0: // dev0 - front camera
+            camera_info_msg->p[0] = 1512.38489; camera_info_msg->p[1] = 0.0; camera_info_msg->p[2] = 958.18693; camera_info_msg->p[3] = 0.0;
+            camera_info_msg->p[4] = 0.0; camera_info_msg->p[5] = 1677.03149; camera_info_msg->p[6] = 461.05392; camera_info_msg->p[7] = 0.0;
+            camera_info_msg->p[8] = 0.0; camera_info_msg->p[9] = 0.0; camera_info_msg->p[10] = 1.0; camera_info_msg->p[11] = 0.0;
+            break;
+        case 1: // dev1 - back camera
+            camera_info_msg->p[0] = 1277.13574; camera_info_msg->p[1] = 0.0; camera_info_msg->p[2] = 949.04199; camera_info_msg->p[3] = 0.0;
+            camera_info_msg->p[4] = 0.0; camera_info_msg->p[5] = 1459.5304; camera_info_msg->p[6] = 555.49523; camera_info_msg->p[7] = 0.0;
+            camera_info_msg->p[8] = 0.0; camera_info_msg->p[9] = 0.0; camera_info_msg->p[10] = 1.0; camera_info_msg->p[11] = 0.0;
+            break;
+        case 2: // dev2 - left camera
+            camera_info_msg->p[0] = 621.44672; camera_info_msg->p[1] = 0.0; camera_info_msg->p[2] = 959.98432; camera_info_msg->p[3] = 0.0;
+            camera_info_msg->p[4] = 0.0; camera_info_msg->p[5] = 803.41724; camera_info_msg->p[6] = 545.21623; camera_info_msg->p[7] = 0.0;
+            camera_info_msg->p[8] = 0.0; camera_info_msg->p[9] = 0.0; camera_info_msg->p[10] = 1.0; camera_info_msg->p[11] = 0.0;
+            break;
+        case 3: // dev3 - right camera
+            camera_info_msg->p[0] = 552.39667; camera_info_msg->p[1] = 0.0; camera_info_msg->p[2] = 977.22865; camera_info_msg->p[3] = 0.0;
+            camera_info_msg->p[4] = 0.0; camera_info_msg->p[5] = 664.03961; camera_info_msg->p[6] = 548.97974; camera_info_msg->p[7] = 0.0;
+            camera_info_msg->p[8] = 0.0; camera_info_msg->p[9] = 0.0; camera_info_msg->p[10] = 1.0; camera_info_msg->p[11] = 0.0;
+            break;
+        default: // Default projection matrix
+            camera_info_msg->p[0] = fx; camera_info_msg->p[1] = 0.0; camera_info_msg->p[2] = cx; camera_info_msg->p[3] = 0.0;
+            camera_info_msg->p[4] = 0.0; camera_info_msg->p[5] = fy; camera_info_msg->p[6] = cy; camera_info_msg->p[7] = 0.0;
+            camera_info_msg->p[8] = 0.0; camera_info_msg->p[9] = 0.0; camera_info_msg->p[10] = 1.0; camera_info_msg->p[11] = 0.0;
+            break;
+    }
 
     // Set binning parameters
     camera_info_msg->binning_x = 0;

@@ -9,6 +9,7 @@
 #include "adaptive_application.h"
 #include "debug.h"
 #include "camera_common.h"
+#include "econ_ros/opencv_cuda_color_conversion.h"
 #define FPS 1
 
 #define DEFAULT_FRAMERATE_IN_SYNC 30

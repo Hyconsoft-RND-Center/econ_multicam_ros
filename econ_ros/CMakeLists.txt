@@ -1,15 +1,19 @@
 cmake_minimum_required(VERSION 3.8)
-project(econ_ros)
+project(econ_ros LANGUAGES C CXX)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
+
+
 
 # Compiler settings
 set(VERSION_STRING "1.0-g57a8186")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -Wall -pedantic -fcommon -DVERSION=\"1.0-g57a8186\"")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -pedantic -std=c++14")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lpthread -Wl,--allow-multiple-definition")
+
+
 
 # Find required packages
 find_package(PkgConfig REQUIRED)
@@ -66,6 +70,10 @@ ament_target_dependencies(econ_ros
   std_msgs
   builtin_interfaces
 )
+
+
+
+
 
 # Install the executable
 install(TARGETS econ_ros

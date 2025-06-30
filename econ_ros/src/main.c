@@ -591,6 +591,8 @@ int main(int argc, char *argv[])
 		exit(-errno);
 	}
 
+
+
 	for (int cam = 0; cam < app_data->cameras_connected; cam++)
 	{
 		char node_name[50], topic_name[50], frame_id[50];
@@ -599,7 +601,7 @@ int main(int argc, char *argv[])
 		snprintf(frame_id, sizeof(frame_id), "camera_%d", cam);
 		app_data->publisher_ctx[cam] = create_publisher(argc, (const char *const *)argv, node_name, topic_name);
 		app_data->publisher_ctx[cam]->image_msg = create_message_struct(cmdline.height, cmdline.width, frame_id);
-		app_data->publisher_ctx[cam]->camera_info_msg = create_camera_info_message(cmdline.height, cmdline.width, frame_id);
+		app_data->publisher_ctx[cam]->camera_info_msg = create_camera_info_message(cmdline.height, cmdline.width, frame_id, cam);
 
 		if (app_data->publisher_ctx[cam] == NULL)
 		{
@@ -633,25 +635,22 @@ int main(int argc, char *argv[])
 
 					if (cap_ptr[cam] != NULL)
 					{
-						// set_current_time(&image_msg.header.stamp);
 						set_current_time(&app_data->publisher_ctx[cam]->image_msg->header.stamp);
-						memcpy(app_data->publisher_ctx[cam]->image_msg->data.data, cap_ptr[cam], app_data->publisher_ctx[cam]->image_msg->data.size);
+						memcpy(app_data->publisher_ctx[cam]->image_msg->data.data, cap_ptr[cam], cmdline.width * cmdline.height * 2);
+
 						rcl_ret_t rc;
 						rc = rcl_publish(&app_data->publisher_ctx[cam]->publisher, app_data->publisher_ctx[cam]->image_msg, NULL);
 						if (rc != RCL_RET_OK)
 						{
-							printf("Error publishing message: %s\n", rcl_get_error_string().str);
+							printf("Error publishing image message: %s\n", rcl_get_error_string().str);
 						}
 
-						// Publish camera_info message
 						set_current_time(&app_data->publisher_ctx[cam]->camera_info_msg->header.stamp);
 						rc = rcl_publish(&app_data->publisher_ctx[cam]->camera_info_publisher, app_data->publisher_ctx[cam]->camera_info_msg, NULL);
 						if (rc != RCL_RET_OK)
 						{
 							printf("Error publishing camera_info message: %s\n", rcl_get_error_string().str);
 						}
-
-						memset(app_data->publisher_ctx[cam]->image_msg->data.data, 0, app_data->publisher_ctx[cam]->image_msg->data.size);
 					}
 					else
 					{
