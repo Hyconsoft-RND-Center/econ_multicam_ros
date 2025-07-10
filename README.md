@@ -78,6 +78,3 @@ sudo apt install ros-humble-compressed-image-transport
 > GPU/VIC 사용률은 `tegrastats` 로 확인하세요. (`nvidia-smi` 미지원)
 
 ---
-
-## 라이선스
-Apache License 2.0 – 상세 내용은 [LICENSE](LICENSE) 파일 참조.
