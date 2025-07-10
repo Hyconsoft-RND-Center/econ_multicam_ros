@@ -214,6 +214,5 @@ void gst_ros_publisher_destroy(GstRosPublisher* publisher);
 
 // 유틸리티 함수들
 const char* gst_encoding_type_to_string(GstEncodingType type);
-void gst_ros_publisher_print_stats(GstRosPublisher* publisher);
 
 #endif // GST_ROS_PUBLISHER_H 

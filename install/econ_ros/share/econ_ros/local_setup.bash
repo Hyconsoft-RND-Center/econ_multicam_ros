@@ -1,1 +1,0 @@
-/home/hycon/econ_multicam_ros/build/econ_ros/ament_cmake_environment_hooks/local_setup.bash
