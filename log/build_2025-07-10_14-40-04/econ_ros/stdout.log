@@ -1,0 +1,27 @@
+[35m[1mConsolidate compiler generated dependencies of target econ_ros[0m
+[ 10%] [32mBuilding C object CMakeFiles/econ_ros.dir/src/camera_common.c.o[0m
+[ 20%] [32mBuilding C object CMakeFiles/econ_ros.dir/src/device.c.o[0m
+[ 30%] [32mBuilding C object CMakeFiles/econ_ros.dir/src/main.c.o[0m
+[ 40%] [32mBuilding C object CMakeFiles/econ_ros.dir/src/v4l2_capture.c.o[0m
+[ 50%] [32mBuilding C object CMakeFiles/econ_ros.dir/src/gst_ros_publisher.c.o[0m
+[ 60%] [32m[1mLinking CXX executable econ_ros[0m
+[100%] Built target econ_ros
+-- Install configuration: ""
+-- Execute custom install script
+-- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/lib/econ_ros/econ_ros
+-- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros//launch/driver.launch.py
+-- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/ament_index/resource_index/package_run_dependencies/econ_ros
+-- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/ament_index/resource_index/parent_prefix_path/econ_ros
+-- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/environment/ament_prefix_path.sh
+-- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/environment/ament_prefix_path.dsv
+-- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/environment/path.sh
+-- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/environment/path.dsv
+-- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/local_setup.bash
+-- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/local_setup.sh
+-- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/local_setup.zsh
+-- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/local_setup.dsv
+-- Symlinking: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/package.dsv
+-- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/ament_index/resource_index/packages/econ_ros
+-- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/cmake/econ_rosConfig.cmake
+-- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/cmake/econ_rosConfig-version.cmake
+-- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/package.xml

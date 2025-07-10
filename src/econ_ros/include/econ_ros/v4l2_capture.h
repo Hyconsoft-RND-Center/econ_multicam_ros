@@ -15,6 +15,8 @@
 #include <pthread.h>
 #include <stdlib.h>
 #include "econ_ros/ros_publisher.h"
+#include "econ_ros/gst_ros_publisher.h"
+#include <rclc/rclc.h>
 // #include "gstream.h"
 
 #define CAPTURE_MAX_BUFFER 4
@@ -75,6 +77,10 @@ struct app_data
 	int cameras_connected;
 	v4l2_capture_t *camera_dev[MAX_CAPTURE_DEVS];
 	PublisherContext *publisher_ctx[MAX_CAPTURE_DEVS];
+	GstRosPublisher *gst_publisher[MAX_CAPTURE_DEVS];
+	rcl_node_t node;
+	rclc_support_t support;
+	int use_gstreamer;
 };
 
 /**

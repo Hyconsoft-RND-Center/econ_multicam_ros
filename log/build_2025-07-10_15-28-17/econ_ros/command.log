@@ -1,0 +1,4 @@
+Invoking command in '/home/hycon/econ_multicam_ros/build/econ_ros': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/hycon/econ_multicam_ros/build/econ_ros -- -j12 -l12
+Invoked command in '/home/hycon/econ_multicam_ros/build/econ_ros' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/hycon/econ_multicam_ros/build/econ_ros -- -j12 -l12
+Invoking command in '/home/hycon/econ_multicam_ros/build/econ_ros': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/hycon/econ_multicam_ros/build/econ_ros
+Invoked command in '/home/hycon/econ_multicam_ros/build/econ_ros' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/hycon/econ_multicam_ros/build/econ_ros

@@ -1,0 +1,48 @@
+[0.016s] Invoking command in '/home/hycon/econ_multicam_ros/build/econ_ros': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/hycon/econ_multicam_ros/build/econ_ros -- -j12 -l12
+[0.083s] [35m[1mConsolidate compiler generated dependencies of target econ_ros[0m
+[0.129s] [ 10%] [32mBuilding C object CMakeFiles/econ_ros.dir/src/gst_ros_publisher.c.o[0m
+[0.368s] [01m[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:[m[K In function ‘[01m[Kgst_ros_publisher_create[m[K’:
+[0.368s] [01m[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:546:9:[m[K [01;35m[Kwarning: [m[Kignoring return value of ‘[01m[Krcl_publisher_fini[m[K’ declared with attribute ‘[01m[Kwarn_unused_result[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-result-Wunused-result]8;;[m[K]
+[0.368s]   546 |         [01;35m[Krcl_publisher_fini(&publisher->image_publisher, node)[m[K;
+[0.369s]       |         [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.369s] [01m[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:557:9:[m[K [01;35m[Kwarning: [m[Kignoring return value of ‘[01m[Krcl_publisher_fini[m[K’ declared with attribute ‘[01m[Kwarn_unused_result[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-result-Wunused-result]8;;[m[K]
+[0.369s]   557 |         [01;35m[Krcl_publisher_fini(&publisher->image_publisher, node)[m[K;
+[0.369s]       |         [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.370s] [01m[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:558:9:[m[K [01;35m[Kwarning: [m[Kignoring return value of ‘[01m[Krcl_publisher_fini[m[K’ declared with attribute ‘[01m[Kwarn_unused_result[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-result-Wunused-result]8;;[m[K]
+[0.370s]   558 |         [01;35m[Krcl_publisher_fini(&publisher->camera_info_publisher, node)[m[K;
+[0.370s]       |         [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.370s] [01m[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:[m[K In function ‘[01m[Kgst_ros_publisher_destroy[m[K’:
+[0.371s] [01m[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:901:5:[m[K [01;35m[Kwarning: [m[Kignoring return value of ‘[01m[Krcl_publisher_fini[m[K’ declared with attribute ‘[01m[Kwarn_unused_result[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-result-Wunused-result]8;;[m[K]
+[0.371s]   901 |     [01;35m[Krcl_publisher_fini(&publisher->image_publisher, publisher->ros_node)[m[K;
+[0.371s]       |     [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.371s] [01m[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:902:5:[m[K [01;35m[Kwarning: [m[Kignoring return value of ‘[01m[Krcl_publisher_fini[m[K’ declared with attribute ‘[01m[Kwarn_unused_result[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-result-Wunused-result]8;;[m[K]
+[0.372s]   902 |     [01;35m[Krcl_publisher_fini(&publisher->camera_info_publisher, publisher->ros_node)[m[K;
+[0.372s]       |     [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.372s] At top level:
+[0.372s] [01m[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:200:17:[m[K [01;35m[Kwarning: [m[K‘[01m[Kon_bus_message[m[K’ defined but not used [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-function-Wunused-function]8;;[m[K]
+[0.373s]   200 | static gboolean [01;35m[Kon_bus_message[m[K(GstBus *bus __attribute__((unused)), GstMessage *msg, GstRosPublisher *publisher) {
+[0.373s]       |                 [01;35m[K^~~~~~~~~~~~~~[m[K
+[0.449s] [ 20%] [32m[1mLinking CXX executable econ_ros[0m
+[0.656s] [100%] Built target econ_ros
+[0.677s] Invoked command in '/home/hycon/econ_multicam_ros/build/econ_ros' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/hycon/econ_multicam_ros/build/econ_ros -- -j12 -l12
+[0.700s] Invoking command in '/home/hycon/econ_multicam_ros/build/econ_ros': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/hycon/econ_multicam_ros/build/econ_ros
+[0.713s] -- Install configuration: ""
+[0.714s] -- Execute custom install script
+[0.714s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/lib/econ_ros/econ_ros
+[0.715s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros//launch/driver.launch.py
+[0.715s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/ament_index/resource_index/package_run_dependencies/econ_ros
+[0.715s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/ament_index/resource_index/parent_prefix_path/econ_ros
+[0.716s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/environment/ament_prefix_path.sh
+[0.716s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/environment/ament_prefix_path.dsv
+[0.716s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/environment/path.sh
+[0.717s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/environment/path.dsv
+[0.717s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/local_setup.bash
+[0.717s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/local_setup.sh
+[0.717s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/local_setup.zsh
+[0.718s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/local_setup.dsv
+[0.718s] -- Symlinking: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/package.dsv
+[0.733s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/ament_index/resource_index/packages/econ_ros
+[0.733s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/cmake/econ_rosConfig.cmake
+[0.733s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/cmake/econ_rosConfig-version.cmake
+[0.733s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/package.xml
+[0.738s] Invoked command in '/home/hycon/econ_multicam_ros/build/econ_ros' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/hycon/econ_multicam_ros/build/econ_ros

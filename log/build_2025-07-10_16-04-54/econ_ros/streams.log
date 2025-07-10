@@ -1,0 +1,25 @@
+[0.015s] Invoking command in '/home/hycon/econ_multicam_ros/build/econ_ros': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/hycon/econ_multicam_ros/build/econ_ros -- -j12 -l12
+[0.082s] [35m[1mConsolidate compiler generated dependencies of target econ_ros[0m
+[0.123s] [100%] Built target econ_ros
+[0.143s] Invoked command in '/home/hycon/econ_multicam_ros/build/econ_ros' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/hycon/econ_multicam_ros/build/econ_ros -- -j12 -l12
+[0.161s] Invoking command in '/home/hycon/econ_multicam_ros/build/econ_ros': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/hycon/econ_multicam_ros/build/econ_ros
+[0.172s] -- Install configuration: ""
+[0.172s] -- Execute custom install script
+[0.172s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/lib/econ_ros/econ_ros
+[0.173s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros//launch/driver.launch.py
+[0.173s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/ament_index/resource_index/package_run_dependencies/econ_ros
+[0.173s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/ament_index/resource_index/parent_prefix_path/econ_ros
+[0.173s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/environment/ament_prefix_path.sh
+[0.174s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/environment/ament_prefix_path.dsv
+[0.174s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/environment/path.sh
+[0.174s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/environment/path.dsv
+[0.174s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/local_setup.bash
+[0.174s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/local_setup.sh
+[0.174s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/local_setup.zsh
+[0.175s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/local_setup.dsv
+[0.175s] -- Symlinking: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/package.dsv
+[0.189s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/ament_index/resource_index/packages/econ_ros
+[0.189s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/cmake/econ_rosConfig.cmake
+[0.189s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/cmake/econ_rosConfig-version.cmake
+[0.189s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/package.xml
+[0.193s] Invoked command in '/home/hycon/econ_multicam_ros/build/econ_ros' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/hycon/econ_multicam_ros/build/econ_ros

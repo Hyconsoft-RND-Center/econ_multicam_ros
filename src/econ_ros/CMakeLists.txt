@@ -57,6 +57,11 @@ file(GLOB C_FILES "src/*.c")
 file(GLOB CPP_FILES "src/*.cpp")
 add_executable(econ_ros ${C_FILES} ${CPP_FILES})
 
+# Include the new GStreamer ROS publisher
+target_sources(econ_ros PRIVATE
+    src/gst_ros_publisher.c
+)
+
 # Dependency settings
 set_source_files_properties(${C_FILES} PROPERTIES LANGUAGE C)
 set_source_files_properties(${CPP_FILES} PROPERTIES LANGUAGE CXX)

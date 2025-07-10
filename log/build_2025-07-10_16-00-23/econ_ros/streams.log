@@ -1,0 +1,48 @@
+[0.016s] Invoking command in '/home/hycon/econ_multicam_ros/build/econ_ros': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/hycon/econ_multicam_ros/build/econ_ros -- -j12 -l12
+[0.089s] [35m[1mConsolidate compiler generated dependencies of target econ_ros[0m
+[0.132s] [ 10%] [32mBuilding C object CMakeFiles/econ_ros.dir/src/main.c.o[0m
+[0.394s] [01m[K/home/hycon/econ_multicam_ros/src/econ_ros/src/main.c:[m[K In function ‘[01m[Kprint_help[m[K’:
+[0.394s] [01m[K/home/hycon/econ_multicam_ros/src/econ_ros/src/main.c:63:23:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kargv[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[0.395s]    63 | void print_help([01;35m[Kchar *argv[][m[K)
+[0.395s]       |                 [01;35m[K~~~~~~^~~~~~[m[K
+[0.395s] [01m[K/home/hycon/econ_multicam_ros/src/econ_ros/src/main.c:[m[K In function ‘[01m[Ksig_event_handler[m[K’:
+[0.395s] [01m[K/home/hycon/econ_multicam_ros/src/econ_ros/src/main.c:242:54:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kunused[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[0.396s]   242 | void sig_event_handler(int n, siginfo_t *info, [01;35m[Kvoid *unused[m[K)
+[0.396s]       |                                                [01;35m[K~~~~~~^~~~~~[m[K
+[0.396s] [01m[K/home/hycon/econ_multicam_ros/src/econ_ros/src/main.c:[m[K In function ‘[01m[Kmain[m[K’:
+[0.396s] [01m[K/home/hycon/econ_multicam_ros/src/econ_ros/src/main.c:488:33:[m[K [01;35m[Kwarning: [m[Kcomparison is always false due to limited range of data type [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wtype-limits-Wtype-limits]8;;[m[K]
+[0.396s]   488 |         if (device_data.chip_id [01;35m[K<[m[K 0)
+[0.396s]       |                                 [01;35m[K^[m[K
+[0.397s] [01m[K/home/hycon/econ_multicam_ros/src/econ_ros/src/main.c:468:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kcap_ptr[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[0.397s]   468 |         guint8 *[01;35m[Kcap_ptr[m[K[MAX_CAM];
+[0.397s]       |                 [01;35m[K^~~~~~~[m[K
+[0.398s] [01m[K/home/hycon/econ_multicam_ros/src/econ_ros/src/main.c:467:28:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kcamera_buffer[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[0.398s]   467 |         struct v4l2_buffer [01;35m[Kcamera_buffer[m[K[MAX_CAM]; // v4l2 camera buffers
+[0.398s]       |                            [01;35m[K^~~~~~~~~~~~~[m[K
+[0.398s] [01m[K/home/hycon/econ_multicam_ros/src/econ_ros/src/main.c:463:28:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Ki[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[0.398s]   463 |         short int cam = 0, [01;35m[Ki[m[K;
+[0.399s]       |                            [01;35m[K^[m[K
+[0.468s] [ 20%] [32m[1mLinking CXX executable econ_ros[0m
+[0.691s] [100%] Built target econ_ros
+[0.713s] Invoked command in '/home/hycon/econ_multicam_ros/build/econ_ros' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/hycon/econ_multicam_ros/build/econ_ros -- -j12 -l12
+[0.731s] Invoking command in '/home/hycon/econ_multicam_ros/build/econ_ros': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/hycon/econ_multicam_ros/build/econ_ros
+[0.743s] -- Install configuration: ""
+[0.744s] -- Execute custom install script
+[0.744s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/lib/econ_ros/econ_ros
+[0.745s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros//launch/driver.launch.py
+[0.745s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/ament_index/resource_index/package_run_dependencies/econ_ros
+[0.746s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/ament_index/resource_index/parent_prefix_path/econ_ros
+[0.746s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/environment/ament_prefix_path.sh
+[0.746s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/environment/ament_prefix_path.dsv
+[0.746s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/environment/path.sh
+[0.747s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/environment/path.dsv
+[0.747s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/local_setup.bash
+[0.747s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/local_setup.sh
+[0.747s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/local_setup.zsh
+[0.748s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/local_setup.dsv
+[0.748s] -- Symlinking: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/package.dsv
+[0.762s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/ament_index/resource_index/packages/econ_ros
+[0.763s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/cmake/econ_rosConfig.cmake
+[0.763s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/cmake/econ_rosConfig-version.cmake
+[0.763s] -- Up-to-date symlink: /home/hycon/econ_multicam_ros/install/econ_ros/share/econ_ros/package.xml
+[0.767s] Invoked command in '/home/hycon/econ_multicam_ros/build/econ_ros' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/hycon/econ_multicam_ros/build/econ_ros

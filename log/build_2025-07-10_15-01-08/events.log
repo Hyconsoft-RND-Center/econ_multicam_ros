@@ -1,0 +1,705 @@
+[0.000000] (-) TimerEvent: {}
+[0.000691] (econ_ros) JobQueued: {'identifier': 'econ_ros', 'dependencies': OrderedDict()}
+[0.000925] (econ_ros) JobStarted: {'identifier': 'econ_ros'}
+[0.011724] (econ_ros) JobProgress: {'identifier': 'econ_ros', 'progress': 'cmake'}
+[0.012648] (econ_ros) JobProgress: {'identifier': 'econ_ros', 'progress': 'build'}
+[0.013571] (econ_ros) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/hycon/econ_multicam_ros/build/econ_ros', '--', '-j12', '-l12'], 'cwd': '/home/hycon/econ_multicam_ros/build/econ_ros', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'hycon'), ('SSH_CLIENT', '192.168.0.38 51720 22'), ('XDG_SESSION_TYPE', 'tty'), ('GIT_ASKPASS', '/home/hycon/.cursor-server/bin/faa03b17cce93e8a80b7d62d57f5eda6bb6ab9f0/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/local/cuda-12.6/lib64:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/usr/local/cuda-12.6/lib64:'), ('BROWSER', '/home/hycon/.cursor-server/bin/faa03b17cce93e8a80b7d62d57f5eda6bb6ab9f0/bin/helpers/browser.sh'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/hycon'), ('CYCLONEDDS_URI', 'file:///home/hycon/cyclonedds.xml'), ('OLDPWD', '/home/hycon/econ_multicam_ros'), ('DISABLE_AUTO_UPDATE', 'true'), ('TERM_PROGRAM_VERSION', '1.2.2'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-1c4fbd88-ccd0-416c-be63-f1dbae2329e2.sock'), ('JETSON_L4T', '36.4.4'), ('ROS_PYTHON_VERSION', '3'), ('JETSON_MODEL', 'NVIDIA Jetson AGX Orin Developer Kit'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/hycon/.cursor-server/bin/faa03b17cce93e8a80b7d62d57f5eda6bb6ab9f0/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/home/hycon/.cursor-server/bin/faa03b17cce93e8a80b7d62d57f5eda6bb6ab9f0/node'), ('npm_config_yes', 'true'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'hycon'), ('JETSON_MODULE', 'NVIDIA Jetson AGX Orin (64GB ram)'), ('JETSON_SERIAL_NUMBER', '1423323023341'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '11'), ('ROS_LOCALHOST_ONLY', '0'), ('COMPOSER_NO_INTERACTION', '1'), ('PATH', '/usr/local/cuda-12.6/bin:/home/hycon/.cursor-server/bin/faa03b17cce93e8a80b7d62d57f5eda6bb6ab9f0/bin/remote-cli:/opt/ros/humble/bin:/usr/local/cuda-12.6/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_cyclonedds_cpp'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('JETSON_SOC', 'tegra234'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-75239ecf52.sock'), ('TERM_PROGRAM', 'vscode'), ('ROS_DOMAIN_ID', '77'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('JETSON_CUDA_ARCH_BIN', '8.7'), ('PWD', '/home/hycon/econ_multicam_ros/build/econ_ros'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '192.168.0.38 51720 192.168.0.35 22'), ('XDG_DATA_DIRS', '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('PIP_NO_INPUT', 'true'), ('JETSON_JETPACK', ''), ('JETSON_P_NUMBER', 'p3701-0005'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.086608] (econ_ros) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target econ_ros\x1b[0m\n'}
+[0.099367] (-) TimerEvent: {}
+[0.130930] (econ_ros) StdoutLine: {'line': b'[ 20%] \x1b[32mBuilding C object CMakeFiles/econ_ros.dir/src/gst_ros_publisher.c.o\x1b[0m\n'}
+[0.131282] (econ_ros) StdoutLine: {'line': b'[ 20%] \x1b[32mBuilding C object CMakeFiles/econ_ros.dir/src/device.c.o\x1b[0m\n'}
+[0.131519] (econ_ros) StdoutLine: {'line': b'[ 30%] \x1b[32mBuilding C object CMakeFiles/econ_ros.dir/src/camera_common.c.o\x1b[0m\n'}
+[0.134351] (econ_ros) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding C object CMakeFiles/econ_ros.dir/src/main.c.o\x1b[0m\n'}
+[0.135888] (econ_ros) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding C object CMakeFiles/econ_ros.dir/src/v4l2_capture.c.o\x1b[0m\n'}
+[0.199533] (-) TimerEvent: {}
+[0.300079] (-) TimerEvent: {}
+[0.379767] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kgst_ros_publisher_update_config\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[0.380187] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:97:34:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Krunning\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kis_running\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[0.380456] (econ_ros) StderrLine: {'line': b'   97 |     int was_running = publisher->\x1b[01;31m\x1b[Krunning\x1b[m\x1b[K;\n'}
+[0.380773] (econ_ros) StderrLine: {'line': b'      |                                  \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[0.381052] (econ_ros) StderrLine: {'line': b'      |                                  \x1b[32m\x1b[Kis_running\x1b[m\x1b[K\n'}
+[0.381278] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:105:14:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kconfig\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.381414] (econ_ros) StderrLine: {'line': b'  105 |     publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kconfig = *config;\n'}
+[0.381511] (econ_ros) StderrLine: {'line': b'      |              \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.381696] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kon_new_sample_h264\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[0.381799] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:224:35:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_publisher\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kimage_publisher\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[0.382175] (econ_ros) StderrLine: {'line': b'  224 |     if (!publisher || !publisher->\x1b[01;31m\x1b[Kh264_publisher\x1b[m\x1b[K) return GST_FLOW_ERROR;\n'}
+[0.382336] (econ_ros) StderrLine: {'line': b'      |                                   \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.382529] (econ_ros) StderrLine: {'line': b'      |                                   \x1b[32m\x1b[Kimage_publisher\x1b[m\x1b[K\n'}
+[0.382679] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:248:18:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.382858] (econ_ros) StderrLine: {'line': b'  248 |     if (publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg) {\n'}
+[0.382991] (econ_ros) StderrLine: {'line': b'      |                  \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.383146] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:250:41:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.383292] (econ_ros) StderrLine: {'line': b'  250 |         set_current_timestamp(&publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg->header.stamp);\n'}
+[0.383527] (econ_ros) StderrLine: {'line': b'      |                                         \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.383647] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:253:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.383820] (econ_ros) StderrLine: {'line': b'  253 |         if (publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg->encoding.data) {\n'}
+[0.383916] (econ_ros) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.384004] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:254:27:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.384093] (econ_ros) StderrLine: {'line': b'  254 |             free(publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg->encoding.data);\n'}
+[0.384177] (econ_ros) StderrLine: {'line': b'      |                           \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.384261] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:259:18:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.384383] (econ_ros) StderrLine: {'line': b'  259 |         publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg->encoding.data = (char*)malloc(encoding_len + 1);\n'}
+[0.384558] (econ_ros) StderrLine: {'line': b'      |                  \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.384713] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:260:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.384902] (econ_ros) StderrLine: {'line': b'  260 |         if (publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg->encoding.data) {\n'}
+[0.385074] (econ_ros) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.385234] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:261:29:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.385427] (econ_ros) StderrLine: {'line': b'  261 |             strcpy(publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg->encoding.data, encoding);\n'}
+[0.385565] (econ_ros) StderrLine: {'line': b'      |                             \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.385658] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:262:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.385748] (econ_ros) StderrLine: {'line': b'  262 |             publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg->encoding.size = encoding_len;\n'}
+[0.385870] (econ_ros) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.386056] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:263:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.386151] (econ_ros) StderrLine: {'line': b'  263 |             publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg->encoding.capacity = encoding_len + 1;\n'}
+[0.386320] (econ_ros) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.386410] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:267:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.386498] (econ_ros) StderrLine: {'line': b'  267 |         if (publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg->data.data) {\n'}
+[0.386585] (econ_ros) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.386669] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:268:27:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.386755] (econ_ros) StderrLine: {'line': b'  268 |             free(publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg->data.data);\n'}
+[0.386840] (econ_ros) StderrLine: {'line': b'      |                           \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.386924] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:271:18:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.387009] (econ_ros) StderrLine: {'line': b'  271 |         publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg->data.data = (uint8_t*)malloc(map_info.size);\n'}
+[0.387093] (econ_ros) StderrLine: {'line': b'      |                  \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.387177] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:272:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.387401] (econ_ros) StderrLine: {'line': b'  272 |         if (publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg->data.data) {\n'}
+[0.387514] (econ_ros) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.387620] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:273:29:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.387874] (econ_ros) StderrLine: {'line': b'  273 |             memcpy(publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg->data.data, map_info.data, map_info.size);\n'}
+[0.387972] (econ_ros) StderrLine: {'line': b'      |                             \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.388062] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:274:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.388149] (econ_ros) StderrLine: {'line': b'  274 |             publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg->data.size = map_info.size;\n'}
+[0.388233] (econ_ros) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.388314] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:275:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.388401] (econ_ros) StderrLine: {'line': b'  275 |             publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg->data.capacity = map_info.size;\n'}
+[0.388487] (econ_ros) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.388571] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:279:48:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_publisher\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kimage_publisher\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[0.388677] (econ_ros) StderrLine: {'line': b'  279 |         rcl_ret_t ret = rcl_publish(publisher->\x1b[01;31m\x1b[Kh264_publisher\x1b[m\x1b[K, publisher->h264_msg, NULL);\n'}
+[0.388807] (econ_ros) StderrLine: {'line': b'      |                                                \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.388904] (econ_ros) StderrLine: {'line': b'      |                                                \x1b[32m\x1b[Kimage_publisher\x1b[m\x1b[K\n'}
+[0.389103] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:279:73:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.389246] (econ_ros) StderrLine: {'line': b'  279 |         rcl_ret_t ret = rcl_publish(publisher->h264_publisher, publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg, NULL);\n'}
+[0.389376] (econ_ros) StderrLine: {'line': b'      |                                                                         \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.389515] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kon_bus_message\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[0.389645] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:312:26:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kloop\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.389740] (econ_ros) StderrLine: {'line': b'  312 |             if (publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kloop) {\n'}
+[0.389866] (econ_ros) StderrLine: {'line': b'      |                          \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.390004] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:313:43:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kloop\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.390108] (econ_ros) StderrLine: {'line': b'  313 |                 g_main_loop_quit(publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kloop);\n'}
+[0.390244] (econ_ros) StderrLine: {'line': b'      |                                           \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.390378] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:345:26:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kloop\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.390478] (econ_ros) StderrLine: {'line': b'  345 |             if (publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kloop) {\n'}
+[0.390601] (econ_ros) StderrLine: {'line': b'      |                          \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.390731] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:346:43:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kloop\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.390863] (econ_ros) StderrLine: {'line': b'  346 |                 g_main_loop_quit(publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kloop);\n'}
+[0.390966] (econ_ros) StderrLine: {'line': b'      |                                           \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.391099] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kbus_thread_func\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[0.391215] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:375:23:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Krunning\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kis_running\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[0.391349] (econ_ros) StderrLine: {'line': b'  375 |     while (publisher->\x1b[01;31m\x1b[Krunning\x1b[m\x1b[K) {\n'}
+[0.391503] (econ_ros) StderrLine: {'line': b'      |                       \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[0.391630] (econ_ros) StderrLine: {'line': b'      |                       \x1b[32m\x1b[Kis_running\x1b[m\x1b[K\n'}
+[0.391809] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kmain_loop_thread_func\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[0.391903] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:391:18:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kloop\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.392037] (econ_ros) StderrLine: {'line': b'  391 |     if (publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kloop) {\n'}
+[0.392128] (econ_ros) StderrLine: {'line': b'      |                  \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.392267] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:392:34:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kloop\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.392398] (econ_ros) StderrLine: {'line': b'  392 |         g_main_loop_run(publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kloop);\n'}
+[0.392531] (econ_ros) StderrLine: {'line': b'      |                                  \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.392658] (econ_ros) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/glib-2.0/gobject/gobject.h:24\x1b[m\x1b[K,\n'}
+[0.392768] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/gobject/gbinding.h:29\x1b[m\x1b[K,\n'}
+[0.392987] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib-object.h:22\x1b[m\x1b[K,\n'}
+[0.393164] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/gstreamer-1.0/gst/gstenumtypes.h:6\x1b[m\x1b[K,\n'}
+[0.393261] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/gstreamer-1.0/gst/gst.h:31\x1b[m\x1b[K,\n'}
+[0.393405] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/include/econ_ros/gst_ros_publisher.h:4\x1b[m\x1b[K,\n'}
+[0.393531] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1\x1b[m\x1b[K:\n'}
+[0.393626] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Ksetup_appsrc\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[0.393726] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:401:36:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Ksource\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.393886] (econ_ros) StderrLine: {'line': b'  401 |     g_object_set(G_OBJECT(publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Ksource),\n'}
+[0.394057] (econ_ros) StderrLine: {'line': b'      |                                    \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.394253] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/glib-2.0/gobject/gtype.h:2458:66:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kin definition of macro \xe2\x80\x98\x1b[01m\x1b[K_G_TYPE_CIC\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.394379] (econ_ros) StderrLine: {'line': b' 2458 |     ((ct*) (void *) g_type_check_instance_cast ((GTypeInstance*) \x1b[01;36m\x1b[Kip\x1b[m\x1b[K, gt))\n'}
+[0.394565] (econ_ros) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.394662] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/glib-2.0/gobject/gobject.h:52:38:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kin expansion of macro \xe2\x80\x98\x1b[01m\x1b[KG_TYPE_CHECK_INSTANCE_CAST\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.394844] (econ_ros) StderrLine: {'line': b'   52 | #define G_OBJECT(object)            (\x1b[01;36m\x1b[KG_TYPE_CHECK_INSTANCE_CAST\x1b[m\x1b[K ((object), G_TYPE_OBJECT, GObject))\n'}
+[0.395012] (econ_ros) StderrLine: {'line': b'      |                                      \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.395198] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:401:18:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kin expansion of macro \xe2\x80\x98\x1b[01m\x1b[KG_OBJECT\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.395337] (econ_ros) StderrLine: {'line': b'  401 |     g_object_set(\x1b[01;36m\x1b[KG_OBJECT\x1b[m\x1b[K(publisher->source),\n'}
+[0.395430] (econ_ros) StderrLine: {'line': b'      |                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[0.395565] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Ksetup_appsink\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[0.395702] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:420:42:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kconfig\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.395831] (econ_ros) StderrLine: {'line': b'  420 |                  "max-buffers", publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kconfig.max_buffers,\n'}
+[0.395931] (econ_ros) StderrLine: {'line': b'      |                                          \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.396046] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:421:35:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kconfig\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.396136] (econ_ros) StderrLine: {'line': b'  421 |                  "drop", publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kconfig.drop_frames,\n'}
+[0.396266] (econ_ros) StderrLine: {'line': b'      |                                   \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.396358] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:430:18:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Ksink_h264\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.396457] (econ_ros) StderrLine: {'line': b'  430 |     if (publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Ksink_h264) {\n'}
+[0.396579] (econ_ros) StderrLine: {'line': b'      |                  \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.396753] (econ_ros) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/glib-2.0/gobject/gobject.h:24\x1b[m\x1b[K,\n'}
+[0.396937] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/gobject/gbinding.h:29\x1b[m\x1b[K,\n'}
+[0.397110] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib-object.h:22\x1b[m\x1b[K,\n'}
+[0.397292] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/gstreamer-1.0/gst/gstenumtypes.h:6\x1b[m\x1b[K,\n'}
+[0.397404] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/gstreamer-1.0/gst/gst.h:31\x1b[m\x1b[K,\n'}
+[0.397537] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/include/econ_ros/gst_ros_publisher.h:4\x1b[m\x1b[K,\n'}
+[0.397772] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1\x1b[m\x1b[K:\n'}
+[0.397914] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:431:40:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Ksink_h264\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.398021] (econ_ros) StderrLine: {'line': b'  431 |         g_object_set(G_OBJECT(publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Ksink_h264),\n'}
+[0.398192] (econ_ros) StderrLine: {'line': b'      |                                        \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.398362] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/glib-2.0/gobject/gtype.h:2458:66:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kin definition of macro \xe2\x80\x98\x1b[01m\x1b[K_G_TYPE_CIC\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.398541] (econ_ros) StderrLine: {'line': b' 2458 |     ((ct*) (void *) g_type_check_instance_cast ((GTypeInstance*) \x1b[01;36m\x1b[Kip\x1b[m\x1b[K, gt))\n'}
+[0.398725] (econ_ros) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.398859] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/glib-2.0/gobject/gobject.h:52:38:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kin expansion of macro \xe2\x80\x98\x1b[01m\x1b[KG_TYPE_CHECK_INSTANCE_CAST\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.398989] (econ_ros) StderrLine: {'line': b'   52 | #define G_OBJECT(object)            (\x1b[01;36m\x1b[KG_TYPE_CHECK_INSTANCE_CAST\x1b[m\x1b[K ((object), G_TYPE_OBJECT, GObject))\n'}
+[0.399080] (econ_ros) StderrLine: {'line': b'      |                                      \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.399167] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:431:22:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kin expansion of macro \xe2\x80\x98\x1b[01m\x1b[KG_OBJECT\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.399268] (econ_ros) StderrLine: {'line': b'  431 |         g_object_set(\x1b[01;36m\x1b[KG_OBJECT\x1b[m\x1b[K(publisher->sink_h264),\n'}
+[0.399382] (econ_ros) StderrLine: {'line': b'      |                      \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[0.399473] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:434:46:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kconfig\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.399580] (econ_ros) StderrLine: {'line': b'  434 |                      "max-buffers", publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kconfig.max_buffers,\n'}
+[0.399712] (econ_ros) StderrLine: {'line': b'      |                                              \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.399813] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:435:39:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kconfig\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.399935] (econ_ros) StderrLine: {'line': b'  435 |                      "drop", publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kconfig.drop_frames,\n'}
+[0.400025] (econ_ros) StderrLine: {'line': b'      |                                       \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.400143] (-) TimerEvent: {}
+[0.400335] (econ_ros) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/glib-2.0/gobject/gobject.h:28\x1b[m\x1b[K,\n'}
+[0.400460] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/gobject/gbinding.h:29\x1b[m\x1b[K,\n'}
+[0.400555] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib-object.h:22\x1b[m\x1b[K,\n'}
+[0.400652] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/gstreamer-1.0/gst/gstenumtypes.h:6\x1b[m\x1b[K,\n'}
+[0.400759] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/gstreamer-1.0/gst/gst.h:31\x1b[m\x1b[K,\n'}
+[0.400855] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/include/econ_ros/gst_ros_publisher.h:4\x1b[m\x1b[K,\n'}
+[0.400997] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1\x1b[m\x1b[K:\n'}
+[0.401130] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:440:35:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Ksink_h264\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.401221] (econ_ros) StderrLine: {'line': b'  440 |         g_signal_connect(publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Ksink_h264, "new-sample",\n'}
+[0.401308] (econ_ros) StderrLine: {'line': b'      |                                   \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.401392] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/glib-2.0/gobject/gsignal.h:508:29:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kin definition of macro \xe2\x80\x98\x1b[01m\x1b[Kg_signal_connect\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.401486] (econ_ros) StderrLine: {'line': b'  508 |     g_signal_connect_data ((\x1b[01;36m\x1b[Kinstance\x1b[m\x1b[K), (detailed_signal), (c_handler), (data), NULL, (GConnectFlags) 0)\n'}
+[0.401570] (econ_ros) StderrLine: {'line': b'      |                             \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[0.401653] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Ksetup_ros_messages\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[0.401750] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:520:77:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_publisher\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kimage_publisher\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[0.401848] (econ_ros) StderrLine: {'line': b'  520 |     if (publisher->encoding_type == GST_ENCODING_MULTI_STREAM && publisher->\x1b[01;31m\x1b[Kh264_publisher\x1b[m\x1b[K) {\n'}
+[0.401933] (econ_ros) StderrLine: {'line': b'      |                                                                             \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.402025] (econ_ros) StderrLine: {'line': b'      |                                                                             \x1b[32m\x1b[Kimage_publisher\x1b[m\x1b[K\n'}
+[0.402111] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:521:18:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.402201] (econ_ros) StderrLine: {'line': b'  521 |         publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg = (sensor_msgs__msg__Image*)malloc(sizeof(sensor_msgs__msg__Image));\n'}
+[0.402285] (econ_ros) StderrLine: {'line': b'      |                  \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.402367] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:522:23:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.402452] (econ_ros) StderrLine: {'line': b'  522 |         if (!publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg) {\n'}
+[0.402536] (econ_ros) StderrLine: {'line': b'      |                       \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.402619] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:527:53:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.402705] (econ_ros) StderrLine: {'line': b'  527 |         if (!sensor_msgs__msg__Image__init(publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg)) {\n'}
+[0.402789] (econ_ros) StderrLine: {'line': b'      |                                                     \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.402875] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:529:27:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.402960] (econ_ros) StderrLine: {'line': b'  529 |             free(publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg);\n'}
+[0.403042] (econ_ros) StderrLine: {'line': b'      |                           \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.403125] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:534:18:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.403208] (econ_ros) StderrLine: {'line': b'  534 |         publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg->width = publisher->width;\n'}
+[0.403306] (econ_ros) StderrLine: {'line': b'      |                  \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.403390] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:535:18:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.403484] (econ_ros) StderrLine: {'line': b'  535 |         publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg->height = publisher->height;\n'}
+[0.403573] (econ_ros) StderrLine: {'line': b'      |                  \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.403656] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:536:18:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.404049] (econ_ros) StderrLine: {'line': b'  536 |         publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg->step = 0;  // H.264\xeb\x8a\x94 \xec\x95\x95\xec\xb6\x95 \xeb\x8d\xb0\xec\x9d\xb4\xed\x84\xb0\xec\x9d\xb4\xeb\xaf\x80\xeb\xa1\x9c step \xec\x97\x86\xec\x9d\x8c\n'}
+[0.404140] (econ_ros) StderrLine: {'line': b'      |                  \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.404226] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:537:18:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.404309] (econ_ros) StderrLine: {'line': b'  537 |         publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg->is_bigendian = 0;\n'}
+[0.404390] (econ_ros) StderrLine: {'line': b'      |                  \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.404473] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:540:18:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.404562] (econ_ros) StderrLine: {'line': b'  540 |         publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg->header.frame_id.data = (char*)malloc(frame_id_len + 1);\n'}
+[0.404645] (econ_ros) StderrLine: {'line': b'      |                  \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.404751] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:541:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.404850] (econ_ros) StderrLine: {'line': b'  541 |         if (publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg->header.frame_id.data) {\n'}
+[0.404937] (econ_ros) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.405019] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:542:29:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.405107] (econ_ros) StderrLine: {'line': b'  542 |             strcpy(publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg->header.frame_id.data, frame_id);\n'}
+[0.405598] (econ_ros) StderrLine: {'line': b'      |                             \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.405724] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:543:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.405824] (econ_ros) StderrLine: {'line': b'  543 |             publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg->header.frame_id.size = frame_id_len;\n'}
+[0.405915] (econ_ros) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.406001] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:544:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.406100] (econ_ros) StderrLine: {'line': b'  544 |             publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kh264_msg->header.frame_id.capacity = frame_id_len + 1;\n'}
+[0.406185] (econ_ros) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.406268] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kpublish_image_data\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[0.406351] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:597:42:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kincompatible type for argument 1 of \xe2\x80\x98\x1b[01m\x1b[Krcl_publish\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.406442] (econ_ros) StderrLine: {'line': b'  597 |     rcl_ret_t ret = rcl_publish(\x1b[01;31m\x1b[Kpublisher->image_publisher\x1b[m\x1b[K, publisher->image_msg, NULL);\n'}
+[0.406726] (econ_ros) StderrLine: {'line': b'      |                                 \x1b[01;31m\x1b[K~~~~~~~~~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.406867] (econ_ros) StderrLine: {'line': b'      |                                          \x1b[01;31m\x1b[K|\x1b[m\x1b[K\n'}
+[0.406962] (econ_ros) StderrLine: {'line': b'      |                                          \x1b[01;31m\x1b[Krcl_publisher_t {aka struct rcl_publisher_s}\x1b[m\x1b[K\n'}
+[0.407052] (econ_ros) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rcl/rcl/rcl.h:78\x1b[m\x1b[K,\n'}
+[0.407139] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/include/econ_ros/gst_ros_publisher.h:15\x1b[m\x1b[K,\n'}
+[0.407225] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1\x1b[m\x1b[K:\n'}
+[0.407350] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rcl/rcl/publisher.h:328:27:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[Kconst rcl_publisher_t *\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kconst struct rcl_publisher_s *\x1b[m\x1b[K\xe2\x80\x99} but argument is of type \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[0.407575] (econ_ros) StderrLine: {'line': b'  328 |   \x1b[01;36m\x1b[Kconst rcl_publisher_t * publisher\x1b[m\x1b[K,\n'}
+[0.407761] (econ_ros) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~\x1b[m\x1b[K\n'}
+[0.407855] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:604:32:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kincompatible type for argument 1 of \xe2\x80\x98\x1b[01m\x1b[Krcl_publish\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.407945] (econ_ros) StderrLine: {'line': b'  604 |     ret = rcl_publish(\x1b[01;31m\x1b[Kpublisher->camera_info_publisher\x1b[m\x1b[K, publisher->camera_info_msg, NULL);\n'}
+[0.408031] (econ_ros) StderrLine: {'line': b'      |                       \x1b[01;31m\x1b[K~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.408130] (econ_ros) StderrLine: {'line': b'      |                                \x1b[01;31m\x1b[K|\x1b[m\x1b[K\n'}
+[0.408216] (econ_ros) StderrLine: {'line': b'      |                                \x1b[01;31m\x1b[Krcl_publisher_t {aka struct rcl_publisher_s}\x1b[m\x1b[K\n'}
+[0.408303] (econ_ros) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rcl/rcl/rcl.h:78\x1b[m\x1b[K,\n'}
+[0.408393] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/include/econ_ros/gst_ros_publisher.h:15\x1b[m\x1b[K,\n'}
+[0.408487] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1\x1b[m\x1b[K:\n'}
+[0.408571] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rcl/rcl/publisher.h:328:27:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[Kconst rcl_publisher_t *\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kconst struct rcl_publisher_s *\x1b[m\x1b[K\xe2\x80\x99} but argument is of type \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[0.408669] (econ_ros) StderrLine: {'line': b'  328 |   \x1b[01;36m\x1b[Kconst rcl_publisher_t * publisher\x1b[m\x1b[K,\n'}
+[0.408777] (econ_ros) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~\x1b[m\x1b[K\n'}
+[0.408864] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kgst_ros_publisher_create_with_config\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[0.408953] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:776:14:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Knode\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.409039] (econ_ros) StderrLine: {'line': b'  776 |     publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Knode = node;\n'}
+[0.409192] (econ_ros) StderrLine: {'line': b'      |              \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.409336] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:777:16:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Krunning\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kis_running\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[0.409437] (econ_ros) StderrLine: {'line': b'  777 |     publisher->\x1b[01;31m\x1b[Krunning\x1b[m\x1b[K = 0;\n'}
+[0.409572] (econ_ros) StderrLine: {'line': b'      |                \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[0.409672] (econ_ros) StderrLine: {'line': b'      |                \x1b[32m\x1b[Kis_running\x1b[m\x1b[K\n'}
+[0.409861] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:778:14:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kconfig\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.409958] (econ_ros) StderrLine: {'line': b'  778 |     publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kconfig = *config;  // \xec\x84\xa4\xec\xa0\x95 \xeb\xb3\xb5\xec\x82\xac\n'}
+[0.410046] (econ_ros) StderrLine: {'line': b'      |              \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.410142] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:845:18:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Ksource\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.410235] (econ_ros) StderrLine: {'line': b'  845 |         publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Ksource = gst_bin_get_by_name(GST_BIN(publisher->pipeline), "source");\n'}
+[0.410323] (econ_ros) StderrLine: {'line': b'      |                  \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.410408] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:846:23:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Ksource\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.410495] (econ_ros) StderrLine: {'line': b'  846 |         if (!publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Ksource) {\n'}
+[0.410614] (econ_ros) StderrLine: {'line': b'      |                       \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.410702] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:858:18:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Ksink_h264\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.410786] (econ_ros) StderrLine: {'line': b'  858 |         publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Ksink_h264 = gst_bin_get_by_name(GST_BIN(publisher->pipeline), "sink-h264");\n'}
+[0.410876] (econ_ros) StderrLine: {'line': b'      |                  \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.410961] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:859:23:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Ksink_h264\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.411047] (econ_ros) StderrLine: {'line': b'  859 |         if (!publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Ksink_h264) {\n'}
+[0.411132] (econ_ros) StderrLine: {'line': b'      |                       \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.411215] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:866:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Ksource\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.411300] (econ_ros) StderrLine: {'line': b'  866 |         if (publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Ksource) gst_object_unref(publisher->source);\n'}
+[0.411400] (econ_ros) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.411484] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:866:58:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Ksource\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.411574] (econ_ros) StderrLine: {'line': b'  866 |         if (publisher->source) gst_object_unref(publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Ksource);\n'}
+[0.411658] (econ_ros) StderrLine: {'line': b'      |                                                          \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.411852] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:867:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Ksink_h264\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.411949] (econ_ros) StderrLine: {'line': b'  867 |         if (publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Ksink_h264) gst_object_unref(publisher->sink_h264);\n'}
+[0.412038] (econ_ros) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.412125] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:867:61:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Ksink_h264\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.412211] (econ_ros) StderrLine: {'line': b'  867 |         if (publisher->sink_h264) gst_object_unref(publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Ksink_h264);\n'}
+[0.412295] (econ_ros) StderrLine: {'line': b'      |                                                             \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.412385] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:885:34:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kincompatible types when assigning to type \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s\x1b[m\x1b[K\xe2\x80\x99} from type \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t *\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s *\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[0.412493] (econ_ros) StderrLine: {'line': b'  885 |     publisher->image_publisher = \x1b[01;31m\x1b[K(\x1b[m\x1b[Krcl_publisher_t*)malloc(sizeof(rcl_publisher_t));\n'}
+[0.412579] (econ_ros) StderrLine: {'line': b'      |                                  \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[0.412662] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:886:40:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kincompatible types when assigning to type \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s\x1b[m\x1b[K\xe2\x80\x99} from type \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t *\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s *\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[0.412784] (econ_ros) StderrLine: {'line': b'  886 |     publisher->camera_info_publisher = \x1b[01;31m\x1b[K(\x1b[m\x1b[Krcl_publisher_t*)malloc(sizeof(rcl_publisher_t));\n'}
+[0.412875] (econ_ros) StderrLine: {'line': b'      |                                        \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[0.412960] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:890:20:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_publisher\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kimage_publisher\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[0.413046] (econ_ros) StderrLine: {'line': b'  890 |         publisher->\x1b[01;31m\x1b[Kh264_publisher\x1b[m\x1b[K = (rcl_publisher_t*)malloc(sizeof(rcl_publisher_t));\n'}
+[0.413142] (econ_ros) StderrLine: {'line': b'      |                    \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.413226] (econ_ros) StderrLine: {'line': b'      |                    \x1b[32m\x1b[Kimage_publisher\x1b[m\x1b[K\n'}
+[0.413308] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:894:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kwrong type argument to unary exclamation mark\n'}
+[0.413394] (econ_ros) StderrLine: {'line': b'  894 |     if (\x1b[01;31m\x1b[K!\x1b[m\x1b[Kpublisher->image_publisher || !publisher->camera_info_publisher ||\n'}
+[0.413477] (econ_ros) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[0.413560] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:894:40:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kwrong type argument to unary exclamation mark\n'}
+[0.413644] (econ_ros) StderrLine: {'line': b'  894 |     if (!publisher->image_publisher || \x1b[01;31m\x1b[K!\x1b[m\x1b[Kpublisher->camera_info_publisher ||\n'}
+[0.413726] (econ_ros) StderrLine: {'line': b'      |                                        \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[0.413811] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:895:68:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_publisher\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kimage_publisher\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[0.413897] (econ_ros) StderrLine: {'line': b'  895 |         (encoding_type == GST_ENCODING_MULTI_STREAM && !publisher->\x1b[01;31m\x1b[Kh264_publisher\x1b[m\x1b[K)) {\n'}
+[0.413980] (econ_ros) StderrLine: {'line': b'      |                                                                    \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.414065] (econ_ros) StderrLine: {'line': b'      |                                                                    \x1b[32m\x1b[Kimage_publisher\x1b[m\x1b[K\n'}
+[0.414163] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:897:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kused struct type value where scalar is required\n'}
+[0.414258] (econ_ros) StderrLine: {'line': b'  897 |         if (\x1b[01;31m\x1b[Kpublisher\x1b[m\x1b[K->image_publisher) free(publisher->image_publisher);\n'}
+[0.414343] (econ_ros) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[0.414426] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:897:55:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kincompatible type for argument 1 of \xe2\x80\x98\x1b[01m\x1b[Kfree\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.414513] (econ_ros) StderrLine: {'line': b'  897 |         if (publisher->image_publisher) free(\x1b[01;31m\x1b[Kpublisher->image_publisher\x1b[m\x1b[K);\n'}
+[0.414594] (econ_ros) StderrLine: {'line': b'      |                                              \x1b[01;31m\x1b[K~~~~~~~~~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.414685] (econ_ros) StderrLine: {'line': b'      |                                                       \x1b[01;31m\x1b[K|\x1b[m\x1b[K\n'}
+[0.414769] (econ_ros) StderrLine: {'line': b'      |                                                       \x1b[01;31m\x1b[Krcl_publisher_t {aka struct rcl_publisher_s}\x1b[m\x1b[K\n'}
+[0.414853] (econ_ros) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gutils.h:435\x1b[m\x1b[K,\n'}
+[0.414934] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gthread.h:34\x1b[m\x1b[K,\n'}
+[0.415014] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gasyncqueue.h:32\x1b[m\x1b[K,\n'}
+[0.415096] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib.h:32\x1b[m\x1b[K,\n'}
+[0.415183] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/gstreamer-1.0/gst/gst.h:27\x1b[m\x1b[K,\n'}
+[0.415265] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/include/econ_ros/gst_ros_publisher.h:4\x1b[m\x1b[K,\n'}
+[0.415358] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1\x1b[m\x1b[K:\n'}
+[0.415444] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/stdlib.h:555:25:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[Kvoid *\x1b[m\x1b[K\xe2\x80\x99 but argument is of type \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[0.415535] (econ_ros) StderrLine: {'line': b'  555 | extern void free (\x1b[01;36m\x1b[Kvoid *__ptr\x1b[m\x1b[K) __THROW;\n'}
+[0.415616] (econ_ros) StderrLine: {'line': b'      |                   \x1b[01;36m\x1b[K~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[0.415697] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:898:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kused struct type value where scalar is required\n'}
+[0.415782] (econ_ros) StderrLine: {'line': b'  898 |         if (\x1b[01;31m\x1b[Kpublisher\x1b[m\x1b[K->camera_info_publisher) free(publisher->camera_info_publisher);\n'}
+[0.415872] (econ_ros) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[0.415955] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:898:61:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kincompatible type for argument 1 of \xe2\x80\x98\x1b[01m\x1b[Kfree\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.416039] (econ_ros) StderrLine: {'line': b'  898 |         if (publisher->camera_info_publisher) free(\x1b[01;31m\x1b[Kpublisher->camera_info_publisher\x1b[m\x1b[K);\n'}
+[0.416121] (econ_ros) StderrLine: {'line': b'      |                                                    \x1b[01;31m\x1b[K~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.416254] (econ_ros) StderrLine: {'line': b'      |                                                             \x1b[01;31m\x1b[K|\x1b[m\x1b[K\n'}
+[0.416345] (econ_ros) StderrLine: {'line': b'      |                                                             \x1b[01;31m\x1b[Krcl_publisher_t {aka struct rcl_publisher_s}\x1b[m\x1b[K\n'}
+[0.416431] (econ_ros) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gutils.h:435\x1b[m\x1b[K,\n'}
+[0.416514] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gthread.h:34\x1b[m\x1b[K,\n'}
+[0.416600] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gasyncqueue.h:32\x1b[m\x1b[K,\n'}
+[0.416682] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib.h:32\x1b[m\x1b[K,\n'}
+[0.416790] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/gstreamer-1.0/gst/gst.h:27\x1b[m\x1b[K,\n'}
+[0.416879] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/include/econ_ros/gst_ros_publisher.h:4\x1b[m\x1b[K,\n'}
+[0.416964] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1\x1b[m\x1b[K:\n'}
+[0.417047] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/stdlib.h:555:25:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[Kvoid *\x1b[m\x1b[K\xe2\x80\x99 but argument is of type \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[0.417133] (econ_ros) StderrLine: {'line': b'  555 | extern void free (\x1b[01;36m\x1b[Kvoid *__ptr\x1b[m\x1b[K) __THROW;\n'}
+[0.417217] (econ_ros) StderrLine: {'line': b'      |                   \x1b[01;36m\x1b[K~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[0.417304] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:899:24:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_publisher\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kimage_publisher\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[0.417392] (econ_ros) StderrLine: {'line': b'  899 |         if (publisher->\x1b[01;31m\x1b[Kh264_publisher\x1b[m\x1b[K) free(publisher->h264_publisher);\n'}
+[0.417477] (econ_ros) StderrLine: {'line': b'      |                        \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.417561] (econ_ros) StderrLine: {'line': b'      |                        \x1b[32m\x1b[Kimage_publisher\x1b[m\x1b[K\n'}
+[0.417644] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:899:56:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_publisher\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kimage_publisher\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[0.417751] (econ_ros) StderrLine: {'line': b'  899 |         if (publisher->h264_publisher) free(publisher->\x1b[01;31m\x1b[Kh264_publisher\x1b[m\x1b[K);\n'}
+[0.417836] (econ_ros) StderrLine: {'line': b'      |                                                        \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.417921] (econ_ros) StderrLine: {'line': b'      |                                                        \x1b[32m\x1b[Kimage_publisher\x1b[m\x1b[K\n'}
+[0.418017] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:900:35:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Ksource\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.418113] (econ_ros) StderrLine: {'line': b'  900 |         gst_object_unref(publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Ksource);\n'}
+[0.418197] (econ_ros) StderrLine: {'line': b'      |                                   \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.418280] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:902:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Ksink_h264\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.418373] (econ_ros) StderrLine: {'line': b'  902 |         if (publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Ksink_h264) gst_object_unref(publisher->sink_h264);\n'}
+[0.418463] (econ_ros) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.418549] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:902:61:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Ksink_h264\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.418636] (econ_ros) StderrLine: {'line': b'  902 |         if (publisher->sink_h264) gst_object_unref(publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Ksink_h264);\n'}
+[0.418719] (econ_ros) StderrLine: {'line': b'      |                                                             \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.418802] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:910:21:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kincompatible type for argument 1 of \xe2\x80\x98\x1b[01m\x1b[Kmemset\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.418888] (econ_ros) StderrLine: {'line': b'  910 |     memset(\x1b[01;31m\x1b[Kpublisher->image_publisher\x1b[m\x1b[K, 0, sizeof(rcl_publisher_t));\n'}
+[0.418972] (econ_ros) StderrLine: {'line': b'      |            \x1b[01;31m\x1b[K~~~~~~~~~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.419118] (econ_ros) StderrLine: {'line': b'      |                     \x1b[01;31m\x1b[K|\x1b[m\x1b[K\n'}
+[0.419204] (econ_ros) StderrLine: {'line': b'      |                     \x1b[01;31m\x1b[Krcl_publisher_t {aka struct rcl_publisher_s}\x1b[m\x1b[K\n'}
+[0.419290] (econ_ros) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/galloca.h:33\x1b[m\x1b[K,\n'}
+[0.419373] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib.h:30\x1b[m\x1b[K,\n'}
+[0.419456] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/gstreamer-1.0/gst/gst.h:27\x1b[m\x1b[K,\n'}
+[0.419571] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/include/econ_ros/gst_ros_publisher.h:4\x1b[m\x1b[K,\n'}
+[0.419656] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1\x1b[m\x1b[K:\n'}
+[0.419741] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/string.h:61:28:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[Kvoid *\x1b[m\x1b[K\xe2\x80\x99 but argument is of type \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[0.419829] (econ_ros) StderrLine: {'line': b'   61 | extern void *memset (\x1b[01;36m\x1b[Kvoid *__s\x1b[m\x1b[K, int __c, size_t __n) __THROW __nonnull ((1));\n'}
+[0.419913] (econ_ros) StderrLine: {'line': b'      |                      \x1b[01;36m\x1b[K~~~~~~^~~\x1b[m\x1b[K\n'}
+[0.419995] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:911:21:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kincompatible type for argument 1 of \xe2\x80\x98\x1b[01m\x1b[Kmemset\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.420078] (econ_ros) StderrLine: {'line': b'  911 |     memset(\x1b[01;31m\x1b[Kpublisher->camera_info_publisher\x1b[m\x1b[K, 0, sizeof(rcl_publisher_t));\n'}
+[0.420174] (econ_ros) StderrLine: {'line': b'      |            \x1b[01;31m\x1b[K~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.420257] (econ_ros) StderrLine: {'line': b'      |                     \x1b[01;31m\x1b[K|\x1b[m\x1b[K\n'}
+[0.420348] (econ_ros) StderrLine: {'line': b'      |                     \x1b[01;31m\x1b[Krcl_publisher_t {aka struct rcl_publisher_s}\x1b[m\x1b[K\n'}
+[0.420433] (econ_ros) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/galloca.h:33\x1b[m\x1b[K,\n'}
+[0.420517] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib.h:30\x1b[m\x1b[K,\n'}
+[0.420599] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/gstreamer-1.0/gst/gst.h:27\x1b[m\x1b[K,\n'}
+[0.420679] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/include/econ_ros/gst_ros_publisher.h:4\x1b[m\x1b[K,\n'}
+[0.420779] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1\x1b[m\x1b[K:\n'}
+[0.420865] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/string.h:61:28:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[Kvoid *\x1b[m\x1b[K\xe2\x80\x99 but argument is of type \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[0.420952] (econ_ros) StderrLine: {'line': b'   61 | extern void *memset (\x1b[01;36m\x1b[Kvoid *__s\x1b[m\x1b[K, int __c, size_t __n) __THROW __nonnull ((1));\n'}
+[0.421035] (econ_ros) StderrLine: {'line': b'      |                      \x1b[01;36m\x1b[K~~~~~~^~~\x1b[m\x1b[K\n'}
+[0.421129] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:912:20:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_publisher\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kimage_publisher\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[0.421218] (econ_ros) StderrLine: {'line': b'  912 |     if (publisher->\x1b[01;31m\x1b[Kh264_publisher\x1b[m\x1b[K) {\n'}
+[0.421301] (econ_ros) StderrLine: {'line': b'      |                    \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.421384] (econ_ros) StderrLine: {'line': b'      |                    \x1b[32m\x1b[Kimage_publisher\x1b[m\x1b[K\n'}
+[0.421467] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:913:27:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_publisher\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kimage_publisher\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[0.421572] (econ_ros) StderrLine: {'line': b'  913 |         memset(publisher->\x1b[01;31m\x1b[Kh264_publisher\x1b[m\x1b[K, 0, sizeof(rcl_publisher_t));\n'}
+[0.421657] (econ_ros) StderrLine: {'line': b'      |                           \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.421740] (econ_ros) StderrLine: {'line': b'      |                           \x1b[32m\x1b[Kimage_publisher\x1b[m\x1b[K\n'}
+[0.421822] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:923:49:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kincompatible type for argument 1 of \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_init\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.421905] (econ_ros) StderrLine: {'line': b'  923 |     rcl_ret_t ret = rcl_publisher_init(\x1b[01;31m\x1b[Kpublisher->image_publisher\x1b[m\x1b[K, node,\n'}
+[0.421988] (econ_ros) StderrLine: {'line': b'      |                                        \x1b[01;31m\x1b[K~~~~~~~~~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.422085] (econ_ros) StderrLine: {'line': b'      |                                                 \x1b[01;31m\x1b[K|\x1b[m\x1b[K\n'}
+[0.422169] (econ_ros) StderrLine: {'line': b'      |                                                 \x1b[01;31m\x1b[Krcl_publisher_t {aka struct rcl_publisher_s}\x1b[m\x1b[K\n'}
+[0.422254] (econ_ros) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rcl/rcl/rcl.h:78\x1b[m\x1b[K,\n'}
+[0.422338] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/include/econ_ros/gst_ros_publisher.h:15\x1b[m\x1b[K,\n'}
+[0.422422] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1\x1b[m\x1b[K:\n'}
+[0.422504] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rcl/rcl/publisher.h:155:21:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t *\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s *\x1b[m\x1b[K\xe2\x80\x99} but argument is of type \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[0.422593] (econ_ros) StderrLine: {'line': b'  155 |   \x1b[01;36m\x1b[Krcl_publisher_t * publisher\x1b[m\x1b[K,\n'}
+[0.422677] (econ_ros) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~\x1b[m\x1b[K\n'}
+[0.422760] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:928:23:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kincompatible type for argument 1 of \xe2\x80\x98\x1b[01m\x1b[Kfree\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.422843] (econ_ros) StderrLine: {'line': b'  928 |         free(\x1b[01;31m\x1b[Kpublisher->image_publisher\x1b[m\x1b[K);\n'}
+[0.422926] (econ_ros) StderrLine: {'line': b'      |              \x1b[01;31m\x1b[K~~~~~~~~~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.423129] (econ_ros) StderrLine: {'line': b'      |                       \x1b[01;31m\x1b[K|\x1b[m\x1b[K\n'}
+[0.423227] (econ_ros) StderrLine: {'line': b'      |                       \x1b[01;31m\x1b[Krcl_publisher_t {aka struct rcl_publisher_s}\x1b[m\x1b[K\n'}
+[0.423317] (econ_ros) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gutils.h:435\x1b[m\x1b[K,\n'}
+[0.423403] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gthread.h:34\x1b[m\x1b[K,\n'}
+[0.423490] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gasyncqueue.h:32\x1b[m\x1b[K,\n'}
+[0.423574] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib.h:32\x1b[m\x1b[K,\n'}
+[0.423659] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/gstreamer-1.0/gst/gst.h:27\x1b[m\x1b[K,\n'}
+[0.423742] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/include/econ_ros/gst_ros_publisher.h:4\x1b[m\x1b[K,\n'}
+[0.423830] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1\x1b[m\x1b[K:\n'}
+[0.423915] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/stdlib.h:555:25:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[Kvoid *\x1b[m\x1b[K\xe2\x80\x99 but argument is of type \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[0.424004] (econ_ros) StderrLine: {'line': b'  555 | extern void free (\x1b[01;36m\x1b[Kvoid *__ptr\x1b[m\x1b[K) __THROW;\n'}
+[0.424090] (econ_ros) StderrLine: {'line': b'      |                   \x1b[01;36m\x1b[K~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[0.424175] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:929:23:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kincompatible type for argument 1 of \xe2\x80\x98\x1b[01m\x1b[Kfree\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.424288] (econ_ros) StderrLine: {'line': b'  929 |         free(\x1b[01;31m\x1b[Kpublisher->camera_info_publisher\x1b[m\x1b[K);\n'}
+[0.424376] (econ_ros) StderrLine: {'line': b'      |              \x1b[01;31m\x1b[K~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.424594] (econ_ros) StderrLine: {'line': b'      |                       \x1b[01;31m\x1b[K|\x1b[m\x1b[K\n'}
+[0.424693] (econ_ros) StderrLine: {'line': b'      |                       \x1b[01;31m\x1b[Krcl_publisher_t {aka struct rcl_publisher_s}\x1b[m\x1b[K\n'}
+[0.424819] (econ_ros) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gutils.h:435\x1b[m\x1b[K,\n'}
+[0.424930] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gthread.h:34\x1b[m\x1b[K,\n'}
+[0.425017] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gasyncqueue.h:32\x1b[m\x1b[K,\n'}
+[0.425269] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib.h:32\x1b[m\x1b[K,\n'}
+[0.425381] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/gstreamer-1.0/gst/gst.h:27\x1b[m\x1b[K,\n'}
+[0.425472] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/include/econ_ros/gst_ros_publisher.h:4\x1b[m\x1b[K,\n'}
+[0.425561] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1\x1b[m\x1b[K:\n'}
+[0.425659] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/stdlib.h:555:25:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[Kvoid *\x1b[m\x1b[K\xe2\x80\x99 but argument is of type \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[0.425753] (econ_ros) StderrLine: {'line': b'  555 | extern void free (\x1b[01;36m\x1b[Kvoid *__ptr\x1b[m\x1b[K) __THROW;\n'}
+[0.425843] (econ_ros) StderrLine: {'line': b'      |                   \x1b[01;36m\x1b[K~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[0.426015] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:930:35:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Ksource\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.426106] (econ_ros) StderrLine: {'line': b'  930 |         gst_object_unref(publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Ksource);\n'}
+[0.426190] (econ_ros) StderrLine: {'line': b'      |                                   \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.426346] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:945:39:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kincompatible type for argument 1 of \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_init\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.426437] (econ_ros) StderrLine: {'line': b'  945 |     ret = rcl_publisher_init(\x1b[01;31m\x1b[Kpublisher->camera_info_publisher\x1b[m\x1b[K, node,\n'}
+[0.426522] (econ_ros) StderrLine: {'line': b'      |                              \x1b[01;31m\x1b[K~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.426606] (econ_ros) StderrLine: {'line': b'      |                                       \x1b[01;31m\x1b[K|\x1b[m\x1b[K\n'}
+[0.426689] (econ_ros) StderrLine: {'line': b'      |                                       \x1b[01;31m\x1b[Krcl_publisher_t {aka struct rcl_publisher_s}\x1b[m\x1b[K\n'}
+[0.426775] (econ_ros) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rcl/rcl/rcl.h:78\x1b[m\x1b[K,\n'}
+[0.426856] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/include/econ_ros/gst_ros_publisher.h:15\x1b[m\x1b[K,\n'}
+[0.426956] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1\x1b[m\x1b[K:\n'}
+[0.427041] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rcl/rcl/publisher.h:155:21:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t *\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s *\x1b[m\x1b[K\xe2\x80\x99} but argument is of type \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[0.427131] (econ_ros) StderrLine: {'line': b'  155 |   \x1b[01;36m\x1b[Krcl_publisher_t * publisher\x1b[m\x1b[K,\n'}
+[0.427214] (econ_ros) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~\x1b[m\x1b[K\n'}
+[0.427295] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:950:37:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kincompatible type for argument 1 of \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_fini\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.427382] (econ_ros) StderrLine: {'line': b'  950 |         rcl_publisher_fini(\x1b[01;31m\x1b[Kpublisher->image_publisher\x1b[m\x1b[K, node);\n'}
+[0.427464] (econ_ros) StderrLine: {'line': b'      |                            \x1b[01;31m\x1b[K~~~~~~~~~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.427545] (econ_ros) StderrLine: {'line': b'      |                                     \x1b[01;31m\x1b[K|\x1b[m\x1b[K\n'}
+[0.427680] (econ_ros) StderrLine: {'line': b'      |                                     \x1b[01;31m\x1b[Krcl_publisher_t {aka struct rcl_publisher_s}\x1b[m\x1b[K\n'}
+[0.427764] (econ_ros) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rcl/rcl/rcl.h:78\x1b[m\x1b[K,\n'}
+[0.427847] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/include/econ_ros/gst_ros_publisher.h:15\x1b[m\x1b[K,\n'}
+[0.427929] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1\x1b[m\x1b[K:\n'}
+[0.428012] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rcl/rcl/publisher.h:188:38:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t *\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s *\x1b[m\x1b[K\xe2\x80\x99} but argument is of type \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[0.428097] (econ_ros) StderrLine: {'line': b'  188 | rcl_publisher_fini(\x1b[01;36m\x1b[Krcl_publisher_t * publisher\x1b[m\x1b[K, rcl_node_t * node);\n'}
+[0.428179] (econ_ros) StderrLine: {'line': b'      |                    \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~\x1b[m\x1b[K\n'}
+[0.428263] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:951:23:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kincompatible type for argument 1 of \xe2\x80\x98\x1b[01m\x1b[Kfree\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.428347] (econ_ros) StderrLine: {'line': b'  951 |         free(\x1b[01;31m\x1b[Kpublisher->image_publisher\x1b[m\x1b[K);\n'}
+[0.428444] (econ_ros) StderrLine: {'line': b'      |              \x1b[01;31m\x1b[K~~~~~~~~~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.428531] (econ_ros) StderrLine: {'line': b'      |                       \x1b[01;31m\x1b[K|\x1b[m\x1b[K\n'}
+[0.428625] (econ_ros) StderrLine: {'line': b'      |                       \x1b[01;31m\x1b[Krcl_publisher_t {aka struct rcl_publisher_s}\x1b[m\x1b[K\n'}
+[0.428708] (econ_ros) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gutils.h:435\x1b[m\x1b[K,\n'}
+[0.428818] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gthread.h:34\x1b[m\x1b[K,\n'}
+[0.428914] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gasyncqueue.h:32\x1b[m\x1b[K,\n'}
+[0.428999] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib.h:32\x1b[m\x1b[K,\n'}
+[0.429080] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/gstreamer-1.0/gst/gst.h:27\x1b[m\x1b[K,\n'}
+[0.429175] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/include/econ_ros/gst_ros_publisher.h:4\x1b[m\x1b[K,\n'}
+[0.429259] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1\x1b[m\x1b[K:\n'}
+[0.429341] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/stdlib.h:555:25:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[Kvoid *\x1b[m\x1b[K\xe2\x80\x99 but argument is of type \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[0.429429] (econ_ros) StderrLine: {'line': b'  555 | extern void free (\x1b[01;36m\x1b[Kvoid *__ptr\x1b[m\x1b[K) __THROW;\n'}
+[0.429512] (econ_ros) StderrLine: {'line': b'      |                   \x1b[01;36m\x1b[K~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[0.429595] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:952:23:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kincompatible type for argument 1 of \xe2\x80\x98\x1b[01m\x1b[Kfree\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.429678] (econ_ros) StderrLine: {'line': b'  952 |         free(\x1b[01;31m\x1b[Kpublisher->camera_info_publisher\x1b[m\x1b[K);\n'}
+[0.429759] (econ_ros) StderrLine: {'line': b'      |              \x1b[01;31m\x1b[K~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.429844] (econ_ros) StderrLine: {'line': b'      |                       \x1b[01;31m\x1b[K|\x1b[m\x1b[K\n'}
+[0.429927] (econ_ros) StderrLine: {'line': b'      |                       \x1b[01;31m\x1b[Krcl_publisher_t {aka struct rcl_publisher_s}\x1b[m\x1b[K\n'}
+[0.430011] (econ_ros) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gutils.h:435\x1b[m\x1b[K,\n'}
+[0.430095] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gthread.h:34\x1b[m\x1b[K,\n'}
+[0.430185] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gasyncqueue.h:32\x1b[m\x1b[K,\n'}
+[0.430268] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib.h:32\x1b[m\x1b[K,\n'}
+[0.430349] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/gstreamer-1.0/gst/gst.h:27\x1b[m\x1b[K,\n'}
+[0.430429] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/include/econ_ros/gst_ros_publisher.h:4\x1b[m\x1b[K,\n'}
+[0.430512] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1\x1b[m\x1b[K:\n'}
+[0.430599] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/stdlib.h:555:25:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[Kvoid *\x1b[m\x1b[K\xe2\x80\x99 but argument is of type \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[0.430686] (econ_ros) StderrLine: {'line': b'  555 | extern void free (\x1b[01;36m\x1b[Kvoid *__ptr\x1b[m\x1b[K) __THROW;\n'}
+[0.430768] (econ_ros) StderrLine: {'line': b'      |                   \x1b[01;36m\x1b[K~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[0.430855] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:953:24:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_publisher\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kimage_publisher\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[0.430968] (econ_ros) StderrLine: {'line': b'  953 |         if (publisher->\x1b[01;31m\x1b[Kh264_publisher\x1b[m\x1b[K) free(publisher->h264_publisher);\n'}
+[0.431053] (econ_ros) StderrLine: {'line': b'      |                        \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.431138] (econ_ros) StderrLine: {'line': b'      |                        \x1b[32m\x1b[Kimage_publisher\x1b[m\x1b[K\n'}
+[0.431223] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:953:56:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_publisher\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kimage_publisher\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[0.431312] (econ_ros) StderrLine: {'line': b'  953 |         if (publisher->h264_publisher) free(publisher->\x1b[01;31m\x1b[Kh264_publisher\x1b[m\x1b[K);\n'}
+[0.431396] (econ_ros) StderrLine: {'line': b'      |                                                        \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.431480] (econ_ros) StderrLine: {'line': b'      |                                                        \x1b[32m\x1b[Kimage_publisher\x1b[m\x1b[K\n'}
+[0.431571] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:954:35:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Ksource\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.431658] (econ_ros) StderrLine: {'line': b'  954 |         gst_object_unref(publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Ksource);\n'}
+[0.431754] (econ_ros) StderrLine: {'line': b'      |                                   \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.431838] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:956:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Ksink_h264\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.431921] (econ_ros) StderrLine: {'line': b'  956 |         if (publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Ksink_h264) gst_object_unref(publisher->sink_h264);\n'}
+[0.432014] (econ_ros) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.432096] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:956:61:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Ksink_h264\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.432177] (econ_ros) StderrLine: {'line': b'  956 |         if (publisher->sink_h264) gst_object_unref(publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Ksink_h264);\n'}
+[0.432262] (econ_ros) StderrLine: {'line': b'      |                                                             \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.432343] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:964:66:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_publisher\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kimage_publisher\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[0.432458] (econ_ros) StderrLine: {'line': b'  964 |     if (encoding_type == GST_ENCODING_MULTI_STREAM && publisher->\x1b[01;31m\x1b[Kh264_publisher\x1b[m\x1b[K) {\n'}
+[0.432543] (econ_ros) StderrLine: {'line': b'      |                                                                  \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.432636] (econ_ros) StderrLine: {'line': b'      |                                                                  \x1b[32m\x1b[Kimage_publisher\x1b[m\x1b[K\n'}
+[0.432719] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:968:45:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_publisher\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kimage_publisher\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[0.432827] (econ_ros) StderrLine: {'line': b'  968 |         ret = rcl_publisher_init(publisher->\x1b[01;31m\x1b[Kh264_publisher\x1b[m\x1b[K, node,\n'}
+[0.432910] (econ_ros) StderrLine: {'line': b'      |                                             \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.432998] (econ_ros) StderrLine: {'line': b'      |                                             \x1b[32m\x1b[Kimage_publisher\x1b[m\x1b[K\n'}
+[0.433082] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:973:41:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kincompatible type for argument 1 of \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_fini\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.433166] (econ_ros) StderrLine: {'line': b'  973 |             rcl_publisher_fini(\x1b[01;31m\x1b[Kpublisher->image_publisher\x1b[m\x1b[K, node);\n'}
+[0.433248] (econ_ros) StderrLine: {'line': b'      |                                \x1b[01;31m\x1b[K~~~~~~~~~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.433330] (econ_ros) StderrLine: {'line': b'      |                                         \x1b[01;31m\x1b[K|\x1b[m\x1b[K\n'}
+[0.433412] (econ_ros) StderrLine: {'line': b'      |                                         \x1b[01;31m\x1b[Krcl_publisher_t {aka struct rcl_publisher_s}\x1b[m\x1b[K\n'}
+[0.433494] (econ_ros) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rcl/rcl/rcl.h:78\x1b[m\x1b[K,\n'}
+[0.433575] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/include/econ_ros/gst_ros_publisher.h:15\x1b[m\x1b[K,\n'}
+[0.433661] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1\x1b[m\x1b[K:\n'}
+[0.433743] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rcl/rcl/publisher.h:188:38:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t *\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s *\x1b[m\x1b[K\xe2\x80\x99} but argument is of type \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[0.433829] (econ_ros) StderrLine: {'line': b'  188 | rcl_publisher_fini(\x1b[01;36m\x1b[Krcl_publisher_t * publisher\x1b[m\x1b[K, rcl_node_t * node);\n'}
+[0.433910] (econ_ros) StderrLine: {'line': b'      |                    \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~\x1b[m\x1b[K\n'}
+[0.433993] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:974:41:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kincompatible type for argument 1 of \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_fini\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.434078] (econ_ros) StderrLine: {'line': b'  974 |             rcl_publisher_fini(\x1b[01;31m\x1b[Kpublisher->camera_info_publisher\x1b[m\x1b[K, node);\n'}
+[0.434160] (econ_ros) StderrLine: {'line': b'      |                                \x1b[01;31m\x1b[K~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.434241] (econ_ros) StderrLine: {'line': b'      |                                         \x1b[01;31m\x1b[K|\x1b[m\x1b[K\n'}
+[0.434326] (econ_ros) StderrLine: {'line': b'      |                                         \x1b[01;31m\x1b[Krcl_publisher_t {aka struct rcl_publisher_s}\x1b[m\x1b[K\n'}
+[0.434409] (econ_ros) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rcl/rcl/rcl.h:78\x1b[m\x1b[K,\n'}
+[0.434515] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/include/econ_ros/gst_ros_publisher.h:15\x1b[m\x1b[K,\n'}
+[0.434600] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1\x1b[m\x1b[K:\n'}
+[0.434683] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rcl/rcl/publisher.h:188:38:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t *\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s *\x1b[m\x1b[K\xe2\x80\x99} but argument is of type \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[0.434802] (econ_ros) StderrLine: {'line': b'  188 | rcl_publisher_fini(\x1b[01;36m\x1b[Krcl_publisher_t * publisher\x1b[m\x1b[K, rcl_node_t * node);\n'}
+[0.434888] (econ_ros) StderrLine: {'line': b'      |                    \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~\x1b[m\x1b[K\n'}
+[0.434982] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:975:27:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kincompatible type for argument 1 of \xe2\x80\x98\x1b[01m\x1b[Kfree\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.435072] (econ_ros) StderrLine: {'line': b'  975 |             free(\x1b[01;31m\x1b[Kpublisher->image_publisher\x1b[m\x1b[K);\n'}
+[0.435158] (econ_ros) StderrLine: {'line': b'      |                  \x1b[01;31m\x1b[K~~~~~~~~~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.435255] (econ_ros) StderrLine: {'line': b'      |                           \x1b[01;31m\x1b[K|\x1b[m\x1b[K\n'}
+[0.435337] (econ_ros) StderrLine: {'line': b'      |                           \x1b[01;31m\x1b[Krcl_publisher_t {aka struct rcl_publisher_s}\x1b[m\x1b[K\n'}
+[0.435429] (econ_ros) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gutils.h:435\x1b[m\x1b[K,\n'}
+[0.435511] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gthread.h:34\x1b[m\x1b[K,\n'}
+[0.435593] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gasyncqueue.h:32\x1b[m\x1b[K,\n'}
+[0.435684] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib.h:32\x1b[m\x1b[K,\n'}
+[0.435772] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/gstreamer-1.0/gst/gst.h:27\x1b[m\x1b[K,\n'}
+[0.435856] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/include/econ_ros/gst_ros_publisher.h:4\x1b[m\x1b[K,\n'}
+[0.435941] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1\x1b[m\x1b[K:\n'}
+[0.436022] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/stdlib.h:555:25:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[Kvoid *\x1b[m\x1b[K\xe2\x80\x99 but argument is of type \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[0.436111] (econ_ros) StderrLine: {'line': b'  555 | extern void free (\x1b[01;36m\x1b[Kvoid *__ptr\x1b[m\x1b[K) __THROW;\n'}
+[0.436194] (econ_ros) StderrLine: {'line': b'      |                   \x1b[01;36m\x1b[K~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[0.436274] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:976:27:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kincompatible type for argument 1 of \xe2\x80\x98\x1b[01m\x1b[Kfree\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.436355] (econ_ros) StderrLine: {'line': b'  976 |             free(\x1b[01;31m\x1b[Kpublisher->camera_info_publisher\x1b[m\x1b[K);\n'}
+[0.436449] (econ_ros) StderrLine: {'line': b'      |                  \x1b[01;31m\x1b[K~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.436531] (econ_ros) StderrLine: {'line': b'      |                           \x1b[01;31m\x1b[K|\x1b[m\x1b[K\n'}
+[0.436612] (econ_ros) StderrLine: {'line': b'      |                           \x1b[01;31m\x1b[Krcl_publisher_t {aka struct rcl_publisher_s}\x1b[m\x1b[K\n'}
+[0.436692] (econ_ros) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gutils.h:435\x1b[m\x1b[K,\n'}
+[0.436794] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gthread.h:34\x1b[m\x1b[K,\n'}
+[0.436878] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gasyncqueue.h:32\x1b[m\x1b[K,\n'}
+[0.437138] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib.h:32\x1b[m\x1b[K,\n'}
+[0.437228] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/gstreamer-1.0/gst/gst.h:27\x1b[m\x1b[K,\n'}
+[0.437315] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/include/econ_ros/gst_ros_publisher.h:4\x1b[m\x1b[K,\n'}
+[0.437399] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1\x1b[m\x1b[K:\n'}
+[0.437481] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/stdlib.h:555:25:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[Kvoid *\x1b[m\x1b[K\xe2\x80\x99 but argument is of type \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[0.437566] (econ_ros) StderrLine: {'line': b'  555 | extern void free (\x1b[01;36m\x1b[Kvoid *__ptr\x1b[m\x1b[K) __THROW;\n'}
+[0.437649] (econ_ros) StderrLine: {'line': b'      |                   \x1b[01;36m\x1b[K~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[0.437729] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:977:29:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kh264_publisher\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kimage_publisher\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[0.437828] (econ_ros) StderrLine: {'line': b'  977 |             free(publisher->\x1b[01;31m\x1b[Kh264_publisher\x1b[m\x1b[K);\n'}
+[0.437913] (econ_ros) StderrLine: {'line': b'      |                             \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.438000] (econ_ros) StderrLine: {'line': b'      |                             \x1b[32m\x1b[Kimage_publisher\x1b[m\x1b[K\n'}
+[0.438085] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:978:39:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Ksource\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.438170] (econ_ros) StderrLine: {'line': b'  978 |             gst_object_unref(publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Ksource);\n'}
+[0.438252] (econ_ros) StderrLine: {'line': b'      |                                       \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.438332] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:980:26:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Ksink_h264\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.438585] (econ_ros) StderrLine: {'line': b'  980 |             if (publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Ksink_h264) gst_object_unref(publisher->sink_h264);\n'}
+[0.438696] (econ_ros) StderrLine: {'line': b'      |                          \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.438784] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:980:65:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Ksink_h264\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.438904] (econ_ros) StderrLine: {'line': b'  980 |             if (publisher->sink_h264) gst_object_unref(publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Ksink_h264);\n'}
+[0.438993] (econ_ros) StderrLine: {'line': b'      |                                                                 \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.439078] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:993:37:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kincompatible type for argument 1 of \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_fini\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.439173] (econ_ros) StderrLine: {'line': b'  993 |         rcl_publisher_fini(\x1b[01;31m\x1b[Kpublisher->image_publisher\x1b[m\x1b[K, node);\n'}
+[0.439257] (econ_ros) StderrLine: {'line': b'      |                            \x1b[01;31m\x1b[K~~~~~~~~~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.439341] (econ_ros) StderrLine: {'line': b'      |                                     \x1b[01;31m\x1b[K|\x1b[m\x1b[K\n'}
+[0.439423] (econ_ros) StderrLine: {'line': b'      |                                     \x1b[01;31m\x1b[Krcl_publisher_t {aka struct rcl_publisher_s}\x1b[m\x1b[K\n'}
+[0.439506] (econ_ros) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rcl/rcl/rcl.h:78\x1b[m\x1b[K,\n'}
+[0.439592] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/include/econ_ros/gst_ros_publisher.h:15\x1b[m\x1b[K,\n'}
+[0.439678] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1\x1b[m\x1b[K:\n'}
+[0.439762] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rcl/rcl/publisher.h:188:38:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t *\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s *\x1b[m\x1b[K\xe2\x80\x99} but argument is of type \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[0.439851] (econ_ros) StderrLine: {'line': b'  188 | rcl_publisher_fini(\x1b[01;36m\x1b[Krcl_publisher_t * publisher\x1b[m\x1b[K, rcl_node_t * node);\n'}
+[0.439936] (econ_ros) StderrLine: {'line': b'      |                    \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~\x1b[m\x1b[K\n'}
+[0.440019] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:994:37:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kincompatible type for argument 1 of \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_fini\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.440104] (econ_ros) StderrLine: {'line': b'  994 |         rcl_publisher_fini(\x1b[01;31m\x1b[Kpublisher->camera_info_publisher\x1b[m\x1b[K, node);\n'}
+[0.440185] (econ_ros) StderrLine: {'line': b'      |                            \x1b[01;31m\x1b[K~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.440271] (econ_ros) StderrLine: {'line': b'      |                                     \x1b[01;31m\x1b[K|\x1b[m\x1b[K\n'}
+[0.440353] (econ_ros) StderrLine: {'line': b'      |                                     \x1b[01;31m\x1b[Krcl_publisher_t {aka struct rcl_publisher_s}\x1b[m\x1b[K\n'}
+[0.440434] (econ_ros) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rcl/rcl/rcl.h:78\x1b[m\x1b[K,\n'}
+[0.440516] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/include/econ_ros/gst_ros_publisher.h:15\x1b[m\x1b[K,\n'}
+[0.440598] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1\x1b[m\x1b[K:\n'}
+[0.440699] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rcl/rcl/publisher.h:188:38:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t *\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s *\x1b[m\x1b[K\xe2\x80\x99} but argument is of type \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[0.440814] (econ_ros) StderrLine: {'line': b'  188 | rcl_publisher_fini(\x1b[01;36m\x1b[Krcl_publisher_t * publisher\x1b[m\x1b[K, rcl_node_t * node);\n'}
+[0.440910] (econ_ros) StderrLine: {'line': b'      |                    \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~\x1b[m\x1b[K\n'}
+[0.440999] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:995:23:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kincompatible type for argument 1 of \xe2\x80\x98\x1b[01m\x1b[Kfree\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.441086] (econ_ros) StderrLine: {'line': b'  995 |         free(\x1b[01;31m\x1b[Kpublisher->image_publisher\x1b[m\x1b[K);\n'}
+[0.441168] (econ_ros) StderrLine: {'line': b'      |              \x1b[01;31m\x1b[K~~~~~~~~~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.441249] (econ_ros) StderrLine: {'line': b'      |                       \x1b[01;31m\x1b[K|\x1b[m\x1b[K\n'}
+[0.441344] (econ_ros) StderrLine: {'line': b'      |                       \x1b[01;31m\x1b[Krcl_publisher_t {aka struct rcl_publisher_s}\x1b[m\x1b[K\n'}
+[0.441428] (econ_ros) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gutils.h:435\x1b[m\x1b[K,\n'}
+[0.441509] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gthread.h:34\x1b[m\x1b[K,\n'}
+[0.441588] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gasyncqueue.h:32\x1b[m\x1b[K,\n'}
+[0.441672] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib.h:32\x1b[m\x1b[K,\n'}
+[0.441753] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/gstreamer-1.0/gst/gst.h:27\x1b[m\x1b[K,\n'}
+[0.441832] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/include/econ_ros/gst_ros_publisher.h:4\x1b[m\x1b[K,\n'}
+[0.441913] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1\x1b[m\x1b[K:\n'}
+[0.441995] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/stdlib.h:555:25:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[Kvoid *\x1b[m\x1b[K\xe2\x80\x99 but argument is of type \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[0.442101] (econ_ros) StderrLine: {'line': b'  555 | extern void free (\x1b[01;36m\x1b[Kvoid *__ptr\x1b[m\x1b[K) __THROW;\n'}
+[0.442183] (econ_ros) StderrLine: {'line': b'      |                   \x1b[01;36m\x1b[K~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[0.442264] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:996:23:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kincompatible type for argument 1 of \xe2\x80\x98\x1b[01m\x1b[Kfree\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.442351] (econ_ros) StderrLine: {'line': b'  996 |         free(\x1b[01;31m\x1b[Kpublisher->camera_info_publisher\x1b[m\x1b[K);\n'}
+[0.442432] (econ_ros) StderrLine: {'line': b'      |              \x1b[01;31m\x1b[K~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.442526] (econ_ros) StderrLine: {'line': b'      |                       \x1b[01;31m\x1b[K|\x1b[m\x1b[K\n'}
+[0.442606] (econ_ros) StderrLine: {'line': b'      |                       \x1b[01;31m\x1b[Krcl_publisher_t {aka struct rcl_publisher_s}\x1b[m\x1b[K\n'}
+[0.442689] (econ_ros) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gutils.h:435\x1b[m\x1b[K,\n'}
+[0.442781] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gthread.h:34\x1b[m\x1b[K,\n'}
+[0.442863] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib/gasyncqueue.h:32\x1b[m\x1b[K,\n'}
+[0.442944] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/glib-2.0/glib.h:32\x1b[m\x1b[K,\n'}
+[0.443027] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/gstreamer-1.0/gst/gst.h:27\x1b[m\x1b[K,\n'}
+[0.443109] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/include/econ_ros/gst_ros_publisher.h:4\x1b[m\x1b[K,\n'}
+[0.443190] (econ_ros) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1\x1b[m\x1b[K:\n'}
+[0.443271] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/stdlib.h:555:25:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[Kvoid *\x1b[m\x1b[K\xe2\x80\x99 but argument is of type \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct rcl_publisher_s\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[0.443356] (econ_ros) StderrLine: {'line': b'  555 | extern void free (\x1b[01;36m\x1b[Kvoid *__ptr\x1b[m\x1b[K) __THROW;\n'}
+[0.443436] (econ_ros) StderrLine: {'line': b'      |                   \x1b[01;36m\x1b[K~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[0.443514] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:997:35:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Ksource\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.443598] (econ_ros) StderrLine: {'line': b'  997 |         gst_object_unref(publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Ksource);\n'}
+[0.443682] (econ_ros) StderrLine: {'line': b'      |                                   \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.443762] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1006:14:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kloop\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.443845] (econ_ros) StderrLine: {'line': b' 1006 |     publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Kloop = g_main_loop_new(NULL, FALSE);\n'}
+[0.443942] (econ_ros) StderrLine: {'line': b'      |              \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.444028] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kgst_ros_publisher_push_frame\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[0.444111] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1058:35:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Krunning\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kis_running\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[0.444208] (econ_ros) StderrLine: {'line': b' 1058 |     if (!publisher || !publisher->\x1b[01;31m\x1b[Krunning\x1b[m\x1b[K || !frame_data) {\n'}
+[0.444293] (econ_ros) StderrLine: {'line': b'      |                                   \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[0.444376] (econ_ros) StderrLine: {'line': b'      |                                   \x1b[32m\x1b[Kis_running\x1b[m\x1b[K\n'}
+[0.444459] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1060:50:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Krunning\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kis_running\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[0.444552] (econ_ros) StderrLine: {'line': b' 1060 |                publisher, publisher ? publisher->\x1b[01;31m\x1b[Krunning\x1b[m\x1b[K : -1, frame_data);\n'}
+[0.444635] (econ_ros) StderrLine: {'line': b'      |                                                  \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[0.444716] (econ_ros) StderrLine: {'line': b'      |                                                  \x1b[32m\x1b[Kis_running\x1b[m\x1b[K\n'}
+[0.444822] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1084:36:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGstRosPublisher\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Ksource\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.444906] (econ_ros) StderrLine: {'line': b' 1084 |     g_signal_emit_by_name(publisher\x1b[01;31m\x1b[K->\x1b[m\x1b[Ksource, "push-buffer", buffer, &ret);\n'}
+[0.444988] (econ_ros) StderrLine: {'line': b'      |                                    \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.445072] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/camera_common.c:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[KBlack_background\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[0.445154] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/camera_common.c:252:39:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kapp_data\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[0.445250] (econ_ros) StderrLine: {'line': b'  252 | int Black_background(\x1b[01;35m\x1b[Kstruct app_data *app_data\x1b[m\x1b[K)\n'}
+[0.445331] (econ_ros) StderrLine: {'line': b'      |                      \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[0.445412] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kgst_ros_publisher_create\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[0.445494] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:727:9:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kignoring return value of \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_fini\x1b[m\x1b[K\xe2\x80\x99 declared with attribute \xe2\x80\x98\x1b[01m\x1b[Kwarn_unused_result\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-result\x07-Wunused-result\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[0.445592] (econ_ros) StderrLine: {'line': b'  727 |         \x1b[01;35m\x1b[Krcl_publisher_fini(&publisher->image_publisher, node)\x1b[m\x1b[K;\n'}
+[0.445674] (econ_ros) StderrLine: {'line': b'      |         \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.445759] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:738:9:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kignoring return value of \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_fini\x1b[m\x1b[K\xe2\x80\x99 declared with attribute \xe2\x80\x98\x1b[01m\x1b[Kwarn_unused_result\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-result\x07-Wunused-result\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[0.445846] (econ_ros) StderrLine: {'line': b'  738 |         \x1b[01;35m\x1b[Krcl_publisher_fini(&publisher->image_publisher, node)\x1b[m\x1b[K;\n'}
+[0.445928] (econ_ros) StderrLine: {'line': b'      |         \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.446009] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:739:9:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kignoring return value of \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_fini\x1b[m\x1b[K\xe2\x80\x99 declared with attribute \xe2\x80\x98\x1b[01m\x1b[Kwarn_unused_result\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-result\x07-Wunused-result\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[0.446103] (econ_ros) StderrLine: {'line': b'  739 |         \x1b[01;35m\x1b[Krcl_publisher_fini(&publisher->camera_info_publisher, node)\x1b[m\x1b[K;\n'}
+[0.446186] (econ_ros) StderrLine: {'line': b'      |         \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.446267] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kgst_ros_publisher_destroy\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[0.446348] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1134:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kignoring return value of \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_fini\x1b[m\x1b[K\xe2\x80\x99 declared with attribute \xe2\x80\x98\x1b[01m\x1b[Kwarn_unused_result\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-result\x07-Wunused-result\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[0.446443] (econ_ros) StderrLine: {'line': b' 1134 |     \x1b[01;35m\x1b[Krcl_publisher_fini(&publisher->image_publisher, publisher->ros_node)\x1b[m\x1b[K;\n'}
+[0.446526] (econ_ros) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.446607] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:1135:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kignoring return value of \xe2\x80\x98\x1b[01m\x1b[Krcl_publisher_fini\x1b[m\x1b[K\xe2\x80\x99 declared with attribute \xe2\x80\x98\x1b[01m\x1b[Kwarn_unused_result\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-result\x07-Wunused-result\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[0.446699] (econ_ros) StderrLine: {'line': b' 1135 |     \x1b[01;35m\x1b[Krcl_publisher_fini(&publisher->camera_info_publisher, publisher->ros_node)\x1b[m\x1b[K;\n'}
+[0.446781] (econ_ros) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.446861] (econ_ros) StderrLine: {'line': b'At top level:\n'}
+[0.446942] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:388:14:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kmain_loop_thread_func\x1b[m\x1b[K\xe2\x80\x99 defined but not used [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-function\x07-Wunused-function\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[0.447027] (econ_ros) StderrLine: {'line': b'  388 | static void* \x1b[01;35m\x1b[Kmain_loop_thread_func\x1b[m\x1b[K(void *data) {\n'}
+[0.447111] (econ_ros) StderrLine: {'line': b'      |              \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.447205] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/gst_ros_publisher.c:368:14:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kbus_thread_func\x1b[m\x1b[K\xe2\x80\x99 defined but not used [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-function\x07-Wunused-function\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[0.447293] (econ_ros) StderrLine: {'line': b'  368 | static void* \x1b[01;35m\x1b[Kbus_thread_func\x1b[m\x1b[K(void *data) {\n'}
+[0.447375] (econ_ros) StderrLine: {'line': b'      |              \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.447455] (econ_ros) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/econ_ros.dir/build.make:132: CMakeFiles/econ_ros.dir/src/gst_ros_publisher.c.o] Error 1\n'}
+[0.447553] (econ_ros) StderrLine: {'line': b'gmake[2]: *** Waiting for unfinished jobs....\n'}
+[0.447638] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/v4l2_capture.c:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kinit_sync\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[0.447723] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/v4l2_capture.c:205:13:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kimplicit declaration of function \xe2\x80\x98\x1b[01m\x1b[Kv4l2_capture_set_sync\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kv4l2_capture_set_sync_all\x1b[m\x1b[K\xe2\x80\x99? [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wimplicit-function-declaration\x07-Wimplicit-function-declaration\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[0.447824] (econ_ros) StderrLine: {'line': b'  205 |         if (\x1b[01;35m\x1b[Kv4l2_capture_set_sync\x1b[m\x1b[K(capture_dev, capture_dev->temp_sync_val) < 0)\n'}
+[0.447909] (econ_ros) StderrLine: {'line': b'      |             \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.447990] (econ_ros) StderrLine: {'line': b'      |             \x1b[32m\x1b[Kv4l2_capture_set_sync_all\x1b[m\x1b[K\n'}
+[0.448072] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/main.c:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kprint_help\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[0.448155] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/main.c:62:23:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kargv\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[0.448240] (econ_ros) StderrLine: {'line': b'   62 | void print_help(\x1b[01;35m\x1b[Kchar *argv[]\x1b[m\x1b[K)\n'}
+[0.448323] (econ_ros) StderrLine: {'line': b'      |                 \x1b[01;35m\x1b[K~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[0.448402] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/v4l2_capture.c:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kinit_v4l2_capture\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[0.448488] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/v4l2_capture.c:404:27:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kuint32_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kunsigned int\x1b[m\x1b[K\xe2\x80\x99} and \xe2\x80\x98\x1b[01m\x1b[Kshort int\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[0.448580] (econ_ros) StderrLine: {'line': b'  404 |                 if (width \x1b[01;35m\x1b[K==\x1b[m\x1b[K c_width && height == c_height)\n'}
+[0.448673] (econ_ros) StderrLine: {'line': b'      |                           \x1b[01;35m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.448773] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/v4l2_capture.c:404:48:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kuint32_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kunsigned int\x1b[m\x1b[K\xe2\x80\x99} and \xe2\x80\x98\x1b[01m\x1b[Kshort int\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[0.448862] (econ_ros) StderrLine: {'line': b'  404 |                 if (width == c_width && height \x1b[01;35m\x1b[K==\x1b[m\x1b[K c_height)\n'}
+[0.448946] (econ_ros) StderrLine: {'line': b'      |                                                \x1b[01;35m\x1b[K^~\x1b[m\x1b[K\n'}
+[0.449039] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/main.c:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Ksig_event_handler\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[0.449140] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/main.c:241:54:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kunused\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[0.449242] (econ_ros) StderrLine: {'line': b'  241 | void sig_event_handler(int n, siginfo_t *info, \x1b[01;35m\x1b[Kvoid *unused\x1b[m\x1b[K)\n'}
+[0.449326] (econ_ros) StderrLine: {'line': b'      |                                                \x1b[01;35m\x1b[K~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[0.449408] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/main.c:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kmain\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[0.449489] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/main.c:487:33:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison is always false due to limited range of data type [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wtype-limits\x07-Wtype-limits\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[0.449573] (econ_ros) StderrLine: {'line': b'  487 |         if (device_data.chip_id \x1b[01;35m\x1b[K<\x1b[m\x1b[K 0)\n'}
+[0.449655] (econ_ros) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[0.449735] (econ_ros) StderrLine: {'line': b'\x1b[01m\x1b[K/home/hycon/econ_multicam_ros/src/econ_ros/src/main.c:467:17:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kcap_ptr\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[0.449818] (econ_ros) StderrLine: {'line': b'  467 |         guint8 *\x1b[01;35m\x1b[Kcap_ptr\x1b[m\x1b[K[MAX_CAM];\n'}
+[0.449901] (econ_ros) StderrLine: {'line': b'      |                 \x1b[01;35m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[0.500322] (-) TimerEvent: {}
+[0.550519] (econ_ros) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:138: CMakeFiles/econ_ros.dir/all] Error 2\n'}
+[0.551131] (econ_ros) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[0.555177] (econ_ros) CommandEnded: {'returncode': 2}
+[0.582335] (econ_ros) JobEnded: {'identifier': 'econ_ros', 'rc': 2}
+[0.593464] (-) EventReactorShutdown: {}
