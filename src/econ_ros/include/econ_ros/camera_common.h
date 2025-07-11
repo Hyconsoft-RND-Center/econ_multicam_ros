@@ -15,6 +15,8 @@ struct cmdline_args
         int record;
         int record_format;
         int record_time;
+        /* 선택한 GStreamer 인코딩 타입 (GST_ENCODING_*) */
+        int encoding_type;
         int num_cam;
 };
 

@@ -6,10 +6,12 @@
  */
 
 #include "main.h"
+#include <strings.h>
 #define SIGXERROR 10
 struct sigaction sig_xerr;
 uint16_t XERROR_VALUE = 100;
 void sig_event_handler(int n, siginfo_t *info, void *unused);
+#define GST_ONLY_MODE 1
 #if 1
 
 enum
@@ -72,8 +74,9 @@ void print_help(char *argv[])
 					" -r, --record=[1]        	set record to 1 for Video Recording \n"
 					" -f, --record-format=[1/2] 	Available Video Recording format 1.H264 2.UYVY \n"
 					"				Default Video Recording format:[H264]\n"
-					" -t, --record-time=[time]	Video record time in seconds 	 \n"
-					" 				Default Record time [H264=30-Sec] [UYVY=5-Sec] \n"
+					" -t, --record-time=[time]\tVideo record time in seconds \t\n"
+					" -e, --encoding=TYPE    \tSelect encoding: jpeg|rgb|i420|uyvy (default jpeg)\n"
+					" \t\t\t\tDefault Record time [H264=30-Sec] [UYVY=5-Sec] \n"
 					" -v, --version           	prints the application version \n"
 					" --help                  	prints the application usage \n"
 					"Default resolution : %dx%d\n",
@@ -94,6 +97,7 @@ int parse_args(int argc, char *argv[])
 		{"record", required_argument, 0, 'r'},
 		{"record-format", required_argument, 0, 'f'},
 		{"record-time", required_argument, 0, 't'},
+		{"encoding", required_argument, 0, 'e'},
 		{"version", no_argument, 0, 'v'},
 		{"help", no_argument, 0, 'a'},
 		{NULL, 0, NULL, 0}};
@@ -102,7 +106,7 @@ int parse_args(int argc, char *argv[])
 	int def_h = 1;
 	int option_index = 0;
 
-	while ((c = getopt_long(argc, argv, "w:h:l:n:f:t:d:s:r:v", long_options, &option_index)))
+	while ((c = getopt_long(argc, argv, "w:h:l:n:f:t:d:s:r:v:e:", long_options, &option_index)))
 	{
 		if (c == -1)
 			break;
@@ -137,6 +141,20 @@ int parse_args(int argc, char *argv[])
 		case 'r':
 			cmdline.record = atoi(optarg);
 			break;
+		case 'e':
+			if (strcasecmp(optarg, "jpeg") == 0)
+				cmdline.encoding_type = GST_ENCODING_V4L2_JPEG;
+			else if (strcasecmp(optarg, "rgb") == 0)
+				cmdline.encoding_type = GST_ENCODING_V4L2_RGB;
+			else if (strcasecmp(optarg, "i420") == 0)
+				cmdline.encoding_type = GST_ENCODING_V4L2_I420;
+			else if (strcasecmp(optarg, "uyvy") == 0)
+				cmdline.encoding_type = GST_ENCODING_V4L2_UYVY;
+			else {
+				printf("Unknown encoding type: %s (지원: jpeg|rgb|i420|uyvy)\n", optarg);
+				print_help(argv);
+			}
+			break;
 		case 'v':
 			// printf("\t\tVersion: %s\n", VERSION);
 			device_data.exit_flag = 1;
@@ -156,6 +174,9 @@ int parse_args(int argc, char *argv[])
 			break;
 		}
 	}
+	if (cmdline.encoding_type == 0) // 기본값 설정 (미지정 시 JPEG)
+		cmdline.encoding_type = GST_ENCODING_V4L2_JPEG;
+
 	if (cmdline.record == 1 && cmdline.record_format == 0)
 		cmdline.record_format = 1;
 	if (cmdline.record == 1 && cmdline.record_time == 0)
@@ -518,12 +539,20 @@ int main(int argc, char *argv[])
 		app_data->cameras_connected = cmdline.num_cam;
 	}
 
+	/*
+	 * v4l2src 기반 GStreamer 파이프라인만 사용할 경우
+	 * 기존 v4l2_capture 초기화는 디바이스를 선점하여
+	 * "Device busy" 오류를 유발한다.
+	 * 따라서 GStreamer 모드에서는 아래 초기화를 생략한다.
+	 */
+#ifndef GST_ONLY_MODE
 	if (init_v4l2_camera(app_data, &cmdline, camera_buffer))
 	{
 		fprintf(stderr, "Failed to init_v4l2_camera \n");
 		free(app_data);
 		return -1;
 	}
+#endif
 
 	/* Updated the SYNC FLAG Value Based on How many camera connected
 	 * if Frame sync enable
@@ -557,17 +586,7 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Failed to fill Background \n");
 	}
 
-	for (i = 0; i < CAPTURE_MAX_BUFFER; i++)
-	{
-		for (cam = 0; cam < app_data->cameras_connected; cam++)
-		{
-			if ((stream_data.num_cam & (1 << cam)) && (stream_data.dq_err & (1 << cam)))
-			{
-				v4l2_capture_dq_v4l2_buffer(app_data->camera_dev[cam], camera_buffer + cam);
-				v4l2_capture_q_v4l2_buffer(app_data->camera_dev[cam], camera_buffer + cam);
-			}
-		}
-	}
+	/* v4l2src 기반에서는 별도 캡처 버퍼 dq/queue 가 불필요 */
 
 	/* Allocate memory for Image capture buffer
 	 * Memory allocation =
@@ -593,136 +612,119 @@ int main(int argc, char *argv[])
 
 
 
+	// ROS2 노드 초기화
+	rcl_allocator_t allocator = rcl_get_default_allocator();
+	rcl_ret_t ret = rclc_support_init(&app_data->support, argc, (const char *const *)argv, &allocator);
+	if (ret != RCL_RET_OK) {
+		fprintf(stderr, "Failed to initialize ROS2 support: %s\n", rcl_get_error_string().str);
+		return -1;
+	}
+	
+	ret = rclc_node_init_default(&app_data->node, "econ_multicam_node", "", &app_data->support);
+	if (ret != RCL_RET_OK) {
+		fprintf(stderr, "Failed to initialize ROS2 node: %s\n", rcl_get_error_string().str);
+		rclc_support_fini(&app_data->support);
+		return -1;
+	}
+	
+	printf("GStreamer GPU 가속 퍼블리시 모드를 사용합니다.\n");
+	app_data->use_gstreamer = 1;
+
+	// econ 권장 v4l2src 기반 GStreamer 퍼블리시 생성
 	for (int cam = 0; cam < app_data->cameras_connected; cam++)
 	{
-		char node_name[50], topic_name[50], frame_id[50];
-		snprintf(node_name, sizeof(node_name), "video_publisher_%d", cam);
-		snprintf(topic_name, sizeof(topic_name), "/dev/video%d", cam);
-		snprintf(frame_id, sizeof(frame_id), "camera_%d", cam);
-		app_data->publisher_ctx[cam] = create_publisher(argc, (const char *const *)argv, node_name, topic_name);
-		app_data->publisher_ctx[cam]->image_msg = create_message_struct(cmdline.height, cmdline.width, frame_id);
-		app_data->publisher_ctx[cam]->camera_info_msg = create_camera_info_message(cmdline.height, cmdline.width, frame_id, cam);
-
-		if (app_data->publisher_ctx[cam] == NULL)
+		printf("카메라 %d용 econ 권장 v4l2src GStreamer 퍼블리시 생성 중...\n", cam);
+		app_data->gst_publisher[cam] = gst_ros_publisher_create(
+			cam, 
+			cmdline.width, 
+			cmdline.height, 
+			cmdline.encoding_type,  // econ 권장: v4l2src → JPEG HW 인코딩+디코딩 → RGB
+			&app_data->node
+		);
+		
+		if (app_data->gst_publisher[cam] == NULL)
 		{
-			fprintf(stderr, "Failed to create publisher for camera %d\n", cam);
-			// Handle the error, e.g., clean up other publishers or resources if necessary
+			fprintf(stderr, "ERROR: 카메라 %d용 GStreamer 퍼블리시 생성 실패\n", cam);
+			// 이전에 생성된 퍼블리시들 정리
+			for (int i = 0; i < cam; i++) {
+				if (app_data->gst_publisher[i]) {
+					gst_ros_publisher_destroy(app_data->gst_publisher[i]);
+					app_data->gst_publisher[i] = NULL;
+				}
+			}
+			return -1;
 		}
+		
+		// GStreamer 퍼블리시 시작
+		if (gst_ros_publisher_start(app_data->gst_publisher[cam]) != 0) {
+			fprintf(stderr, "ERROR: 카메라 %d용 GStreamer 퍼블리시 시작 실패\n", cam);
+			// 정리
+			for (int i = 0; i <= cam; i++) {
+				if (app_data->gst_publisher[i]) {
+					gst_ros_publisher_destroy(app_data->gst_publisher[i]);
+					app_data->gst_publisher[i] = NULL;
+				}
+			}
+			return -1;
+		}
+		
+		printf("카메라 %d용 econ 권장 v4l2src GStreamer 퍼블리시 시작 성공\n", cam);
 	}
 
+	// v4l2src 기반에서는 GStreamer가 직접 카메라 데이터를 처리하므로
+	// 복잡한 v4l2 캡처 루프가 필요 없음
+	printf("econ 권장 v4l2src GStreamer 파이프라인이 실행 중입니다...\n");
+	printf("모든 카메라가 /dev/video0-3/image_raw 토픽으로 데이터를 전송합니다.\n");
+	printf("종료하려면 Ctrl+C를 누르세요.\n");
+	
 	while (key_event_data.active)
 	{
 		if (!device_data.exit_flag)
 		{
-
-			start_counting_frame();
-
-			/* Get timestamp based sync frames */
-			ret_val = get_camera_frames(app_data, camera_buffer);
-			if (ret_val == 1)
-			{
-				device_data.exit_flag = 1;
-				printf("device_data.exit_flag = 1 is set");
-			}
+			// v4l2src 파이프라인이 자동으로 데이터를 처리하므로
+			// 단순히 종료 신호를 기다리기만 하면 됨
 			signal(SIGINT, INThandler);
-
-			for (cam = 0; cam < app_data->cameras_connected; cam++)
-			{
-				if ((stream_data.dq_err & (1 << cam)))
-				{
-					// Capture the frame
-					cap_ptr[cam] = get_frame_virt(app_data, camera_buffer + cam, cam);
-
-					if (cap_ptr[cam] != NULL)
-					{
-						set_current_time(&app_data->publisher_ctx[cam]->image_msg->header.stamp);
-						memcpy(app_data->publisher_ctx[cam]->image_msg->data.data, cap_ptr[cam], cmdline.width * cmdline.height * 2);
-
-						rcl_ret_t rc;
-						rc = rcl_publish(&app_data->publisher_ctx[cam]->publisher, app_data->publisher_ctx[cam]->image_msg, NULL);
-						if (rc != RCL_RET_OK)
-						{
-							printf("Error publishing image message: %s\n", rcl_get_error_string().str);
-						}
-
-						set_current_time(&app_data->publisher_ctx[cam]->camera_info_msg->header.stamp);
-						rc = rcl_publish(&app_data->publisher_ctx[cam]->camera_info_publisher, app_data->publisher_ctx[cam]->camera_info_msg, NULL);
-						if (rc != RCL_RET_OK)
-						{
-							printf("Error publishing camera_info message: %s\n", rcl_get_error_string().str);
-						}
-					}
-					else
-					{
-						printf("\n INFO: cap_ptr[cam] is NULL \n");
-					}
-				}
+			
+			// 1초마다 애플리케이션 상태 출력
+			static int status_count = 0;
+			if (status_count % 30 == 0) {  // 30번에 1번 (약 1초마다)
+				printf("e-multicam ROS2 application running...\n");
 			}
-
-			// if (cmdline.no_display == SET)
-			// 	frame_rate_data.count_valid++;
-			// else if (cmdline.record != 1) {
-			// 	preview_frames_on_display(cap_ptr, gst_handle, stream_data.framebuffer,
-			// 			app_data->cameras_connected, img_common_data.buffer_size);
-			// } else if (cmdline.record == 1 && record_data.frame_count != 0) {
-			// 	video_record(cap_ptr, gst_handle[0], app_data->cameras_connected, img_common_data.buffer_size);
-			// 	frame_rate_data.count_valid++;
-			// }
-
-			/*
-			 * Application terminate If recording done and exit_flag set once recording done
-			 * For example:-  Record Time == 5 sec then total capture frame 150
-			 */
-			// if ((record_data.record_count == (cmdline.record_time * DEFAULT_FRAMERATE_IN_SYNC)) && cmdline.record == 1) {
-			// 	record_data.record_count=0;
-			// 	device_data.exit_flag =1;
-			// }
-
-			compute_frame_rate();
-
-			/* Image Capture based on user input option */
-			// if (img_common_data.capture_mode != CAPT_MODE_DISABLE || img_common_data.writing_flag != CLEAR)
-			// image_capture(stream_data.num_cam, cap_ptr, fullbuffer, img_common_data.save_image_size, cmdline,app_data);
-
-			/* QUEUE all connected  camera buffers */
-			queued_all_camera_buffers(app_data, camera_buffer);
+			status_count++;
+			
+			// 짧은 대기 (CPU 사용량 줄이기)
+			usleep(33333); // ~30 FPS 체크 간격
 		}
 		else
 		{
-			/* Stop streaming and free buffers */
-
-			stop_v4l2_streaming(app_data);
-
-			free_application_data(app_data);
-
-			free_image_buffers(app_data);
-
-			free_buffer(fullbuffer);
+			/* v4l2src 기반 정리 - v4l2 스트리밍 중지 불필요 */
+			printf("\n애플리케이션 종료 중...\n");
 
 			for (cam = 0; cam < app_data->cameras_connected; cam++)
 			{
-				rcl_ret_t rc;
-				rc = rcl_publisher_fini(&app_data->publisher_ctx[cam]->publisher, &app_data->publisher_ctx[cam]->node);
-				if (rc != RCL_RET_OK) 
-				{
-    				fprintf(stderr, "Error finalizing image publisher: Function returned %d\n", rc);
+				// GStreamer 퍼블리시 정리
+				if (app_data->gst_publisher[cam]) {
+					printf("카메라 %d용 GStreamer 퍼블리시 정리 중...\n", cam);
+					gst_ros_publisher_destroy(app_data->gst_publisher[cam]);
+					app_data->gst_publisher[cam] = NULL;
 				}
-				rc = rcl_publisher_fini(&app_data->publisher_ctx[cam]->camera_info_publisher, &app_data->publisher_ctx[cam]->node);
-				if (rc != RCL_RET_OK) 
-				{
-    				fprintf(stderr, "Error finalizing camera_info publisher: Function returned %d\n", rc);
-				}
-				rc = rcl_node_fini(&app_data->publisher_ctx[cam]->node);
-				if (rc != RCL_RET_OK) 
-				{
-    				fprintf(stderr, "Error finalizing node: Function returned %d\n", rc);
-				}
-				free(app_data->publisher_ctx[cam]);
 			}
+			
+			// 메인 노드 정리
+			printf("메인 ROS2 노드 정리 중...\n");
+			rcl_ret_t rc = rcl_node_fini(&app_data->node);
+			if (rc != RCL_RET_OK) {
+				fprintf(stderr, "Error finalizing main node: Function returned %d\n", rc);
+			}
+			
+			// support 정리
+			rclc_support_fini(&app_data->support);
 
-			// free_gstreamer_buffers(app_data, gst_handle);
-
+			// 메모리 정리
+			free_buffer(fullbuffer);
 			free_buffer(app_data);
+			
+			printf("모든 리소스가 정리되었습니다.\n");
 			return 0;
 		}
 	}
