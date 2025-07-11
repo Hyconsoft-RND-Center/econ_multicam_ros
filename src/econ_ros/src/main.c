@@ -6,6 +6,7 @@
  */
 
 #include "main.h"
+#include <strings.h>
 #define SIGXERROR 10
 struct sigaction sig_xerr;
 uint16_t XERROR_VALUE = 100;
@@ -73,8 +74,9 @@ void print_help(char *argv[])
 					" -r, --record=[1]        	set record to 1 for Video Recording \n"
 					" -f, --record-format=[1/2] 	Available Video Recording format 1.H264 2.UYVY \n"
 					"				Default Video Recording format:[H264]\n"
-					" -t, --record-time=[time]	Video record time in seconds 	 \n"
-					" 				Default Record time [H264=30-Sec] [UYVY=5-Sec] \n"
+					" -t, --record-time=[time]\tVideo record time in seconds \t\n"
+					" -e, --encoding=TYPE    \tSelect encoding: jpeg|rgb|i420|uyvy (default jpeg)\n"
+					" \t\t\t\tDefault Record time [H264=30-Sec] [UYVY=5-Sec] \n"
 					" -v, --version           	prints the application version \n"
 					" --help                  	prints the application usage \n"
 					"Default resolution : %dx%d\n",
@@ -95,6 +97,7 @@ int parse_args(int argc, char *argv[])
 		{"record", required_argument, 0, 'r'},
 		{"record-format", required_argument, 0, 'f'},
 		{"record-time", required_argument, 0, 't'},
+		{"encoding", required_argument, 0, 'e'},
 		{"version", no_argument, 0, 'v'},
 		{"help", no_argument, 0, 'a'},
 		{NULL, 0, NULL, 0}};
@@ -103,7 +106,7 @@ int parse_args(int argc, char *argv[])
 	int def_h = 1;
 	int option_index = 0;
 
-	while ((c = getopt_long(argc, argv, "w:h:l:n:f:t:d:s:r:v", long_options, &option_index)))
+	while ((c = getopt_long(argc, argv, "w:h:l:n:f:t:d:s:r:v:e:", long_options, &option_index)))
 	{
 		if (c == -1)
 			break;
@@ -138,6 +141,20 @@ int parse_args(int argc, char *argv[])
 		case 'r':
 			cmdline.record = atoi(optarg);
 			break;
+		case 'e':
+			if (strcasecmp(optarg, "jpeg") == 0)
+				cmdline.encoding_type = GST_ENCODING_V4L2_JPEG;
+			else if (strcasecmp(optarg, "rgb") == 0)
+				cmdline.encoding_type = GST_ENCODING_V4L2_RGB;
+			else if (strcasecmp(optarg, "i420") == 0)
+				cmdline.encoding_type = GST_ENCODING_V4L2_I420;
+			else if (strcasecmp(optarg, "uyvy") == 0)
+				cmdline.encoding_type = GST_ENCODING_V4L2_UYVY;
+			else {
+				printf("Unknown encoding type: %s (지원: jpeg|rgb|i420|uyvy)\n", optarg);
+				print_help(argv);
+			}
+			break;
 		case 'v':
 			// printf("\t\tVersion: %s\n", VERSION);
 			device_data.exit_flag = 1;
@@ -157,6 +174,9 @@ int parse_args(int argc, char *argv[])
 			break;
 		}
 	}
+	if (cmdline.encoding_type == 0) // 기본값 설정 (미지정 시 JPEG)
+		cmdline.encoding_type = GST_ENCODING_V4L2_JPEG;
+
 	if (cmdline.record == 1 && cmdline.record_format == 0)
 		cmdline.record_format = 1;
 	if (cmdline.record == 1 && cmdline.record_time == 0)
@@ -618,7 +638,7 @@ int main(int argc, char *argv[])
 			cam, 
 			cmdline.width, 
 			cmdline.height, 
-			GST_ENCODING_V4L2_JPEG,  // econ 권장: v4l2src → JPEG HW 인코딩+디코딩 → RGB
+			cmdline.encoding_type,  // econ 권장: v4l2src → JPEG HW 인코딩+디코딩 → RGB
 			&app_data->node
 		);
 		

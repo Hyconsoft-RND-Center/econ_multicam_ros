@@ -315,6 +315,9 @@ static int setup_ros_messages(GstRosPublisher *publisher) {
             case GST_ENCODING_V4L2_I420:
                 publisher->image_msg->step = publisher->width; // I420 Y plane = 1 byte per pixel
                 break;
+            case GST_ENCODING_V4L2_RGB:
+                publisher->image_msg->step = publisher->width * 4; // BGRA8 = 4 bytes per pixel
+                break;
             default:
                 publisher->image_msg->step = publisher->width * 3; // RGB = 3 bytes per pixel
                 break;
