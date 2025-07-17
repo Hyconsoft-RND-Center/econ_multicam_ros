@@ -75,7 +75,7 @@ void print_help(char *argv[])
 					" -f, --record-format=[1/2] 	Available Video Recording format 1.H264 2.UYVY \n"
 					"				Default Video Recording format:[H264]\n"
 					" -t, --record-time=[time]\tVideo record time in seconds \t\n"
-					" -e, --encoding=TYPE    \tSelect encoding: jpeg|rgb|i420|uyvy (default jpeg)\n"
+					" -e, --encoding=TYPE    \tSelect encoding: jpeg|rgb|bgra8|bgrx8|i420|uyvy (default jpeg)\n"
 					" \t\t\t\tDefault Record time [H264=30-Sec] [UYVY=5-Sec] \n"
 					" -v, --version           	prints the application version \n"
 					" --help                  	prints the application usage \n"
@@ -146,12 +146,16 @@ int parse_args(int argc, char *argv[])
 				cmdline.encoding_type = GST_ENCODING_V4L2_JPEG;
 			else if (strcasecmp(optarg, "rgb") == 0)
 				cmdline.encoding_type = GST_ENCODING_V4L2_RGB;
+			else if (strcasecmp(optarg, "bgra8") == 0)
+				cmdline.encoding_type = GST_ENCODING_V4L2_RGB;
+			else if (strcasecmp(optarg, "bgrx8") == 0)
+				cmdline.encoding_type = GST_ENCODING_V4L2_RGB;
 			else if (strcasecmp(optarg, "i420") == 0)
 				cmdline.encoding_type = GST_ENCODING_V4L2_I420;
 			else if (strcasecmp(optarg, "uyvy") == 0)
 				cmdline.encoding_type = GST_ENCODING_V4L2_UYVY;
 			else {
-				printf("Unknown encoding type: %s (지원: jpeg|rgb|i420|uyvy)\n", optarg);
+				printf("Unknown encoding type: %s (지원: jpeg|rgb|bgra8|bgrx8|i420|uyvy)\n", optarg);
 				print_help(argv);
 			}
 			break;
