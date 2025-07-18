@@ -50,8 +50,8 @@ def generate_launch_description():
 
     encoding_arg = DeclareLaunchArgument(
         'encoding',
-        default_value='jpeg',
-        description='Image encoding type: jpeg|rgb|bgra8|bgrx8|i420|uyvy'
+        default_value='bgrx8',
+        description='Image encoding type: jpeg|rgb|bgra8|bgrx8|vpi_gpu|i420|uyvy'
     )
     
     # ExecuteProcess with arguments
