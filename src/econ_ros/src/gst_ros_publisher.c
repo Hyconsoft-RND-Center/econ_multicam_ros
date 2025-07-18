@@ -1,11 +1,17 @@
 #include "econ_ros/gst_ros_publisher.h"
+#include <gst/gst.h>
+#include <gst/app/gstappsink.h>
+#include <pthread.h>
+#include <rclc/rclc.h>
+#include <nvbufsurface.h>
+#include <nvbufsurftransform.h>
 
 // 전역 변수 선언
 static gboolean debug_mode = FALSE;
 
 // 전방 선언 (v4l2src 기반 간소화)
 static GstFlowReturn on_new_sample(GstElement *sink, GstRosPublisher *publisher);
-static gboolean on_bus_message(GstBus *bus, GstMessage *msg, GstRosPublisher *publisher);
+
 static void setup_appsink(GstRosPublisher *publisher);
 static int setup_ros_messages(GstRosPublisher *publisher);
 static void set_current_timestamp(builtin_interfaces__msg__Time *stamp);
@@ -13,6 +19,8 @@ static void publish_image_data(GstRosPublisher *publisher,
                               unsigned char *data, 
                               int size, 
                               const char *encoding);
+
+// VPI 3.2 color converter 사용
 
 // 유틸리티 함수 구현
 const char* gst_encoding_type_to_string(GstEncodingType type) {
@@ -120,7 +128,7 @@ static GstFlowReturn on_new_sample(GstElement *sink, GstRosPublisher *publisher)
                publisher->camera_id, map_info.size, encoding);
     }
     
-    // 이미지 데이터 퍼블리시
+    // GStreamer 하드웨어 가속 방식: 원본 데이터 그대로 퍼블리시
     publish_image_data(publisher, map_info.data, map_info.size, encoding);
     
     // 통계 업데이트
@@ -143,75 +151,7 @@ static GstFlowReturn on_new_sample(GstElement *sink, GstRosPublisher *publisher)
 
 // v4l2src 기반에서는 H.264 스트림이 불필요하므로 제거됨
 
-// 버스 메시지 처리
-static gboolean on_bus_message(GstBus *bus __attribute__((unused)), GstMessage *msg, GstRosPublisher *publisher) {
-    GError *error = NULL;
-    gchar *debug_info = NULL;
-    
-    if (!publisher) return FALSE;
-    
-    switch (GST_MESSAGE_TYPE(msg)) {
-        case GST_MESSAGE_ERROR:
-            gst_message_parse_error(msg, &error, &debug_info);
-            printf("GStreamer Error from element %s: %s\n", 
-                   GST_OBJECT_NAME(msg->src), error->message);
-            if (debug_info) {
-                printf("Debug info: %s\n", debug_info);
-            }
-            
-            g_error_free(error);
-            g_free(debug_info);
-            
-            // v4l2src 기반에서는 메인 루프가 불필요
-            break;
-            
-        case GST_MESSAGE_WARNING:
-            gst_message_parse_warning(msg, &error, &debug_info);
-            printf("GStreamer Warning from element %s: %s\n", 
-                   GST_OBJECT_NAME(msg->src), error->message);
-            if (debug_info) {
-                printf("Debug info: %s\n", debug_info);
-            }
-            
-            g_error_free(error);
-            g_free(debug_info);
-            break;
-            
-        case GST_MESSAGE_INFO:
-            if (debug_mode) {
-                gst_message_parse_info(msg, &error, &debug_info);
-                printf("GStreamer Info from element %s: %s\n", 
-                       GST_OBJECT_NAME(msg->src), error->message);
-                if (debug_info) {
-                    printf("Debug info: %s\n", debug_info);
-                }
-                
-                g_error_free(error);
-                g_free(debug_info);
-            }
-            break;
-            
-        case GST_MESSAGE_EOS:
-            printf("End-of-stream reached\n");
-            // v4l2src 기반에서는 메인 루프가 불필요
-            break;
-            
-        case GST_MESSAGE_STATE_CHANGED:
-            if (debug_mode && GST_MESSAGE_SRC(msg) == GST_OBJECT(publisher->pipeline)) {
-                GstState old_state, new_state, pending_state;
-                gst_message_parse_state_changed(msg, &old_state, &new_state, &pending_state);
-                printf("Pipeline state changed from %s to %s\n",
-                       gst_element_state_get_name(old_state),
-                       gst_element_state_get_name(new_state));
-            }
-            break;
-            
-        default:
-            break;
-    }
-    
-    return TRUE;
-}
+
 
 // v4l2src 기반에서는 스레드 함수들이 불필요하므로 제거됨
 
@@ -448,7 +388,8 @@ static void publish_image_data(GstRosPublisher *publisher,
     }
 }
 
-// GStreamer ROS 퍼블리시 생성 (v4l2src 기반 간소화된 버전)
+
+
 GstRosPublisher* gst_ros_publisher_create(int camera_id, int width, int height, 
                                          GstEncodingType encoding_type,
                                          rcl_node_t *node) {
@@ -488,20 +429,20 @@ GstRosPublisher* gst_ros_publisher_create(int camera_id, int width, int height,
     
     // 파이프라인 문자열 생성
     if (encoding_type == GST_ENCODING_V4L2_RGB) {
-        snprintf(pipeline_str, sizeof(pipeline_str), GST_PIPELINE_TEMPLATE_ECON_V4L2_RGB, 
-                 camera_id, width, height, width, height);
-    } else if (encoding_type == GST_ENCODING_V4L2_I420) {
-        snprintf(pipeline_str, sizeof(pipeline_str), GST_PIPELINE_TEMPLATE_ECON_V4L2_I420, 
-                 camera_id, width, height, width, height);
-    } else if (encoding_type == GST_ENCODING_V4L2_UYVY) {
-        snprintf(pipeline_str, sizeof(pipeline_str), GST_PIPELINE_TEMPLATE_ECON_V4L2_UYVY, 
-                 camera_id, width, height);
-    } else if (encoding_type == GST_ENCODING_V4L2_JPEG) {
-        snprintf(pipeline_str, sizeof(pipeline_str), GST_PIPELINE_TEMPLATE_ECON_V4L2_JPEG, 
-                 camera_id, width, height, width, height);
+            snprintf(pipeline_str, sizeof(pipeline_str), GST_PIPELINE_TEMPLATE_ECON_V4L2_RGB, 
+                     camera_id, width, height, width, height);
+        } else if (encoding_type == GST_ENCODING_V4L2_I420) {
+            snprintf(pipeline_str, sizeof(pipeline_str), GST_PIPELINE_TEMPLATE_ECON_V4L2_I420, 
+                     camera_id, width, height, width, height);
+        } else if (encoding_type == GST_ENCODING_V4L2_UYVY) {
+            snprintf(pipeline_str, sizeof(pipeline_str), GST_PIPELINE_TEMPLATE_ECON_V4L2_UYVY, 
+                     camera_id, width, height);
+        } else if (encoding_type == GST_ENCODING_V4L2_JPEG) {
+            snprintf(pipeline_str, sizeof(pipeline_str), GST_PIPELINE_TEMPLATE_ECON_V4L2_JPEG, 
+                     camera_id, width, height, width, height);
     } else {
         printf("Unsupported encoding type for v4l2src: %s\n", gst_encoding_type_to_string(encoding_type));
-        printf("Please use GST_ENCODING_V4L2_RGB, GST_ENCODING_V4L2_I420, or GST_ENCODING_V4L2_UYVY\n");
+        printf("Please use GST_ENCODING_V4L2_RGB, GST_ENCODING_V4L2_I420, GST_ENCODING_V4L2_UYVY, or GST_ENCODING_V4L2_JPEG\n");
         pthread_mutex_destroy(&publisher->mutex);
         free(publisher);
         return NULL;
@@ -509,7 +450,7 @@ GstRosPublisher* gst_ros_publisher_create(int camera_id, int width, int height,
     
     printf("Creating pipeline for camera %d (%s): %s\n", camera_id, gst_encoding_type_to_string(encoding_type), pipeline_str);
     
-    // 파이프라인 생성
+    // 모든 경우에 파이프라인 생성
     GError *error = NULL;
     publisher->pipeline = gst_parse_launch(pipeline_str, &error);
     if (!publisher->pipeline) {
@@ -699,11 +640,13 @@ void gst_ros_publisher_destroy(GstRosPublisher *publisher) {
     if (publisher->sink) {
         gst_object_unref(publisher->sink);
     }
-    
+
     if (publisher->pipeline) {
         gst_object_unref(publisher->pipeline);
     }
     
+    // VPI support removed
+
     // 뮤텍스 해제
     pthread_mutex_destroy(&publisher->mutex);
     
