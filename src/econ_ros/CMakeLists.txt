@@ -22,6 +22,19 @@ pkg_check_modules(GSTREAMER_VIDEO REQUIRED gstreamer-video-1.0)
 pkg_check_modules(GSTREAMER_APP REQUIRED gstreamer-app-1.0)
 pkg_check_modules(X11 REQUIRED x11)
 
+# VPI library removed - using GStreamer hardware acceleration instead
+
+# Find NvBufSurface libraries (JetPack 6.2.0)
+find_library(NVBUFSURFACE_LIB nvbufsurface PATHS /usr/lib/aarch64-linux-gnu/nvidia REQUIRED)
+if(NOT NVBUFSURFACE_LIB)
+    message(FATAL_ERROR "nvbufsurface library not found")
+endif()
+
+find_library(NVBUFSURFTRANSFORM_LIB nvbufsurftransform PATHS /usr/lib/aarch64-linux-gnu/nvidia REQUIRED)
+if(NOT NVBUFSURFTRANSFORM_LIB)
+    message(FATAL_ERROR "nvbufsurftransform library not found")
+endif()
+
 # find ROS2 dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rcl REQUIRED)
@@ -36,6 +49,7 @@ include_directories(
     ${GSTREAMER_VIDEO_INCLUDE_DIRS}
     ${GSTREAMER_APP_INCLUDE_DIRS}
     ${X11_INCLUDE_DIRS}
+    /usr/src/jetson_multimedia_api/include
     src
     include
     ${CMAKE_CURRENT_SOURCE_DIR}/include/econ_ros
@@ -47,6 +61,8 @@ link_libraries(
     ${GSTREAMER_VIDEO_LIBRARIES}
     ${GSTREAMER_APP_LIBRARIES}
     ${X11_LIBRARIES}
+    ${NVBUFSURFACE_LIB}
+    ${NVBUFSURFTRANSFORM_LIB}
     m
     jpeg
     pthread
@@ -57,7 +73,7 @@ file(GLOB C_FILES "src/*.c")
 file(GLOB CPP_FILES "src/*.cpp")
 add_executable(econ_ros ${C_FILES} ${CPP_FILES})
 
-# Include the new GStreamer ROS publisher
+# Include the GStreamer ROS publisher
 target_sources(econ_ros PRIVATE
     src/gst_ros_publisher.c
 )
