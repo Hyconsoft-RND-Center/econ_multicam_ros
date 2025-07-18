@@ -21,106 +21,68 @@
 #include <rmw/types.h>
 #include <rcutils/time.h>
 #include <sensor_msgs/msg/compressed_image.h>
+// VPI support removed
 
-// Jetson GPU 가속 파이프라인 정의 - 최적화된 버전
-#define GST_PIPELINE_TEMPLATE_JPEG_OPTIMIZED \
-    "appsrc name=source format=time ! " \
-    "video/x-raw,format=UYVY,width=%d,height=%d,framerate=30/1 ! " \
-    "nvvidconv interpolation-method=5 ! " \
-    "video/x-raw(memory:NVMM),format=I420 ! " \
-    "nvjpegenc quality=85 ! " \
-    "nvjpegdec ! " \
-    "nvvidconv ! " \
-    "video/x-raw,format=RGB ! " \
-    "appsink name=sink sync=false emit-signals=true max-buffers=1 drop=true"
+// GStreamer 파이프라인 템플릿들
+#define GST_PIPELINE_TEMPLATE_NVARGUS \
+	"nvarguscamerasrc sensor-id=%d ! " \
+	"video/x-raw(memory:NVMM),width=%d,height=%d,framerate=30/1 ! " \
+	"nvjpegenc ! " \
+	"jpegdec ! " \
+	"videoconvert ! " \
+	"video/x-raw,format=RGB ! " \
+	"appsink name=sink sync=false emit-signals=true max-buffers=2 drop=true"
 
-#define GST_PIPELINE_TEMPLATE_H264_OPTIMIZED \
-    "appsrc name=source format=time ! " \
-    "video/x-raw,format=UYVY,width=%d,height=%d,framerate=30/1 ! " \
-    "nvvidconv interpolation-method=5 ! " \
-    "video/x-raw(memory:NVMM),format=I420 ! " \
-    "nvv4l2h264enc bitrate=4000000 profile=baseline level=4.0 preset-level=ultrafast ! " \
-    "h264parse ! " \
-    "nvv4l2decoder ! " \
-    "nvvidconv ! " \
-    "video/x-raw,format=RGB ! " \
-    "appsink name=sink sync=false emit-signals=true max-buffers=1 drop=true"
+#define GST_PIPELINE_TEMPLATE_JPEG \
+	"gst-launch-1.0 v4l2src device=/dev/video%d ! " \
+	"video/x-raw,format=UYVY,width=%d,height=%d,framerate=30/1 ! " \
+	"v4l2jpegenc ! " \
+	"jpegdec ! " \
+	"videoconvert ! " \
+	"video/x-raw,format=RGB ! " \
+	"appsink name=sink sync=false emit-signals=true max-buffers=2 drop=true"
 
-// 추가 파이프라인 - RAW 포맷 (디버깅용)
-#define GST_PIPELINE_TEMPLATE_RAW_OPTIMIZED \
-    "appsrc name=source format=time ! " \
-    "video/x-raw,format=UYVY,width=%d,height=%d,framerate=30/1 ! " \
-    "nvvidconv interpolation-method=5 ! " \
-    "video/x-raw,format=RGB ! " \
-    "appsink name=sink sync=false emit-signals=true max-buffers=1 drop=true"
-
-// 고성능 RGB 파이프라인 (권장)
+// RGB 출력용 최적화된 파이프라인 (CPU 기반)
 #define GST_PIPELINE_TEMPLATE_RGB_OPTIMIZED \
-    "appsrc name=source ! " \
-    "queue max-size-buffers=2 ! " \
-    "video/x-raw,format=UYVY,width=%d,height=%d,framerate=30/1 ! " \
-    "videoconvert ! " \
-    "video/x-raw,format=RGB ! " \
-    "queue max-size-buffers=2 ! " \
-    "appsink name=sink sync=false emit-signals=true max-buffers=2 drop=true"
+	"videoconvert ! video/x-raw,format=RGB ! "
 
-// 추가: 디버깅용 간단한 파이프라인 (UYVY 그대로 전송)
-#define GST_PIPELINE_TEMPLATE_UYVY_SIMPLE \
-    "appsrc name=source ! " \
-    "queue max-size-buffers=2 ! " \
-    "video/x-raw,format=UYVY,width=%d,height=%d,framerate=30/1 ! " \
-    "appsink name=sink sync=false emit-signals=true max-buffers=2 drop=true"
+// econ 권장 v4l2src 기반 파이프라인들
 
-// 멀티 스트림 파이프라인 - 동시에 JPEG와 H.264 출력
-#define GST_PIPELINE_TEMPLATE_MULTI_STREAM \
-    "appsrc name=source format=time ! " \
-    "video/x-raw,format=UYVY,width=%d,height=%d,framerate=30/1 ! " \
-    "nvvidconv interpolation-method=5 ! " \
-    "video/x-raw(memory:NVMM),format=I420 ! " \
-    "tee name=t ! " \
-    "queue ! nvjpegenc quality=85 ! nvjpegdec ! nvvidconv ! video/x-raw,format=RGB ! " \
-    "appsink name=sink-jpeg sync=false emit-signals=true max-buffers=1 drop=true " \
-    "t. ! queue ! nvv4l2h264enc bitrate=4000000 profile=baseline preset-level=ultrafast ! " \
-    "h264parse ! nvv4l2decoder ! nvvidconv ! video/x-raw,format=RGB ! " \
-    "appsink name=sink-h264 sync=false emit-signals=true max-buffers=1 drop=true"
+// VPI GPU template removed - use existing econ templates instead
 
-/* RGB */
+// v4l2src → NVMM → BGRx (BGRA 호환)
 #define GST_PIPELINE_TEMPLATE_ECON_V4L2_RGB \
-  "v4l2src device=/dev/video%d io-mode=2 ! " \
-  "video/x-raw,format=UYVY,width=%d,height=%d,framerate=30/1 ! " \
-  "nvvidconv ! " \
-  "video/x-raw(memory:NVMM),format=I420,width=%d,height=%d ! " \
-  "nvvidconv nvbuf-memory-type=1 ! video/x-raw,format=BGRx ! " \
-  "appsink name=sink sync=false emit-signals=true max-buffers=4 drop=true"
+	"v4l2src device=/dev/video%d io-mode=2 ! " \
+	"video/x-raw,format=UYVY,width=%d,height=%d,framerate=30/1 ! " \
+	"nvvidconv ! " \
+	"video/x-raw(memory:NVMM),format=I420,width=%d,height=%d ! " \
+	"nvvidconv nvbuf-memory-type=1 ! video/x-raw,format=BGRx ! " \
+	"appsink name=sink sync=false emit-signals=true max-buffers=2 drop=true"
 
-/* I420 */
+// v4l2src → NVMM → I420 (효율적인 YUV420)
 #define GST_PIPELINE_TEMPLATE_ECON_V4L2_I420 \
-  "v4l2src device=/dev/video%d io-mode=2 ! " \
-  "video/x-raw,format=UYVY,width=%d,height=%d,framerate=30/1 ! " \
-  "nvvidconv ! " \
-  "video/x-raw(memory:NVMM),format=I420,width=%d,height=%d ! " \
-  "nvvidconv nvbuf-memory-type=1 ! video/x-raw,format=I420 ! " \
-  "appsink name=sink sync=false emit-signals=true max-buffers=4 drop=true"
+	"v4l2src device=/dev/video%d io-mode=2 ! " \
+	"video/x-raw,format=UYVY,width=%d,height=%d,framerate=30/1 ! " \
+	"nvvidconv ! " \
+	"video/x-raw(memory:NVMM),format=I420,width=%d,height=%d ! " \
+	"appsink name=sink sync=false emit-signals=true max-buffers=2 drop=true"
 
-/* UYVY */
+// v4l2src → UYVY (가장 간단)
 #define GST_PIPELINE_TEMPLATE_ECON_V4L2_UYVY \
-  "v4l2src device=/dev/video%d io-mode=2 ! " \
-  "video/x-raw,format=UYVY,width=%d,height=%d,framerate=30/1 ! " \
-  "nvvidconv nvbuf-memory-type=1 ! video/x-raw,format=UYVY ! " \
-  "appsink name=sink sync=false emit-signals=true max-buffers=4 drop=true"
+	"v4l2src device=/dev/video%d io-mode=2 ! " \
+	"video/x-raw,format=UYVY,width=%d,height=%d,framerate=30/1 ! " \
+	"appsink name=sink sync=false emit-signals=true max-buffers=2 drop=true"
 
-/* JPEG (encode only, publish compressed bitstream) */
+// v4l2src → JPEG hw encode/decode → RGB
 #define GST_PIPELINE_TEMPLATE_ECON_V4L2_JPEG \
-  "v4l2src device=/dev/video%d io-mode=2 ! " \
-  "video/x-raw,format=UYVY,width=%d,height=%d,framerate=30/1 ! " \
-  "nvvidconv ! " \
-  "video/x-raw(memory:NVMM),format=I420,width=%d,height=%d ! " \
-  "nvjpegenc quality=85 ! " \
-  "appsink name=sink sync=false emit-signals=true max-buffers=4 drop=true"
-
-// 백워드 호환성을 위한 기존 파이프라인 유지
-#define GST_PIPELINE_TEMPLATE_JPEG GST_PIPELINE_TEMPLATE_JPEG_OPTIMIZED
-#define GST_PIPELINE_TEMPLATE_H264 GST_PIPELINE_TEMPLATE_H264_OPTIMIZED
+	"v4l2src device=/dev/video%d io-mode=2 ! " \
+	"video/x-raw,format=UYVY,width=%d,height=%d,framerate=30/1 ! " \
+	"nvjpegenc ! " \
+	"nvjpegdec ! " \
+	"nvvidconv ! " \
+	"video/x-raw(memory:NVMM),format=I420,width=%d,height=%d ! " \
+	"nvvidconv nvbuf-memory-type=1 ! video/x-raw,format=BGRx ! " \
+	"appsink name=sink sync=false emit-signals=true max-buffers=2 drop=true"
 
 // 인코딩 타입 정의
 typedef enum {
@@ -135,6 +97,7 @@ typedef enum {
     GST_ENCODING_V4L2_I420,     // v4l2src → NVMM → I420 (효율적)
     GST_ENCODING_V4L2_UYVY,     // v4l2src → UYVY (가장 간단)
     GST_ENCODING_V4L2_JPEG      // v4l2src → JPEG hw encode/decode → RGB
+    // VPI GPU encoding removed - use existing v4l2 encodings instead
 } GstEncodingType;
 
 // 파이프라인 성능 설정
@@ -214,5 +177,24 @@ void gst_ros_publisher_destroy(GstRosPublisher* publisher);
 
 // 유틸리티 함수들
 const char* gst_encoding_type_to_string(GstEncodingType type);
+
+// JetPack 6.2.0 optimized nvvidconv configurations
+#define GST_PIPELINE_TEMPLATE_JETPACK62_OPTIMIZED \
+    "v4l2src device=/dev/video%d io-mode=mmap ! " \
+    "video/x-raw,format=UYVY,width=%d,height=%d,framerate=%d/1 ! " \
+    "nvvidconv nvbuf-memory-type=0 compute-hw=1 interpolation-method=1 ! " \
+    "video/x-raw(memory:NVMM),format=BGRx ! " \
+    "nvvidconv nvbuf-memory-type=1 ! " \
+    "video/x-raw,format=BGRx ! " \
+    "appsink name=appsink emit-signals=true sync=false max-buffers=2 drop=true"
+
+#define GST_PIPELINE_TEMPLATE_JETPACK62_FALLBACK \
+    "v4l2src device=/dev/video%d io-mode=mmap ! " \
+    "video/x-raw,format=UYVY,width=%d,height=%d,framerate=%d/1 ! " \
+    "nvvidconv ! " \
+    "video/x-raw(memory:NVMM),format=BGRx ! " \
+    "nvvidconv ! " \
+    "video/x-raw,format=BGRx ! " \
+    "appsink name=appsink emit-signals=true sync=false max-buffers=2 drop=true"
 
 #endif // GST_ROS_PUBLISHER_H 
