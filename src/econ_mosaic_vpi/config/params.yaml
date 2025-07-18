@@ -1,0 +1,39 @@
+/**:
+  ros__parameters:
+    # Output mosaic view image parameters
+    output_width: 800
+    output_height: 600
+    
+    # Input camera image parameters
+    camera_width: 1920
+    camera_height: 1080
+    
+    # VPI processing parameters
+    vpi_backend: "CUDA"  # Options: CUDA, VIC, CPU
+    interpolation_mode: "LINEAR"  # Options: LINEAR, NEAREST
+    border_mode: "CLAMP"  # Options: CLAMP, ZERO, REFLECT
+    
+    # Frame synchronization parameters
+    sync_queue_size: 10
+    max_time_diff: 0.1  # seconds
+    
+    # Camera layout in mosaic view
+    # Layout: [Left][Front]
+    #         [Rear][Right]
+    camera_layout:
+      front:
+        position_x: 1  # Top-right
+        position_y: 0
+      rear:
+        position_x: 0  # Bottom-left  
+        position_y: 1
+      left:
+        position_x: 0  # Top-left
+        position_y: 0
+      right:
+        position_x: 1  # Bottom-right
+        position_y: 1
+    
+    # Performance monitoring
+    enable_fps_logging: true
+    fps_log_interval: 30  # frames 
