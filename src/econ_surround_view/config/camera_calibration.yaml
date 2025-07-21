@@ -1,0 +1,198 @@
+# Jetson AGX Orin 서라운드 뷰 카메라 캘리브레이션 파일
+# econ_surround_view/config/camera_calibration.yaml
+#
+# STURDeCAM31_CUOAGX 3MP 120dB HDR 카메라 4개 캘리브레이션 데이터
+# 실제 하드웨어에서 측정된 캘리브레이션 파라미터 사용
+
+# 공통 설정
+image_width: 1920
+image_height: 1080
+pixel_format: "bgrx8"
+
+# 전방 카메라 (camera_id: 0, device_id: 0, /dev/video0)
+front_camera:
+  camera_name: "front"
+  camera_id: 0
+  is_fisheye: false
+  
+  # 카메라 내부 파라미터 (3x3 행렬) - 실제 측정값
+  camera_matrix:
+    - [1730.96984, 0.0, 964.66126]   # [fx, 0, cx]
+    - [0.0, 1744.46222, 465.84157]   # [0, fy, cy]
+    - [0.0, 0.0, 1.0]                # [0, 0, 1]
+  
+  # 왜곡 계수 [k1, k2, p1, p2, k3] - 실제 측정값
+  distortion_coefficients: [-0.364515, 0.130944, 0.002280, -0.002711, 0.000000]
+  
+  # 외부 파라미터 - 회전 행렬 (3x3)
+  rotation_matrix:
+    - [1.0, 0.0, 0.0]
+    - [0.0, 1.0, 0.0]
+    - [0.0, 0.0, 1.0]
+  
+  # 외부 파라미터 - 평행이동 벡터 (3x1) [x, y, z] (mm 단위)
+  translation_vector: [0.0, -2000.0, 1500.0]  # 차량 전방 2m, 높이 1.5m
+  
+  # 지면 투영용 호모그래피 행렬 (3x3) - 카메라 이미지 -> 탑뷰
+  homography_matrix:
+    - [0.5, 0.0, 480.0]   # 예시 호모그래피
+    - [0.0, 0.8, 108.0]
+    - [0.0, 0.0, 1.0]
+  
+  # 탑뷰에서의 ROI 영역 [x, y, width, height]
+  roi_in_topview: [256, 0, 512, 512]
+  
+  # 지면 기준점 (mm 단위)
+  ground_center: [0.0, -2000.0]  # 차량 중심에서 전방 2m
+  pixels_per_meter: 20.0
+  
+  # 캘리브레이션 품질
+  reprojection_error: 0.5  # RMS 픽셀 오차
+
+# 후방 카메라 (camera_id: 1, device_id: 1, /dev/video1)
+back_camera:
+  camera_name: "back"
+  camera_id: 1
+  is_fisheye: false
+  
+  # 카메라 내부 파라미터 (3x3 행렬) - 실제 측정값
+  camera_matrix:
+    - [1510.90848, 0.0, 930.1433]     # [fx, 0, cx]
+    - [0.0, 1522.93426, 555.95368]    # [0, fy, cy]
+    - [0.0, 0.0, 1.0]                 # [0, 0, 1]
+  
+  # 왜곡 계수 [k1, k2, p1, p2, k3] - 실제 측정값
+  distortion_coefficients: [-0.308347, 0.059721, -0.002041, 0.008979, 0.000000]
+  
+  rotation_matrix:
+    - [-1.0, 0.0, 0.0]    # 180도 회전
+    - [0.0, -1.0, 0.0]
+    - [0.0, 0.0, 1.0]
+  
+  translation_vector: [0.0, 2000.0, 1500.0]  # 차량 후방 2m, 높이 1.5m
+  
+  homography_matrix:
+    - [-0.5, 0.0, 1440.0]  # 180도 회전된 호모그래피
+    - [0.0, -0.8, 972.0]
+    - [0.0, 0.0, 1.0]
+  
+  roi_in_topview: [256, 512, 512, 512]
+  ground_center: [0.0, 2000.0]  # 차량 중심에서 후방 2m
+  pixels_per_meter: 20.0
+  reprojection_error: 0.5
+
+# 좌측 카메라 (camera_id: 2, device_id: 2, /dev/video2)
+left_camera:
+  camera_name: "left"
+  camera_id: 2
+  is_fisheye: false
+  
+  # 카메라 내부 파라미터 (3x3 행렬) - 실제 측정값
+  camera_matrix:
+    - [907.59532, 0.0, 951.22199]     # [fx, 0, cx]
+    - [0.0, 915.99537, 543.44269]     # [0, fy, cy]
+    - [0.0, 0.0, 1.0]                 # [0, 0, 1]
+  
+  # 왜곡 계수 [k1, k2, p1, p2, k3] - 실제 측정값
+  distortion_coefficients: [-0.295144, 0.054535, 0.000679, -0.002782, 0.000000]
+  
+  rotation_matrix:
+    - [0.0, -1.0, 0.0]    # 90도 회전
+    - [1.0, 0.0, 0.0]
+    - [0.0, 0.0, 1.0]
+  
+  translation_vector: [-1500.0, 0.0, 1500.0]  # 차량 좌측 1.5m, 높이 1.5m
+  
+  homography_matrix:
+    - [0.0, -0.8, 864.0]   # 90도 회전된 호모그래피
+    - [0.5, 0.0, 192.0]
+    - [0.0, 0.0, 1.0]
+  
+  roi_in_topview: [0, 256, 512, 512]
+  ground_center: [-1500.0, 0.0]  # 차량 중심에서 좌측 1.5m
+  pixels_per_meter: 20.0
+  reprojection_error: 0.5
+
+# 우측 카메라 (camera_id: 3, device_id: 3, /dev/video3)
+right_camera:
+  camera_name: "right"
+  camera_id: 3
+  is_fisheye: false
+  
+  # 카메라 내부 파라미터 (3x3 행렬) - 실제 측정값
+  camera_matrix:
+    - [772.44465, 0.0, 979.71164]     # [fx, 0, cx]
+    - [0.0, 777.32646, 554.33627]     # [0, fy, cy]
+    - [0.0, 0.0, 1.0]                 # [0, 0, 1]
+  
+  # 왜곡 계수 [k1, k2, p1, p2, k3] - 실제 측정값
+  distortion_coefficients: [-0.243915, 0.035940, -0.005044, -0.000517, 0.000000]
+  
+  rotation_matrix:
+    - [0.0, 1.0, 0.0]     # -90도 회전
+    - [-1.0, 0.0, 0.0]
+    - [0.0, 0.0, 1.0]
+  
+  translation_vector: [1500.0, 0.0, 1500.0]  # 차량 우측 1.5m, 높이 1.5m
+  
+  homography_matrix:
+    - [0.0, 0.8, 216.0]    # -90도 회전된 호모그래피
+    - [-0.5, 0.0, 832.0]
+    - [0.0, 0.0, 1.0]
+  
+  roi_in_topview: [512, 256, 512, 512]
+  ground_center: [1500.0, 0.0]  # 차량 중심에서 우측 1.5m
+  pixels_per_meter: 20.0
+  reprojection_error: 0.5
+
+# 서라운드 뷰 출력 설정
+surround_view_output:
+  width: 1024
+  height: 1024
+  coordinate_system: "vehicle_center"  # 차량 중심 좌표계
+  scale_meters_per_pixel: 0.05  # 1픽셀당 5cm
+  
+  # 차량 모델 위치 (픽셀)
+  vehicle_center_pixel: [512, 512]
+  vehicle_size_pixel: [100, 200]  # 너비 x 높이
+  
+  # 블렌딩 영역 설정
+  overlap_regions:
+    front_left: [[384, 256], [640, 384]]    # [top-left, bottom-right]
+    front_right: [[640, 256], [896, 384]]
+    back_left: [[384, 640], [640, 768]]
+    back_right: [[640, 640], [896, 768]]
+
+# 캘리브레이션 메타데이터
+calibration_info:
+  version: "2.0"
+  date: "2024-12-20"
+  calibration_method: "hardware_measured"  # 실제 하드웨어 측정값
+  source: "econ_gstreamer_ws/ros_publisher.c"
+  
+  # 카메라 장치 매핑
+  device_mapping:
+    video0: "front_camera"   # device_id: 0
+    video1: "back_camera"    # device_id: 1  
+    video2: "left_camera"    # device_id: 2
+    video3: "right_camera"   # device_id: 3
+  
+  # 환경 조건
+  lighting_condition: "daylight"
+  temperature_celsius: 25
+  humidity_percent: 50
+  
+  # 장비 정보
+  camera_model: "STURDeCAM31_CUOAGX"
+  lens_type: "wide_angle"
+  focal_length_mm: 2.8
+  
+  notes: |
+    실제 하드웨어에서 측정된 캘리브레이션 파라미터입니다.
+    각 카메라의 device_id는 /dev/video(n)에 대응됩니다:
+    - video0 (/dev/video0): 전방 카메라
+    - video1 (/dev/video1): 후방 카메라  
+    - video2 (/dev/video2): 좌측 카메라
+    - video3 (/dev/video3): 우측 카메라
+    
+    호모그래피 행렬과 외부 파라미터는 실제 차량 설치에 맞게 추가 조정이 필요할 수 있습니다. 

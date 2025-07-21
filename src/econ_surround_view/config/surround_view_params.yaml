@@ -1,0 +1,52 @@
+# Jetson AGX Orin 서라운드 뷰 시스템 설정 파일
+# econ_surround_view/config/surround_view_params.yaml
+
+surround_view_node:
+  ros__parameters:
+    # 카메라 토픽 설정
+    front_camera_topic: "/dev/video0/image_raw"
+    back_camera_topic: "/dev/video1/image_raw"
+    left_camera_topic: "/dev/video2/image_raw"
+    right_camera_topic: "/dev/video3/image_raw"
+    output_topic: "/surround_view/image_raw"
+    
+    # 출력 이미지 설정
+    output_width: 1024
+    output_height: 1024
+    
+    # VPI 처리 설정
+    enable_vpi_processing: true
+    enable_lens_distortion_correction: true
+    
+    # 이미지 처리 설정
+    blend_alpha: 0.5
+    max_queue_size: 10
+    processing_threads: 4
+    
+    # 오버레이 설정
+    enable_grid_overlay: true
+    grid_spacing: 50
+    enable_vehicle_overlay: true
+    
+    # 차량 모델 설정
+    vehicle_model_path: ""  # 차량 모델 이미지 파일 경로 (선택사항)
+    vehicle_width_pixels: 100
+    vehicle_height_pixels: 200
+    
+    # 캘리브레이션 파일
+    calibration_file: ""  # launch 파일에서 설정됨
+    
+    # 성능 모니터링
+    enable_performance_logging: true
+    log_interval_frames: 100
+    
+    # 블렌딩 설정
+    blending_method: "feathering"  # options: "alpha", "feathering", "weighted", "multiband"
+    feather_width: 50
+    enable_color_correction: false
+    reference_camera_id: 0
+    
+    # 디버그 설정
+    enable_debug_output: false
+    save_debug_images: false
+    debug_output_path: "/tmp/surround_view_debug/" 
