@@ -48,7 +48,10 @@ include_directories(
 link_directories(${VPI3_LIBRARY_DIRS})
 
 # Create mosaic view node executable
-add_executable(mosaic_view_node src/mosaic_view_node.cpp)
+add_executable(mosaic_view_node 
+  src/main.cpp
+  src/mosaic_view_node_impl.cpp
+)
 
 target_link_libraries(mosaic_view_node
   ${OpenCV_LIBRARIES}
