@@ -147,25 +147,8 @@ int parse_args(int argc, char *argv[])
 			cmdline.record = atoi(optarg);
 			break;
 		case 'e':
-			// if (strcasecmp(optarg, "jpeg") == 0)
-			// 	cmdline.encoding_type = GST_ENCODING_V4L2_JPEG;
-			// else if (strcasecmp(optarg, "rgb") == 0)
-			// 	cmdline.encoding_type = GST_ENCODING_V4L2_RGB;
-			// else if (strcasecmp(optarg, "bgra8") == 0)
-			// 	cmdline.encoding_type = GST_ENCODING_V4L2_RGB;
 			if (strcasecmp(optarg, "bgrx8") == 0)
 				cmdline.encoding_type = GST_ENCODING_V4L2_BGRx;
-			// else if (strcasecmp(optarg, "jetpack62_optimized") == 0 || strcasecmp(optarg, "jp62opt") == 0) {
-			// 	cmdline.encoding_type = GST_ENCODING_V4L2_RGB;  // Use standard RGB pipeline
-			// 	printf("Using JetPack 6.2.0 optimized nvvidconv pipeline\n");
-			// } else if (strcasecmp(optarg, "vpi_gpu") == 0) {
-			// 	// VPI removed - fallback to standard RGB
-			// 	cmdline.encoding_type = GST_ENCODING_V4L2_BGRx;
-			// 	printf("VPI GPU support removed - using standard RGB pipeline instead\n");
-			// } else if (strcasecmp(optarg, "i420") == 0)
-			// 	cmdline.encoding_type = GST_ENCODING_V4L2_I420;
-			// else if (strcasecmp(optarg, "uyvy") == 0)
-			// 	cmdline.encoding_type = GST_ENCODING_V4L2_UYVY;
 			else {
 				printf("Unknown encoding type: %s (지원: jpeg|rgb|bgra8|bgrx8|jetpack62_optimized|vpi_gpu|i420|uyvy)\n", optarg);
 				print_help(argv);
@@ -498,8 +481,8 @@ int main(int argc, char *argv[])
 	struct v4l2_buffer camera_buffer[MAX_CAM]; // v4l2 camera buffers
 	guint8 *cap_ptr[MAX_CAM];
 	
-	start_AA();
-	wait_for_AA_running();
+	// start_AA();
+	// wait_for_AA_running();
 
 	init_app_data();
 
@@ -552,12 +535,6 @@ int main(int argc, char *argv[])
 		app_data->cameras_connected = cmdline.num_cam;
 	}
 
-	/*
-	 * v4l2src 기반 GStreamer 파이프라인만 사용할 경우
-	 * 기존 v4l2_capture 초기화는 디바이스를 선점하여
-	 * "Device busy" 오류를 유발한다.
-	 * 따라서 GStreamer 모드에서는 아래 초기화를 생략한다.
-	 */
 #ifndef GST_ONLY_MODE
 	if (init_v4l2_camera(app_data, &cmdline, camera_buffer))
 	{
@@ -579,12 +556,6 @@ int main(int argc, char *argv[])
 	if (frame_sync_data.sync_flag == 0xff)
 		frame_sync_data.sync_flag = stream_data.num_cam;
 
-	// if (init_gstreamer_handler( app_data, &cmdline, gst_handle)){
-	// 	fprintf(stderr, "Failed to init_gstreamer_handler \n");
-	// 	free(app_data);
-	// 	return -1;
-	// }
-
 	/* Create controls thread */
 	key_event_data.err = pthread_create(&key_event_data.control_tid, NULL, &init_control, (void *)app_data);
 	if (key_event_data.err != 0)
@@ -599,14 +570,6 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Failed to fill Background \n");
 	}
 
-	/* v4l2src 기반에서는 별도 캡처 버퍼 dq/queue 가 불필요 */
-
-	/* Allocate memory for Image capture buffer
-	 * Memory allocation =
-	 * 	(Total no. of cameras connected * save_image_len)
-	 * 	Only In case of 5 camera one extra image size
-	 * 	memory allocation required for image capture
-	 */
 	if (app_data->cameras_connected == 5)
 	{
 		fullbuffer = (unsigned char *)malloc((sizeof(unsigned char)) *
@@ -623,8 +586,6 @@ int main(int argc, char *argv[])
 		exit(-errno);
 	}
 
-
-
 	// ROS2 노드 초기화
 	rcl_allocator_t allocator = rcl_get_default_allocator();
 	rcl_ret_t ret = rclc_support_init(&app_data->support, argc, (const char *const *)argv, &allocator);
@@ -640,13 +601,13 @@ int main(int argc, char *argv[])
 		return -1;
 	}
 	
-	printf("GStreamer GPU 가속 퍼블리시 모드를 사용합니다.\n");
 	app_data->use_gstreamer = 1;
 
 	// econ 권장 v4l2src 기반 GStreamer 퍼블리시 생성
 	for (int cam = 0; cam < app_data->cameras_connected; cam++)
 	{
 		printf("카메라 %d용 econ 권장 v4l2src GStreamer 퍼블리시 생성 중...\n", cam);
+		fflush(stdout);
 		app_data->gst_publisher[cam] = gst_ros_publisher_create(
 			cam, 
 			cmdline.width, 
@@ -658,6 +619,7 @@ int main(int argc, char *argv[])
 		if (app_data->gst_publisher[cam] == NULL)
 		{
 			fprintf(stderr, "ERROR: 카메라 %d용 GStreamer 퍼블리시 생성 실패\n", cam);
+			fflush(stderr);
 			// 이전에 생성된 퍼블리시들 정리
 			for (int i = 0; i < cam; i++) {
 				if (app_data->gst_publisher[i]) {
@@ -671,6 +633,7 @@ int main(int argc, char *argv[])
 		// GStreamer 퍼블리시 시작
 		if (gst_ros_publisher_start(app_data->gst_publisher[cam]) != 0) {
 			fprintf(stderr, "ERROR: 카메라 %d용 GStreamer 퍼블리시 시작 실패\n", cam);
+			fflush(stderr);
 			// 정리
 			for (int i = 0; i <= cam; i++) {
 				if (app_data->gst_publisher[i]) {
@@ -682,35 +645,20 @@ int main(int argc, char *argv[])
 		}
 		
 		printf("카메라 %d용 econ 권장 v4l2src GStreamer 퍼블리시 시작 성공\n", cam);
+		fflush(stdout);
 	}
 
-	// v4l2src 기반에서는 GStreamer가 직접 카메라 데이터를 처리하므로
-	// 복잡한 v4l2 캡처 루프가 필요 없음
-	printf("econ 권장 v4l2src GStreamer 파이프라인이 실행 중입니다...\n");
-	printf("모든 카메라가 /dev/video0-3/image_raw 토픽으로 데이터를 전송합니다.\n");
-	printf("종료하려면 Ctrl+C를 누르세요.\n");
+	printf("모든 카메라 초기화 완료. 애플리케이션 실행 중...\n");
+	fflush(stdout);
 	
 	while (key_event_data.active)
 	{
 		if (!device_data.exit_flag)
 		{
-			// v4l2src 파이프라인이 자동으로 데이터를 처리하므로
-			// 단순히 종료 신호를 기다리기만 하면 됨
 			signal(SIGINT, INThandler);
-			
-			// 1초마다 애플리케이션 상태 출력
-			static int status_count = 0;
-			if (status_count % 30 == 0) {  // 30번에 1번 (약 1초마다)
-				printf("e-multicam ROS2 application running...\n");
-			}
-			status_count++;
-			
-			// 짧은 대기 (CPU 사용량 줄이기)
-			usleep(33333); // ~30 FPS 체크 간격
 		}
 		else
 		{
-			/* v4l2src 기반 정리 - v4l2 스트리밍 중지 불필요 */
 			printf("\n애플리케이션 종료 중...\n");
 
 			for (cam = 0; cam < app_data->cameras_connected; cam++)

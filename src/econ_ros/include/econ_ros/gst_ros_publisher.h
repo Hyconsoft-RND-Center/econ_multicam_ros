@@ -23,29 +23,6 @@
 #include <sensor_msgs/msg/compressed_image.h>
 
 // GStreamer 파이프라인 템플릿
-// #define GST_PIPELINE_TEMPLATE_NVARGUS \
-// 	"nvarguscamerasrc sensor-id=%d ! " \
-// 	"video/x-raw(memory:NVMM),width=%d,height=%d,framerate=30/1 ! " \
-// 	"nvjpegenc ! " \
-// 	"jpegdec ! " \
-// 	"videoconvert ! " \
-// 	"video/x-raw,format=RGB ! " \
-// 	"appsink name=sink sync=false emit-signals=true max-buffers=2 drop=true"
-
-// #define GST_PIPELINE_TEMPLATE_JPEG \
-// 	"gst-launch-1.0 v4l2src device=/dev/video%d ! " \
-// 	"video/x-raw,format=UYVY,width=%d,height=%d,framerate=30/1 ! " \
-// 	"v4l2jpegenc ! " \
-// 	"jpegdec ! " \
-// 	"videoconvert ! " \
-// 	"video/x-raw,format=RGB ! " \
-// 	"appsink name=sink sync=false emit-signals=true max-buffers=2 drop=true"
-
-// RGB 출력용 최적화된 파이프라인
-// #define GST_PIPELINE_TEMPLATE_RGB_OPTIMIZED \
-// 	"videoconvert ! video/x-raw,format=RGB ! "
-
-// v4l2src → NVMM → BGRx (BGRA 호환)
 #define GST_PIPELINE_TEMPLATE_ECON_V4L2_BGRx \
 	"v4l2src device=/dev/video%d io-mode=2 ! " \
 	"video/x-raw,format=UYVY,width=%d,height=%d,framerate=60/1 ! " \
@@ -54,45 +31,9 @@
 	"nvvidconv nvbuf-memory-type=1 ! video/x-raw,format=BGRx ! " \
 	"appsink name=sink sync=false emit-signals=true max-buffers=2 drop=true"
 
-// v4l2src → NVMM → I420
-// #define GST_PIPELINE_TEMPLATE_ECON_V4L2_I420 \
-// 	"v4l2src device=/dev/video%d io-mode=2 ! " \
-// 	"video/x-raw,format=UYVY,width=%d,height=%d,framerate=30/1 ! " \
-// 	"nvvidconv ! " \
-// 	"video/x-raw(memory:NVMM),format=I420,width=%d,height=%d ! " \
-// 	"appsink name=sink sync=false emit-signals=true max-buffers=2 drop=true"
-
-// v4l2src → UYVY
-// #define GST_PIPELINE_TEMPLATE_ECON_V4L2_UYVY \
-// 	"v4l2src device=/dev/video%d io-mode=2 ! " \
-// 	"video/x-raw,format=UYVY,width=%d,height=%d,framerate=30/1 ! " \
-// 	"appsink name=sink sync=false emit-signals=true max-buffers=2 drop=true"
-
-// v4l2src → JPEG hw encode/decode → RGB
-// #define GST_PIPELINE_TEMPLATE_ECON_V4L2_JPEG \
-// 	"v4l2src device=/dev/video%d io-mode=2 ! " \
-// 	"video/x-raw,format=UYVY,width=%d,height=%d,framerate=30/1 ! " \
-// 	"nvjpegenc ! " \
-// 	"nvjpegdec ! " \
-// 	"nvvidconv ! " \
-// 	"video/x-raw(memory:NVMM),format=I420,width=%d,height=%d ! " \
-// 	"nvvidconv nvbuf-memory-type=1 ! video/x-raw,format=BGRx ! " \
-// 	"appsink name=sink sync=false emit-signals=true max-buffers=2 drop=true"
-
 // 인코딩 타입 정의
 typedef enum {
-    // GST_ENCODING_JPEG,
-    // GST_ENCODING_H264,
-    // GST_ENCODING_RAW,
-    // GST_ENCODING_RGB,           // 권장: GPU 가속 RGB 출력
-    // GST_ENCODING_UYVY,          // 디버깅용: UYVY 그대로 전송
-    // GST_ENCODING_MULTI_STREAM,
-    // econ 권장 v4l2src 기반 파이프라인들
-    GST_ENCODING_V4L2_BGRx,      // v4l2src → NVMM → RGB
-    // GST_ENCODING_V4L2_I420,     // v4l2src → NVMM → I420
-    // GST_ENCODING_V4L2_UYVY,     // v4l2src → UYVY
-    // GST_ENCODING_V4L2_JPEG      // v4l2src → JPEG hw encode/decode → RGB
-    // VPI GPU encoding removed - use existing v4l2 encodings instead
+    GST_ENCODING_V4L2_BGRx,      // v4l2src → NVMM → BGRx (BGRA)
 } GstEncodingType;
 
 // 파이프라인 성능 설정
@@ -164,31 +105,7 @@ int gst_ros_publisher_start(GstRosPublisher* publisher);
 int gst_ros_publisher_stop(GstRosPublisher* publisher);
 void gst_ros_publisher_destroy(GstRosPublisher* publisher);
 
-// v4l2src 기반에서는 프레임 푸시 함수 불필요
-// 다음 함수들 제거:
-// - gst_ros_publisher_push_frame()
-// - gst_ros_publisher_push_buffer()
-
 // 유틸리티 함수들
 const char* gst_encoding_type_to_string(GstEncodingType type);
-
-// JetPack 6.2.0 optimized nvvidconv configurations
-// #define GST_PIPELINE_TEMPLATE_JETPACK62_OPTIMIZED \
-//     "v4l2src device=/dev/video%d io-mode=mmap ! " \
-//     "video/x-raw,format=UYVY,width=%d,height=%d,framerate=%d/1 ! " \
-//     "nvvidconv nvbuf-memory-type=0 compute-hw=1 interpolation-method=1 ! " \
-//     "video/x-raw(memory:NVMM),format=BGRx ! " \
-//     "nvvidconv nvbuf-memory-type=1 ! " \
-//     "video/x-raw,format=BGRx ! " \
-//     "appsink name=appsink emit-signals=true sync=false max-buffers=2 drop=true"
-
-// #define GST_PIPELINE_TEMPLATE_JETPACK62_FALLBACK \
-//     "v4l2src device=/dev/video%d io-mode=mmap ! " \
-//     "video/x-raw,format=UYVY,width=%d,height=%d,framerate=%d/1 ! " \
-//     "nvvidconv ! " \
-//     "video/x-raw(memory:NVMM),format=BGRx ! " \
-//     "nvvidconv ! " \
-//     "video/x-raw,format=BGRx ! " \
-//     "appsink name=appsink emit-signals=true sync=false max-buffers=2 drop=true"
 
 #endif // GST_ROS_PUBLISHER_H 

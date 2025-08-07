@@ -27,7 +27,6 @@ void Start_application()
 
         // Keep the application running
         while (true) {
-            std::cout << "e-multicam ROS2 application running..." << std::endl;
             std::this_thread::sleep_for(std::chrono::seconds(5));
         }
     }

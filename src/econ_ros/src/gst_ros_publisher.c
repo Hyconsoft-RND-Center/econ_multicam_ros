@@ -25,16 +25,7 @@ static void publish_image_data(GstRosPublisher *publisher,
 // 유틸리티 함수 구현
 const char* gst_encoding_type_to_string(GstEncodingType type) {
     switch (type) {
-        // case GST_ENCODING_JPEG: return "JPEG";
-        // case GST_ENCODING_H264: return "H264";
-        // case GST_ENCODING_RAW: return "RAW";
-        // case GST_ENCODING_RGB: return "RGB";
-        // case GST_ENCODING_UYVY: return "UYVY";
-        // case GST_ENCODING_MULTI_STREAM: return "MULTI_STREAM";
         case GST_ENCODING_V4L2_BGRx: return "V4L2_BGRx";
-        // case GST_ENCODING_V4L2_I420: return "V4L2_I420";
-        // case GST_ENCODING_V4L2_UYVY: return "V4L2_UYVY";
-        // case GST_ENCODING_V4L2_JPEG: return "V4L2_JPEG";
         default: return "UNKNOWN";
     }
 }
@@ -82,38 +73,9 @@ static GstFlowReturn on_new_sample(GstElement *sink, GstRosPublisher *publisher)
     // 인코딩 타입에 따른 처리
     const char *encoding;
     switch (publisher->encoding_type) {
-        //case GST_ENCODING_JPEG:
-        //     encoding = "rgb8";  // JPEG 디코딩 후 RGB 출력
-        //     break;
-        // case GST_ENCODING_H264:
-        //     encoding = "rgb8";  // H.264 디코딩 후 RGB 출력
-        //     break;
-        // case GST_ENCODING_RAW:
-        // case GST_ENCODING_RGB:
-        //     encoding = "rgb8";  // RGB 출력
-        //     break;
-        // case GST_ENCODING_UYVY:
-        //     encoding = "uyvy422";  // UYVY 그대로 출력
-        //     break;
-        // case GST_ENCODING_MULTI_STREAM:
-        //     encoding = "rgb8";  // 멀티 스트림도 RGB 출력
-        //     break;
-        // econ 권장 v4l2src 기반 파이프라인들
         case GST_ENCODING_V4L2_BGRx:
             encoding = "bgra8";  // v4l2src → NVMM → BGRx (BGRA)
             break;
-        // case GST_ENCODING_V4L2_I420:
-        //     encoding = "yuv420p";  // v4l2src → NVMM → I420
-        //     break;
-        // case GST_ENCODING_V4L2_UYVY:
-        //     encoding = "uyvy422";  // v4l2src → UYVY
-        //     break;
-        // case GST_ENCODING_V4L2_JPEG:
-        //     encoding = "jpeg";      // JPEG 비트스트림 (CompressedImage)
-        //     break;
-        // default:
-        //     encoding = "rgb8";
-        //     break;
     }
     
     if (debug_mode && (callback_count <= 10 || callback_count % 100 == 0)) {
@@ -233,13 +195,6 @@ static int setup_ros_messages(GstRosPublisher *publisher) {
     // 인코딩 타입에 따른 step 값 설정
     if (!publisher->publish_compressed) {
         switch (publisher->encoding_type) {
-            // case GST_ENCODING_UYVY:
-            // case GST_ENCODING_V4L2_UYVY:
-            //     publisher->image_msg->step = publisher->width * 2; // UYVY = 2 bytes per pixel
-            //     break;
-            // case GST_ENCODING_V4L2_I420:
-            //     publisher->image_msg->step = publisher->width; // I420 Y plane = 1 byte per pixel
-            //     break;
             case GST_ENCODING_V4L2_BGRx:
                 publisher->image_msg->step = publisher->width * 4; // BGRA8 = 4 bytes per pixel
                 break;
@@ -412,16 +367,7 @@ GstRosPublisher* gst_ros_publisher_create(int camera_id, int width, int height,
     if (encoding_type == GST_ENCODING_V4L2_BGRx) {
             snprintf(pipeline_str, sizeof(pipeline_str), GST_PIPELINE_TEMPLATE_ECON_V4L2_BGRx, 
                      camera_id, width, height, width, height);
-        } /*else if (encoding_type == GST_ENCODING_V4L2_I420) {
-            snprintf(pipeline_str, sizeof(pipeline_str), GST_PIPELINE_TEMPLATE_ECON_V4L2_I420, 
-                     camera_id, width, height, width, height);
-        } else if (encoding_type == GST_ENCODING_V4L2_UYVY) {
-            snprintf(pipeline_str, sizeof(pipeline_str), GST_PIPELINE_TEMPLATE_ECON_V4L2_UYVY, 
-                     camera_id, width, height);
-        } else if (encoding_type == GST_ENCODING_V4L2_JPEG) {
-            snprintf(pipeline_str, sizeof(pipeline_str), GST_PIPELINE_TEMPLATE_ECON_V4L2_JPEG, 
-                     camera_id, width, height, width, height);
-    }*/ else {
+    } else {
         printf("Unsupported encoding type for v4l2src: %s\n", gst_encoding_type_to_string(encoding_type));
         printf("Please use GST_ENCODING_V4L2_BGRx\n");
         pthread_mutex_destroy(&publisher->mutex);
@@ -459,13 +405,7 @@ GstRosPublisher* gst_ros_publisher_create(int camera_id, int width, int height,
     if (encoding_type == GST_ENCODING_V4L2_BGRx) {
         publisher->publish_compressed = false;
         snprintf(topic_name, sizeof(topic_name), "/dev/video%d/image_raw", camera_id);
-        // publisher->publish_compressed = true;
-        // snprintf(topic_name, sizeof(topic_name), "/dev/video%d/image_raw/compressed", camera_id);
     }
-    // } else {
-    //     publisher->publish_compressed = false;
-    //     snprintf(topic_name, sizeof(topic_name), "/dev/video%d/image_raw", camera_id);
-    // }
     snprintf(camera_info_topic, sizeof(camera_info_topic), "/dev/video%d/camera_info", camera_id);
     
     // 퍼블리시 초기화
