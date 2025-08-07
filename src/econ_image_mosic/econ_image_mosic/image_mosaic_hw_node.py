@@ -261,7 +261,7 @@ class ImageMosaicHWNode(Node):
         # Parameters
         self.declare_parameter('mosaic_width', 1280)
         self.declare_parameter('mosaic_height', 720)
-        self.declare_parameter('publish_rate', 30.0)
+        self.declare_parameter('publish_rate', 60.0)
         self.declare_parameter('jpeg_quality', 85)
         
         # Get parameters
@@ -365,7 +365,7 @@ class ImageMosaicHWNode(Node):
         try:
             # Jetson AGX Orin 최적화된 하드웨어 JPEG 인코더
             pipeline_hw = f"""
-            appsrc name=src caps=video/x-raw,format=BGR,width={self.mosaic_width},height={self.mosaic_height},framerate=30/1 !
+            appsrc name=src caps=video/x-raw,format=BGR,width={self.mosaic_width},height={self.mosaic_height},framerate=60/1 !
             videoconvert !
             nvjpegenc quality={self.jpeg_quality} !
             appsink name=sink emit-signals=true sync=false
@@ -382,7 +382,7 @@ class ImageMosaicHWNode(Node):
         try:
             # 소프트웨어 폴백
             pipeline_sw = f"""
-            appsrc name=src caps=video/x-raw,format=BGR,width={self.mosaic_width},height={self.mosaic_height},framerate=30/1 !
+            appsrc name=src caps=video/x-raw,format=BGR,width={self.mosaic_width},height={self.mosaic_height},framerate=60/1 !
             videoconvert !
             jpegenc quality={self.jpeg_quality} !
             appsink name=sink emit-signals=true sync=false
@@ -558,7 +558,7 @@ class ImageMosaicHWNode(Node):
         """최적화된 메모리 관리"""
         try:
             # 기본 정리 - 빠르고 가벼움
-            if self.frame_count % 300 == 0:  # 10초마다 (30Hz 기준)
+            if self.frame_count % 600 == 0:  # 10초마다 (30Hz 기준)
                 gc.collect()
                 
             # 중급 정리 - 1분마다

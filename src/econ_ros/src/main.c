@@ -147,25 +147,25 @@ int parse_args(int argc, char *argv[])
 			cmdline.record = atoi(optarg);
 			break;
 		case 'e':
-			if (strcasecmp(optarg, "jpeg") == 0)
-				cmdline.encoding_type = GST_ENCODING_V4L2_JPEG;
-			else if (strcasecmp(optarg, "rgb") == 0)
-				cmdline.encoding_type = GST_ENCODING_V4L2_RGB;
-			else if (strcasecmp(optarg, "bgra8") == 0)
-				cmdline.encoding_type = GST_ENCODING_V4L2_RGB;
-			else if (strcasecmp(optarg, "bgrx8") == 0)
-				cmdline.encoding_type = GST_ENCODING_V4L2_RGB;
-			else if (strcasecmp(optarg, "jetpack62_optimized") == 0 || strcasecmp(optarg, "jp62opt") == 0) {
-				cmdline.encoding_type = GST_ENCODING_V4L2_RGB;  // Use standard RGB pipeline
-				printf("Using JetPack 6.2.0 optimized nvvidconv pipeline\n");
-			} else if (strcasecmp(optarg, "vpi_gpu") == 0) {
-				// VPI removed - fallback to standard RGB
-				cmdline.encoding_type = GST_ENCODING_V4L2_RGB;
-				printf("VPI GPU support removed - using standard RGB pipeline instead\n");
-			} else if (strcasecmp(optarg, "i420") == 0)
-				cmdline.encoding_type = GST_ENCODING_V4L2_I420;
-			else if (strcasecmp(optarg, "uyvy") == 0)
-				cmdline.encoding_type = GST_ENCODING_V4L2_UYVY;
+			// if (strcasecmp(optarg, "jpeg") == 0)
+			// 	cmdline.encoding_type = GST_ENCODING_V4L2_JPEG;
+			// else if (strcasecmp(optarg, "rgb") == 0)
+			// 	cmdline.encoding_type = GST_ENCODING_V4L2_RGB;
+			// else if (strcasecmp(optarg, "bgra8") == 0)
+			// 	cmdline.encoding_type = GST_ENCODING_V4L2_RGB;
+			if (strcasecmp(optarg, "bgrx8") == 0)
+				cmdline.encoding_type = GST_ENCODING_V4L2_BGRx;
+			// else if (strcasecmp(optarg, "jetpack62_optimized") == 0 || strcasecmp(optarg, "jp62opt") == 0) {
+			// 	cmdline.encoding_type = GST_ENCODING_V4L2_RGB;  // Use standard RGB pipeline
+			// 	printf("Using JetPack 6.2.0 optimized nvvidconv pipeline\n");
+			// } else if (strcasecmp(optarg, "vpi_gpu") == 0) {
+			// 	// VPI removed - fallback to standard RGB
+			// 	cmdline.encoding_type = GST_ENCODING_V4L2_BGRx;
+			// 	printf("VPI GPU support removed - using standard RGB pipeline instead\n");
+			// } else if (strcasecmp(optarg, "i420") == 0)
+			// 	cmdline.encoding_type = GST_ENCODING_V4L2_I420;
+			// else if (strcasecmp(optarg, "uyvy") == 0)
+			// 	cmdline.encoding_type = GST_ENCODING_V4L2_UYVY;
 			else {
 				printf("Unknown encoding type: %s (지원: jpeg|rgb|bgra8|bgrx8|jetpack62_optimized|vpi_gpu|i420|uyvy)\n", optarg);
 				print_help(argv);
@@ -190,8 +190,8 @@ int parse_args(int argc, char *argv[])
 			break;
 		}
 	}
-	if (cmdline.encoding_type == 0) // 기본값 설정 (미지정 시 JPEG)
-		cmdline.encoding_type = GST_ENCODING_V4L2_JPEG;
+	if (cmdline.encoding_type == 0) // 기본값 설정
+		cmdline.encoding_type = GST_ENCODING_V4L2_BGRx;
 
 	if (cmdline.record == 1 && cmdline.record_format == 0)
 		cmdline.record_format = 1;
@@ -242,9 +242,6 @@ void print_args()
 #if 0
 void INThandler_xerror(int sig)
 {
-
-
-
 	switch(sig){
 
 		case SIGUSR1:
@@ -255,8 +252,6 @@ void INThandler_xerror(int sig)
 			break;
 
 	}
-
-
 }
 #endif
 

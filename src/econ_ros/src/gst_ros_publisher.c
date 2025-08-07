@@ -25,26 +25,19 @@ static void publish_image_data(GstRosPublisher *publisher,
 // 유틸리티 함수 구현
 const char* gst_encoding_type_to_string(GstEncodingType type) {
     switch (type) {
-        case GST_ENCODING_JPEG: return "JPEG";
-        case GST_ENCODING_H264: return "H264";
-        case GST_ENCODING_RAW: return "RAW";
-        case GST_ENCODING_RGB: return "RGB";
-        case GST_ENCODING_UYVY: return "UYVY";
-        case GST_ENCODING_MULTI_STREAM: return "MULTI_STREAM";
-        case GST_ENCODING_V4L2_RGB: return "V4L2_RGB";
-        case GST_ENCODING_V4L2_I420: return "V4L2_I420";
-        case GST_ENCODING_V4L2_UYVY: return "V4L2_UYVY";
-        case GST_ENCODING_V4L2_JPEG: return "V4L2_JPEG";
+        // case GST_ENCODING_JPEG: return "JPEG";
+        // case GST_ENCODING_H264: return "H264";
+        // case GST_ENCODING_RAW: return "RAW";
+        // case GST_ENCODING_RGB: return "RGB";
+        // case GST_ENCODING_UYVY: return "UYVY";
+        // case GST_ENCODING_MULTI_STREAM: return "MULTI_STREAM";
+        case GST_ENCODING_V4L2_BGRx: return "V4L2_BGRx";
+        // case GST_ENCODING_V4L2_I420: return "V4L2_I420";
+        // case GST_ENCODING_V4L2_UYVY: return "V4L2_UYVY";
+        // case GST_ENCODING_V4L2_JPEG: return "V4L2_JPEG";
         default: return "UNKNOWN";
     }
 }
-
-// 해상도에 따른 최적화된 설정 반환
-// (삭제됨: 더 이상 사용되지 않음)
-
-// 성능 모니터링 함수 (삭제됨)
-
-// 설정 업데이트 함수 (삭제됨)
 
 // 새로운 샘플 콜백 (JPEG/RAW용)
 static GstFlowReturn on_new_sample(GstElement *sink, GstRosPublisher *publisher) {
@@ -89,38 +82,38 @@ static GstFlowReturn on_new_sample(GstElement *sink, GstRosPublisher *publisher)
     // 인코딩 타입에 따른 처리
     const char *encoding;
     switch (publisher->encoding_type) {
-        case GST_ENCODING_JPEG:
-            encoding = "rgb8";  // JPEG 디코딩 후 RGB 출력
-            break;
-        case GST_ENCODING_H264:
-            encoding = "rgb8";  // H.264 디코딩 후 RGB 출력
-            break;
-        case GST_ENCODING_RAW:
-        case GST_ENCODING_RGB:
-            encoding = "rgb8";  // RGB 출력
-            break;
-        case GST_ENCODING_UYVY:
-            encoding = "uyvy422";  // UYVY 그대로 출력
-            break;
-        case GST_ENCODING_MULTI_STREAM:
-            encoding = "rgb8";  // 멀티 스트림도 RGB 출력
-            break;
+        //case GST_ENCODING_JPEG:
+        //     encoding = "rgb8";  // JPEG 디코딩 후 RGB 출력
+        //     break;
+        // case GST_ENCODING_H264:
+        //     encoding = "rgb8";  // H.264 디코딩 후 RGB 출력
+        //     break;
+        // case GST_ENCODING_RAW:
+        // case GST_ENCODING_RGB:
+        //     encoding = "rgb8";  // RGB 출력
+        //     break;
+        // case GST_ENCODING_UYVY:
+        //     encoding = "uyvy422";  // UYVY 그대로 출력
+        //     break;
+        // case GST_ENCODING_MULTI_STREAM:
+        //     encoding = "rgb8";  // 멀티 스트림도 RGB 출력
+        //     break;
         // econ 권장 v4l2src 기반 파이프라인들
-        case GST_ENCODING_V4L2_RGB:
+        case GST_ENCODING_V4L2_BGRx:
             encoding = "bgra8";  // v4l2src → NVMM → BGRx (BGRA)
             break;
-        case GST_ENCODING_V4L2_I420:
-            encoding = "yuv420p";  // v4l2src → NVMM → I420
-            break;
-        case GST_ENCODING_V4L2_UYVY:
-            encoding = "uyvy422";  // v4l2src → UYVY
-            break;
-        case GST_ENCODING_V4L2_JPEG:
-            encoding = "jpeg";      // JPEG 비트스트림 (CompressedImage)
-            break;
-        default:
-            encoding = "rgb8";
-            break;
+        // case GST_ENCODING_V4L2_I420:
+        //     encoding = "yuv420p";  // v4l2src → NVMM → I420
+        //     break;
+        // case GST_ENCODING_V4L2_UYVY:
+        //     encoding = "uyvy422";  // v4l2src → UYVY
+        //     break;
+        // case GST_ENCODING_V4L2_JPEG:
+        //     encoding = "jpeg";      // JPEG 비트스트림 (CompressedImage)
+        //     break;
+        // default:
+        //     encoding = "rgb8";
+        //     break;
     }
     
     if (debug_mode && (callback_count <= 10 || callback_count % 100 == 0)) {
@@ -148,14 +141,6 @@ static GstFlowReturn on_new_sample(GstElement *sink, GstRosPublisher *publisher)
     
     return GST_FLOW_OK;
 }
-
-// v4l2src 기반에서는 H.264 스트림이 불필요하므로 제거됨
-
-
-
-// v4l2src 기반에서는 스레드 함수들이 불필요하므로 제거됨
-
-// v4l2src 기반에서는 appsrc 설정이 불필요하므로 제거됨
 
 // appsink 설정
 static void setup_appsink(GstRosPublisher *publisher) {
@@ -248,18 +233,18 @@ static int setup_ros_messages(GstRosPublisher *publisher) {
     // 인코딩 타입에 따른 step 값 설정
     if (!publisher->publish_compressed) {
         switch (publisher->encoding_type) {
-            case GST_ENCODING_UYVY:
-            case GST_ENCODING_V4L2_UYVY:
-                publisher->image_msg->step = publisher->width * 2; // UYVY = 2 bytes per pixel
-                break;
-            case GST_ENCODING_V4L2_I420:
-                publisher->image_msg->step = publisher->width; // I420 Y plane = 1 byte per pixel
-                break;
-            case GST_ENCODING_V4L2_RGB:
+            // case GST_ENCODING_UYVY:
+            // case GST_ENCODING_V4L2_UYVY:
+            //     publisher->image_msg->step = publisher->width * 2; // UYVY = 2 bytes per pixel
+            //     break;
+            // case GST_ENCODING_V4L2_I420:
+            //     publisher->image_msg->step = publisher->width; // I420 Y plane = 1 byte per pixel
+            //     break;
+            case GST_ENCODING_V4L2_BGRx:
                 publisher->image_msg->step = publisher->width * 4; // BGRA8 = 4 bytes per pixel
                 break;
             default:
-                publisher->image_msg->step = publisher->width * 3; // RGB = 3 bytes per pixel
+                publisher->image_msg->step = publisher->width * 4; // BGRA8 = 4 bytes per pixel
                 break;
         }
         publisher->image_msg->is_bigendian = 0;
@@ -296,8 +281,6 @@ static int setup_ros_messages(GstRosPublisher *publisher) {
         publisher->camera_info_msg->header.frame_id.size = frame_id_len;
         publisher->camera_info_msg->header.frame_id.capacity = frame_id_len + 1;
     }
-    
-    // v4l2src 기반에서는 H.264 멀티스트림이 불필요하므로 제거됨
     
     return 0;
 }
@@ -350,7 +333,7 @@ static void publish_image_data(GstRosPublisher *publisher,
         // 기존 Image 경로 -------------------------------------------
         set_current_timestamp(&publisher->image_msg->header.stamp);
 
-        // ❶ 인코딩 문자열 최초 1회 설정
+        // 인코딩 문자열 최초 1회 설정
         if (publisher->image_msg->encoding.size == 0) {
             size_t encoding_len = strlen(encoding);
             publisher->image_msg->encoding.data = (char*)malloc(encoding_len + 1);
@@ -361,7 +344,7 @@ static void publish_image_data(GstRosPublisher *publisher,
             }
         }
 
-        // ❷ 데이터 버퍼 재사용/확장
+        // 데이터 버퍼 재사용/확장
         if (publisher->image_msg->data.capacity < (size_t)size) {
             uint8_t *new_buf = (uint8_t*)realloc(publisher->image_msg->data.data, size);
             if (!new_buf) {
@@ -379,7 +362,7 @@ static void publish_image_data(GstRosPublisher *publisher,
             printf("Failed to publish image message: %s\n", rcl_get_error_string().str);
         }
         
-        // 카메라 정보 퍼블리시
+        // camera_info 퍼블리시
         set_current_timestamp(&publisher->camera_info_msg->header.stamp);
         ret = rcl_publish(&publisher->camera_info_publisher, publisher->camera_info_msg, NULL);
         if (ret != RCL_RET_OK) {
@@ -387,8 +370,6 @@ static void publish_image_data(GstRosPublisher *publisher,
         }
     }
 }
-
-
 
 GstRosPublisher* gst_ros_publisher_create(int camera_id, int width, int height, 
                                          GstEncodingType encoding_type,
@@ -428,10 +409,10 @@ GstRosPublisher* gst_ros_publisher_create(int camera_id, int width, int height,
     }
     
     // 파이프라인 문자열 생성
-    if (encoding_type == GST_ENCODING_V4L2_RGB) {
-            snprintf(pipeline_str, sizeof(pipeline_str), GST_PIPELINE_TEMPLATE_ECON_V4L2_RGB, 
+    if (encoding_type == GST_ENCODING_V4L2_BGRx) {
+            snprintf(pipeline_str, sizeof(pipeline_str), GST_PIPELINE_TEMPLATE_ECON_V4L2_BGRx, 
                      camera_id, width, height, width, height);
-        } else if (encoding_type == GST_ENCODING_V4L2_I420) {
+        } /*else if (encoding_type == GST_ENCODING_V4L2_I420) {
             snprintf(pipeline_str, sizeof(pipeline_str), GST_PIPELINE_TEMPLATE_ECON_V4L2_I420, 
                      camera_id, width, height, width, height);
         } else if (encoding_type == GST_ENCODING_V4L2_UYVY) {
@@ -440,9 +421,9 @@ GstRosPublisher* gst_ros_publisher_create(int camera_id, int width, int height,
         } else if (encoding_type == GST_ENCODING_V4L2_JPEG) {
             snprintf(pipeline_str, sizeof(pipeline_str), GST_PIPELINE_TEMPLATE_ECON_V4L2_JPEG, 
                      camera_id, width, height, width, height);
-    } else {
+    }*/ else {
         printf("Unsupported encoding type for v4l2src: %s\n", gst_encoding_type_to_string(encoding_type));
-        printf("Please use GST_ENCODING_V4L2_RGB, GST_ENCODING_V4L2_I420, GST_ENCODING_V4L2_UYVY, or GST_ENCODING_V4L2_JPEG\n");
+        printf("Please use GST_ENCODING_V4L2_BGRx\n");
         pthread_mutex_destroy(&publisher->mutex);
         free(publisher);
         return NULL;
@@ -475,13 +456,16 @@ GstRosPublisher* gst_ros_publisher_create(int camera_id, int width, int height,
     setup_appsink(publisher);
     
     // ROS2 퍼블리시 설정
-    if (encoding_type == GST_ENCODING_V4L2_JPEG) {
-        publisher->publish_compressed = true;
-        snprintf(topic_name, sizeof(topic_name), "/dev/video%d/image_raw/compressed", camera_id);
-    } else {
+    if (encoding_type == GST_ENCODING_V4L2_BGRx) {
         publisher->publish_compressed = false;
         snprintf(topic_name, sizeof(topic_name), "/dev/video%d/image_raw", camera_id);
+        // publisher->publish_compressed = true;
+        // snprintf(topic_name, sizeof(topic_name), "/dev/video%d/image_raw/compressed", camera_id);
     }
+    // } else {
+    //     publisher->publish_compressed = false;
+    //     snprintf(topic_name, sizeof(topic_name), "/dev/video%d/image_raw", camera_id);
+    // }
     snprintf(camera_info_topic, sizeof(camera_info_topic), "/dev/video%d/camera_info", camera_id);
     
     // 퍼블리시 초기화
@@ -514,7 +498,7 @@ GstRosPublisher* gst_ros_publisher_create(int camera_id, int width, int height,
         return NULL;
     }
     
-    // 카메라 정보 퍼블리시 초기화
+    // camera_info 퍼블리시 초기화
     const rosidl_message_type_support_t *camera_info_type_support = 
         ROSIDL_GET_MSG_TYPE_SUPPORT(sensor_msgs, msg, CameraInfo);
     
@@ -554,7 +538,7 @@ GstRosPublisher* gst_ros_publisher_create(int camera_id, int width, int height,
     return publisher;
 }
 
-// GStreamer ROS 퍼블리시 시작 (v4l2src 기반 간소화된 버전)
+// GStreamer ROS 퍼블리시 시작
 int gst_ros_publisher_start(GstRosPublisher *publisher) {
     if (!publisher || publisher->is_running) {
         return -1;
@@ -581,7 +565,7 @@ int gst_ros_publisher_start(GstRosPublisher *publisher) {
     return 0;
 }
 
-// GStreamer ROS 퍼블리시 정지 (v4l2src 기반 간소화된 버전)
+// GStreamer ROS 퍼블리시 정지
 int gst_ros_publisher_stop(GstRosPublisher *publisher) {
     if (!publisher || !publisher->is_running) {
         return -1;
@@ -595,9 +579,6 @@ int gst_ros_publisher_stop(GstRosPublisher *publisher) {
     printf("GStreamer ROS Publisher stopped for camera %d\n", publisher->camera_id);
     return 0;
 }
-
-// v4l2src 기반에서는 프레임 푸시가 불필요하므로 제거됨
-// v4l2src가 자동으로 카메라에서 데이터를 가져오기 때문
 
 // GStreamer ROS 퍼블리시 해제 (v4l2src 기반 간소화된 버전)
 void gst_ros_publisher_destroy(GstRosPublisher *publisher) {

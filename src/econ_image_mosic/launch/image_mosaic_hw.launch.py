@@ -9,19 +9,19 @@ def generate_launch_description():
     # Launch arguments
     mosaic_width_arg = DeclareLaunchArgument(
         'mosaic_width',
-        default_value='1280',
+        default_value='1980',
         description='모자이크 이미지의 너비'
     )
     
     mosaic_height_arg = DeclareLaunchArgument(
         'mosaic_height', 
-        default_value='720',
+        default_value='1080',
         description='모자이크 이미지의 높이'
     )
     
     publish_rate_arg = DeclareLaunchArgument(
         'publish_rate',
-        default_value='30.0', 
+        default_value='60.0', 
         description='모자이크 이미지 게시 주파수 (Hz) - 하드웨어 가속으로 30fps 목표'
     )
     
