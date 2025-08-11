@@ -8,8 +8,8 @@ GStreamer 기반 멀티카메라 스트리밍을 지원하는 ROS2 드라이버�
 
 ## 지원 플랫폼
 - **ROS2 Distro:** Humble
-- **Platform:** Linux (특히 Jetson 플랫폼 최적화)
-- **Hardware:** V4L2 호환 멀티카메라 시스템
+- **Platform:** Jetpack 6.2.0
+- **Hardware:** Econ system STURDeCAM31
 
 ## 특징
 - GStreamer 기반 카메라 스트리밍
@@ -56,7 +56,7 @@ ros2 launch econ_ros driver.launch.py
 
 # Compressed/JPEG 인코딩
 ros2 launch econ_ros driver.launch.py encoding:=compressed
-
+```
 ## 매개변수
 
 | 매개변수 | 설명 | 기본값 | 옵션 |
@@ -72,13 +72,13 @@ ros2 launch econ_ros driver.launch.py encoding:=compressed
 
 각 카메라별로 다음 토픽들이 발행됩니다:
 
-# encoding:=BGRx
+### encoding:=BGRx
 | 토픽 패턴 | 메시지 타입 | 설명 |
 |----------|-------------|------|
 | `/dev/videoN/image_raw` | `sensor_msgs/Image` | 원본 이미지 데이터 |
 | `/dev/videoN/camera_info` | `sensor_msgs/CameraInfo` | 카메라 보정 정보 |
 
-# encoding:=compressed
+### encoding:=compressed
 | 토픽 패턴 | 메시지 타입 | 설명 |
 |----------|-------------|------|
 | `/dev/videoN/image_raw/compressed` | `sensor_msgs/CompressedImage` | 원본 이미지 데이터 |
@@ -111,7 +111,7 @@ ros2 topic list | grep video
 
 ### rqt를 통한 이미지 뷰
 ```bash
-rqt_image_view
+ros2 run rqt_image_view rqt_image_view
 ```
 
 ## 문제 해결
