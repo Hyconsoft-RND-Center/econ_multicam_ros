@@ -9,6 +9,7 @@
 #include "adaptive_application.h"
 #include "debug.h"
 #include "camera_common.h"
+#include "gst_ros_publisher.h"
 #define FPS 1
 
 #define DEFAULT_FRAMERATE_IN_SYNC 30

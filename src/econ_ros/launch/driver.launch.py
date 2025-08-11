@@ -47,6 +47,12 @@ def generate_launch_description():
         default_value='1',
         description='Frame sync mode (0=enable, 1=disable)'
     )
+
+    encoding_arg = DeclareLaunchArgument(
+        'encoding',
+        default_value='BGRx',
+        description='Image encoding type: BGRx|bgrx8|compressed|jpeg|vpi_gpu (vpi_gpu=GPU accelerated, compressed=HW JPEG, BGRx=compatibility)'
+    )
     
     # ExecuteProcess with arguments
     econ_ros_node = ExecuteProcess(
@@ -56,7 +62,8 @@ def generate_launch_description():
             '-h', LaunchConfiguration('height'),
             '-d', LaunchConfiguration('no_display'),
             '-r', LaunchConfiguration('record'),
-            '-s', LaunchConfiguration('sync')
+            '-s', LaunchConfiguration('sync'),
+            '-e', LaunchConfiguration('encoding')
         ],
         output='screen'
     )
@@ -67,5 +74,6 @@ def generate_launch_description():
         no_display_arg,
         record_arg,
         sync_arg,
+        encoding_arg,
         econ_ros_node
     ]) 

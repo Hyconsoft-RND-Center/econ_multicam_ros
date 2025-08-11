@@ -1,0 +1,31 @@
+# ROS2 워크스페이스 빌드 결과물 제외
+build/
+install/
+log/
+
+# Python 캐시 제외
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# IDE 설정 파일
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS 생성 파일
+.DS_Store
+Thumbs.db
+
+# 임시 파일
+*.tmp
+*.temp
+*.log
+
+# 미완성 패키지 제외 (개발 중)
+src/econ_image_mosic/ 
