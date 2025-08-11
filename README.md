@@ -57,18 +57,6 @@ ros2 launch econ_ros driver.launch.py
 # Compressed/JPEG 인코딩
 ros2 launch econ_ros driver.launch.py encoding:=compressed
 
-# 해상도 설정
-ros2 launch econ_ros driver.launch.py width:=1280 height:=720
-
-# 카메라 개수 제한
-ros2 launch econ_ros driver.launch.py num_cam:=2
-```
-
-### 직접 실행
-```bash
-ros2 run econ_ros econ_ros -w 1920 -h 1080 -e compressed
-```
-
 ## 매개변수
 
 | 매개변수 | 설명 | 기본값 | 옵션 |
@@ -84,9 +72,16 @@ ros2 run econ_ros econ_ros -w 1920 -h 1080 -e compressed
 
 각 카메라별로 다음 토픽들이 발행됩니다:
 
+# encoding:=BGRx
 | 토픽 패턴 | 메시지 타입 | 설명 |
 |----------|-------------|------|
 | `/dev/videoN/image_raw` | `sensor_msgs/Image` | 원본 이미지 데이터 |
+| `/dev/videoN/camera_info` | `sensor_msgs/CameraInfo` | 카메라 보정 정보 |
+
+# encoding:=compressed
+| 토픽 패턴 | 메시지 타입 | 설명 |
+|----------|-------------|------|
+| `/dev/videoN/image_raw/compressed` | `sensor_msgs/CompressedImage` | 원본 이미지 데이터 |
 | `/dev/videoN/camera_info` | `sensor_msgs/CameraInfo` | 카메라 보정 정보 |
 
 여기서 N은 카메라 번호입니다 (0, 1, 2, ...).

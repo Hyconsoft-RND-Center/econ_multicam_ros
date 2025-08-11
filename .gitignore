@@ -26,6 +26,8 @@ Thumbs.db
 *.tmp
 *.temp
 *.log
+CLAUDE.md
+excute_log/
 
 # 미완성 패키지 제외 (개발 중)
-src/econ_image_mosic/ 
+*/src/econ_image_mosic 
